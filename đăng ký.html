@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width-device-width, initial-scale-1.0">
+        <title>ĐĂNG KÝ</title>
+        <link href="sample.css" rel="stylesheet">
+        <head>
+            <link rel="icon" href="buoi1/BIỂU TƯỢNG.jpg" type="image/png" style=" border-radius: 10px;">
+        </head>
+    </head>
+<body>
+    <form action="https://sheetdb.io/api/v1/aht842jog5nki" method="post" id="sheetdb-form">
+        <div class="container">
+            <div class="header">
+                <header>Đăng ký</header>
+            </div>
+            <div class="input-container">
+                <div class="input-field">
+                    <label for="user">Tên đăng nhập</label>
+                    <input type="text" name="data[Tên đăng nhập]" id="user" required>
+                </div>
+    
+                <div class="input-field">
+                    <label for="pass">Mật khẩu</label>
+                    <input type="password" name="data[Mật khẩu]" id="password" required>
+                </div>
+    
+                <div class="input-field">
+                    <label for="email">Email</label>
+                    <input type="text" name="data[Email]" id="email" required>
+                </div>
+    
+                <div class="input-field">
+                    <label for="gioitinh">Giới tính</label>
+                    <label>
+
+                        <input type="radio" name="data[Giới tính]" class="nam" id="nam" value="Nam">Nam 
+                        <input type="radio" name="data[Giới tính]" class="nữ" id="nữ" value="Nữ"> Nữ
+                    </label>
+                    
+                </div>
+    
+                <div class="input-field">
+                    <label for="numberphone">Số điện thoại</label>
+                    <input type="text" name="data[Số điện thoại]" id="numberphone" required>
+                </div>
+
+                <div class="input-field">
+                    <label for="birth">Năm sinh</label>
+                    <input type="date" name="data[Năm sinh]" id="birth" required>
+                </div>
+
+                <div class="input-field">
+                    <input type="submit" class="signup" name="Signup" onclick="Submit()" value="Đăng ký">
+                </div>
+        
+                <span><a target="_parent" href="index.html">Đã có tài khoản</a></span>
+                <br>
+
+
+            </div>
+        </div>
+            
+      </form>
+      <script>
+        var form= document.setElementById('sheetdb-form');
+    form.addEventListener("Signup", e => {
+        e.preventDefault();
+        fetch(form.action, {
+            method: "POST",
+            body: new FormData(document.getElementById("sheetdb-form")),
+        }).then(
+            response => response.json()
+        ).then((html)=> {
+            // you can put any JS code here
+            window.open('d.html','_blank');
+        });
+    });
+    </script>
+    
+</body>

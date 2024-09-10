@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biểu quyết</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .timer {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .buttons, .controls {
+            margin: 20px 0;
+        }
+        .button, .control-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+        .button:hover, .control-button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results div {
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
+        .message {
+            font-size: 1.2em;
+            color: #d9534f;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="timer" id="timer">01:00</div>
+        <div class="controls">
+            <button class="control-button" id="startButton" onclick="startTimer()">Bắt đầu chạy</button>
+            <button class="control-button hidden" id="resetButton" onclick="resetResults()">Reset kết quả</button>
+        </div>
+        <div class="buttons">
+            <button class="button" onclick="vote('yes')">Đồng ý</button>
+            <button class="button" onclick="vote('no')">Không đồng ý</button>
+        </div>
+        <div class="results">
+            <div id="yesVotes">Đồng ý: 0</div>
+            <div id="noVotes">Không đồng ý: 0</div>
+        </div>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        const TIMER_DURATION = 1 * 60 * 1000; // 1 phút tính bằng mili giây
+        let timerInterval;
+
+        function startTimer() {
+            // Nếu thời gian đã bắt đầu, không cho phép bắt đầu lại
+            if (localStorage.getItem('startTime')) {
+                alert('Thời gian biểu quyết đã bắt đầu.');
+                return;
+            }
+
+            // Lấy thời gian hiện tại và tính thời gian kết thúc
+            const now = new Date().getTime();
+            const endTime = now + TIMER_DURATION;
+
+            localStorage.setItem('startTime', now);
+            localStorage.setItem('endTime', endTime);
+            localStorage.setItem('voted', 'false'); // Cập nhật trạng thái bình chọn
+            document.getElementById('message').textContent = '';
+            document.getElementById('resetButton').classList.add('hidden');
+
+            function updateTimer() {
+                const currentTime = new Date().getTime();
+                const remainingTime = endTime - currentTime;
+
+                if (remainingTime <= 0) {
+                    document.getElementById('timer').textContent = '00:00';
+                    localStorage.removeItem('startTime');
+                    clearInterval(timerInterval);
+                    document.getElementById('resetButton').classList.remove('hidden');
+                    document.getElementById('message').textContent = 'Thời gian đã kết thúc.';
+                } else {
+                    const minutes = Math.floor(remainingTime / 60000).toString().padStart(2, '0');
+                    const seconds = Math.floor((remainingTime % 60000) / 1000).toString().padStart(2, '0');
+                    document.getElementById('timer').textContent = `${minutes}:${seconds}`;
+                }
+            }
+
+            // Xóa interval cũ nếu có
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+            updateResults();
+        }
+
+        function updateResults() {
+            const yesVotes = localStorage.getItem('yesVotes') || 0;
+            const noVotes = localStorage.getItem('noVotes') || 0;
+            document.getElementById('yesVotes').textContent = `Đồng ý: ${yesVotes}`;
+            document.getElementById('noVotes').textContent = `Không đồng ý: ${noVotes}`;
+        }
+
+        function vote(decision) {
+            const startTime = localStorage.getItem('startTime');
+            const endTime = localStorage.getItem('endTime');
+            const now = new Date().getTime();
+
+            if (startTime && now < endTime) {
+                if (localStorage.getItem('voted') === 'true') {
+                    alert('Bạn đã bình chọn rồi.');
+                    return;
+                }
+
+                let votes = localStorage.getItem(`${decision}Votes`) || 0;
+                votes = parseInt(votes, 10) + 1;
+                localStorage.setItem(`${decision}Votes`, votes);
+                localStorage.setItem('voted', 'true');
+                updateResults();
+                alert(`Bạn đã chọn: ${decision}`);
+            } else {
+                alert('Thời gian biểu quyết chưa bắt đầu hoặc đã kết thúc.');
+            }
+        }
+
+        function resetResults() {
+            if (localStorage.getItem('endTime')) {
+                localStorage.removeItem('yesVotes');
+                localStorage.removeItem('noVotes');
+                localStorage.removeItem('voted');
+                updateResults();
+                document.getElementById('resetButton').classList.add('hidden');
+                document.getElementById('message').textContent = 'Kết quả đã được reset.';
+            } else {
+                alert('Không thể reset kết quả khi thời gian chưa kết thúc.');
+            }
+        }
+
+        // Khởi động và cập nhật kết quả khi tải trang
+        updateResults();
+    </script>
+</body>
+</html>

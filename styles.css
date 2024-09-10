@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
+                0 2px 20px 0 rgba(0,0,0,0.2);
+}
+
+.navbar .logo a {
+    
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: white; /* Màu chữ */
+    text-shadow: 
+        1px 1px 0 #00f,  
+        -1px -1px 0 #00f,  
+        1px -1px 0 #00f,  
+        -1px 1px 0 #00f; /* Tạo viền chữ màu xanh */
+}
+
+.navbar .menu a {
+    
+    text-decoration: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+     /* Kích thước chữ */
+            color: white; /* Màu chữ */
+            text-shadow: 
+                0.5px 0.5px 0 #00f,  
+                -0.5px -0.5px 0 #00f,  
+                0.5px -0.5px 0 #00f,  
+                -0.5px 0.5px 0 #00f; /* Tạo viền chữ màu xanh */
+    
+}
+
+.navbar .menu a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+.content {
+    padding: 100px 20px; /* Để bù cho thanh navbar cố định */
+    background-color: #f4f4f4;
+    height: 200vh; /* Để tạo hiệu ứng cuộn */
+    text-align: center;
+}
+
+

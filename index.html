@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width-device-width, initial-scale-1.0">
+        <title>ĐĂNG NHẬP</title>
+        <link href="sample.css" rel="stylesheet">
+        <head>
+            <link rel="icon" href="buoi1/BIỂU TƯỢNG.jpg" type="image/png" style=" border-radius: 10px;">
+        </head>
+    </head>
+    <body>
+        <form action="https://sheetdb.io/api/v1/aht842jog5nki" method="post" id="sheetdb-form">
+            <div class="container">
+                <div class="header">
+                    <header>Đăng nhập</header>
+                </div>
+                <div class="input-container">
+                    <div class="input-field">
+                        <label for="user"><b>Tên đăng nhập</b></label>
+                        <input type="text" name="data[Tên đăng nhập]" id="user" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="pass"><b>Mật khẩu</b></label>
+                        <input type="password" name="data[Mật khẩu]" id="password" required>
+                    </div>
+
+                    <div class="input-field">
+
+                        <input type="button" class="submit" name="submit" onclick="login()" value="Đăng nhập">
+                    
+                    </div>
+
+                    <div class="input-field">
+
+                        <span><a href="đăng ký.html">Tạo tài khoản</a></span>
+                        
+                    </div>
+
+                    <span><a href="#">Quên mật khẩu?</a></span>
+                </div>
+            </div>
+          </form>
+          
+
+
+        
+          <script>
+            async function login() {
+            const username = document.getElementById('user').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // Fetch data from SheetDB API
+                const response = await fetch('https://sheetdb.io/api/v1/aht842jog5nki');
+                const data = await response.json();
+
+                // Check if any entry matches the provided username and password
+                const user = data.find(entry => entry['Tên đăng nhập'] === username && entry['Mật khẩu'] === password);
+
+                if (user) {
+                    document.getElementById('sheetdb-form').textContent = 'Đăng nhập thành công!';
+                    document.getElementById('sheetdb-form').style.color = 'green';
+                    window.location.href = 'trang chủ.html';
+                } else {
+                    document.getElementById('sheetdb-form').textContent = 'Đăng nhập thất bại. Vui lòng kiểm tra lại tên đăng nhập và mật khẩu.';
+                    document.getElementById('sheetdb-form').style.color = 'red';
+                }
+            } catch (error) {
+                console.error('Lỗi khi kiểm tra dữ liệu:', error);
+                document.getElementById('sheetdb-form').textContent = 'Đã xảy ra lỗi khi kiểm tra dữ liệu.';
+                document.getElementById('sheetdb-form').style.color = 'red';
+            }
+        }
+        function dangky(){
+            window.location.href = 'đăng ký.html';
+        }
+        </script>
+         
+    
+
+       
+    </body>
+</html>
