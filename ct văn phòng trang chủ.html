@@ -42,7 +42,27 @@
         .thethuc{
             margin-top: 130px;
         }
-        
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+        }
+        @media (max-width:767px) {
+            .image2 {
+                width: 50%;
+                margin-bottom: -10px;
+            }
+            h2 {
+                margin-left: 310px;
+                font-size: 20px;
+                margin-top: -90px;
+                margin-bottom: px;
+            }
+        }
         
        
     </style>
@@ -52,9 +72,9 @@
                 <a href="#">DỰ ÁN PHÁT TRIỂN NGUỒN CÁN BỘ ĐOÀN</a>
             </div>
             <div class="menu">
-                <a href="trang chủ.html">TRANG CHỦ</a>
-                <a href="tủ sách hồ chí minh.html">TỦ SÁCH HỒ CHÍ MINH</a>
-                <a href="thư viện.html">THƯ VIỆN TÀI LIỆU</a>
+                <a href="trang chủ.html" class="trangchuhtml">TRANG CHỦ</a>
+                
+                <a href="index.html" class="dangxuat">ĐĂNG XUẤT</a>
                 
             </div>
         </div>
