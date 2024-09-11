@@ -4,7 +4,13 @@
 }
 body{
     background-color:rgba(230,234,234);
-    
+    margin: 0;
+            padding: 0;
+            background-image: url('backgrond.jpg'); /* Đặt đường dẫn đến hình ảnh nền */
+            background-size: cover; /* Làm cho hình ảnh phủ toàn bộ màn hình */
+            background-position: center; /* Căn giữa hình ảnh */
+            background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+            background-attachment: fixed; /* Giữ hình ảnh nền cố định khi cuộn trang */
     display: flex;
     justify-content:center;
     align-items: center;
@@ -16,17 +22,18 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px;
-    min-height:400px;
-    min-width:350px;
+    min-height:550px;
+    min-width:450px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
                 0 2px 20px 0 rgba(0,0,0,0.2);
 }
 .header{
     display: flex;
     justify-content: center;
-    padding-top:20px;
+    padding-top:90px;
     margin: 20px 10px 10px 10px;
     font-size: 30px;
+    font-weight: bold;
     color: #fff;
 }
 .input-container{
@@ -50,7 +57,8 @@ input{
     box-shadow: 0 1px 10px 0 rgba(0,0,0,0.085),
                 0 2px 30px 0 rgba(0,0,0,0.2);
     border-radius:50px;
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: bold;
     color: #fff;
 }
 input:focus{
@@ -118,7 +126,7 @@ span a{
     }
 }
 @media (max-width: 767px) {
-}
+
 body{
     background-color:rgba(230,234,234);
     margin: 0;
@@ -139,8 +147,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px;
-    min-height:600px;
-    min-width:500px;
+    min-height:800px;
+    min-width:700px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
                 0 2px 20px 0 rgba(0,0,0,0.2);
 }
@@ -175,6 +183,7 @@ input{
                 0 3px 40px 0 rgba(0,0,0,0.2);
     border-radius:50px;
     font-size: 20px;
+    font-weight: bold;
     color: #fff;
 }
 input:focus{
@@ -232,3 +241,4 @@ span a{
     font-weight: bold;
 }
 
+}
