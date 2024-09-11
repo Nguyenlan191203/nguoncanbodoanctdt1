@@ -35,6 +35,30 @@
         .text{
             text-decoration: none ; /* Xóa gạch chân mặc định */
         }
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+        }
+        @media (max-width:767px) {
+            .image2 {
+                width: 50%;
+                margin-bottom: -60px;
+                border-radius: 15px;
+                padding: 7px;
+            }
+            h2 {
+                margin-left: 220px;
+                font-size: 15px;
+                margin-top: -30px;
+                margin-bottom: px;
+            }
+            }
+
     </style>
     <body>
         <div class="navbar">
@@ -42,9 +66,9 @@
                 <a href="#">DỰ ÁN PHÁT TRIỂN NGUỒN CÁN BỘ ĐOÀN</a>
             </div>
             <div class="menu">
-                <a href="trang chủ.html">TRANG CHỦ</a>
-                <a href="tủ sách hồ chí minh.html">TỦ SÁCH HỒ CHÍ MINH</a>
-                <a href="thư viện.html">THƯ VIỆN TÀI LIỆU</a>
+                <a href="trang chủ.html" class="trangchuhtml">TRANG CHỦ</a>
+                
+                <a href="index.html" class="dangxuat">ĐĂNG XUẤT</a>
                 
             </div>
         </div>
@@ -57,7 +81,7 @@
             <div>
                 <img class="image2" src="kỹ năng cơ bản của người cán bộ đoàn.jpg" alt="Image" width="400%">
             </div>
-            <div><a targer="_blank" href="công tác văn phòng.html" class="text">
+            <div><a targer="_blank" href="NHỮNG KỸ NĂNG CƠ BẢN CỦA NGƯỜI CÁN BỘ ĐOÀN.pdf" class="text">
                 <h2>CÔNG TÁC VĂN PHÒNG</h2>
             </div>
         </div>
