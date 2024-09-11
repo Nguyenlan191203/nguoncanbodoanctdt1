@@ -119,7 +119,12 @@ span a{
 }
 @media (max-width: 767px) {
     .container {
-        min-width:410px;
-        min-height:460px;
+        min-width:300px;
+        min-height:350px;
+    }
+    .input-field {
+        display:flex;
+        flex-direction: column;
+        margin: 5px 0 5px 0;
     }
 }
