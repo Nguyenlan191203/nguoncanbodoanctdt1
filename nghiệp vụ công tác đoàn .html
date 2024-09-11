@@ -48,6 +48,29 @@
             width: 30%;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+        }
+        @media (max-width: 767px) {
+            .image2 {
+                width: 70%;
+                margin-left:70px;
+            }
+            .image3 {
+                width:70%;
+                margin-left:70px;
+            }
+            .image4 {
+                width: 70%;
+                margin-left:70px;
+            }
+        }
     </style>
     <body>
         <div class="navbar">
@@ -55,9 +78,9 @@
                 <a href="#">DỰ ÁN PHÁT TRIỂN NGUỒN CÁN BỘ ĐOÀN</a>
             </div>
             <div class="menu">
-                <a href="trang chủ.html">TRANG CHỦ</a>
-                <a href="#about">TỦ SÁCH HỒ CHÍ MINH</a>
-                <a href="#services">THƯ VIỆN TÀI LIỆU</a>
+                <a href="trang chủ.html" class="trangchuhtml">TRANG CHỦ</a>
+                
+                <a href="index.html" class="dangxuat">ĐĂNG XUẤT</a>
                 
             </div>
         </div>
