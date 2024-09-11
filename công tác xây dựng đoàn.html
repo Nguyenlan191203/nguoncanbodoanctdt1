@@ -22,6 +22,18 @@
             transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển màu */
             color:blue;
         }
+        h3{
+            margin-top:-140px;
+            margin-left: 450px;
+            transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển màu */
+            color:blue;
+        }
+        h4{
+            margin-top:-140px;
+            margin-left: 450px;
+            transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển màu */
+            color:blue;
+        }
         .text{
             text-decoration: none ; /* Xóa gạch chân mặc định */
         }
@@ -39,11 +51,80 @@
             width: 30%;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
+        .image3{
+            padding: 10px;
+            padding-bottom: 10px;
+            border-radius: 25px;
+            margin-left: 15px;
+            margin-bottom: 19px;
+            
+            width: 30%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .image4{
+            padding: 10px;
+            padding-bottom: 10px;
+            border-radius: 25px;
+            margin-left: 15px;
+            margin-bottom: 19px;
+            
+            width: 30%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
         .thethuc{
             margin-top: 130px;
         }
         .traithieunhi{
             margin-top: 130px;
+        }
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+        }
+        @media (max-width:767px) {
+            .image2 {
+                width: 50%;
+                margin-bottom: -60px;
+                border-radius: 15px;
+                padding: 7px;
+            }
+            .image3 {
+                width: 50%;
+                margin-top: -40px;
+                margin-bottom: -60px;
+                border-radius: 15px;
+                padding: 7px;
+            }
+            .image4 {
+                width: 50%;
+                margin-top: -40px;
+                margin-bottom: -60px;
+                border-radius: 15px;
+                padding: 7px;
+            }
+            h2 {
+                margin-left: 220px;
+                font-size: 15px;
+                margin-top: -30px;
+                margin-bottom: px;
+            }
+            h3 {
+                margin-left: 220px;
+                font-size: 15px;
+                margin-top: -30px;
+                margin-bottom: px;
+            }
+            h4 {
+                margin-left: 220px;
+                font-size: 15px;
+                margin-top: -30px;
+                margin-bottom: px;
+            }
         }
         
         
@@ -67,26 +148,24 @@
         </header>
 
         <div class="vanphong">
-            <div>
                 <img class="image2" src="nghiệp vụ công tác tổ chức của đoàn cấp cơ sở.jpg" alt="Image" width="400%">
             </div>
             <div><a targer="_blank" href="NGHIỆP VỤ CÔNG TÁC TỔ CHỨC CỦA ĐOÀN CẤP CƠ SỞ.pdf" class="text">
                 <h2>NGHIỆP VỤ CÔNG TÁC TỔ CHỨC CỦA ĐOÀN CẤP CƠ SỞ</h2>
-            </div>
         </div>
 
         <div class="luutru">
-            <img class="image2" src="công tác kiểm tra giám sát.jpg" alt="Image" width="400%">
+            <img class="image3" src="công tác kiểm tra giám sát.jpg" alt="Image" width="400%">
         </div>
         <div><a targer="_blank" href="CÔNG TÁC KIỂM TRA, GIÁM SÁT.pdf" class="text">
-            <h2>CÔNG TÁC KIỂM TRA, GIÁM SÁT</h2>
+            <h3>CÔNG TÁC KIỂM TRA, GIÁM SÁT</h3>
         </div>
 
         <div class="thethuc">
-            <img class="image2" src="công tác đoàn kết tập hợp thanh niên.jpg" alt="Image" width="400%">
+            <img class="image4" src="công tác đoàn kết tập hợp thanh niên.jpg" alt="Image" width="400%">
         </div>
         <div><a targer="_blank" href="NGHIỆP VỤ CÔNG TÁC ĐOÀN KẾT TẬP HỢP THANH NIÊN.pdf" class="text">
-            <h2>CÔNG TÁC ĐOÀN KẾT, TẬP HỢP THANH NIÊN</h2>
+            <h4>CÔNG TÁC ĐOÀN KẾT, TẬP HỢP THANH NIÊN</h4>
         </div>
 
         
