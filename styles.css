@@ -96,5 +96,8 @@ body {
         margin-left: -35px;
         margin-right: 10px;
     }
+    .logo {
+        margin-left: -10px;
+    }
     
 }
