@@ -9,7 +9,32 @@
         <head>
             <link rel="icon" href="BIỂU TƯỢNG.jpg" type="image/png" style=" border-radius: 10px;">
         </head>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
+    <style>
+        .tab {
+            display: none; /* Ẩn tab mặc định */
+        }
+        .tab-content {
+            display: none;
+            background: #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin-top: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-content a {
+            color: #2980de;
+            text-decoration: none;
+        }
+        .tab-content a:hover {
+            text-decoration: underline;
+        }
+    </style>
 <body>
     <form action="https://sheetdb.io/api/v1/aht842jog5nki" method="post" id="sheetdb-form">
         <div class="container">
@@ -62,26 +87,56 @@
 
             </div>
         </div>
+    
             
       </form>
+      
       <script>
-        var form= document.setElementById('sheetdb-form');
-    form.addEventListener("Signup", e => {
-        e.preventDefault();
-        fetch(form.action, {
-            method: "POST",
-            body: new FormData(document.getElementById("sheetdb-form")),
-        }).then(
-            response => response.json()
-        ).then((html)=> {
-            // you can put any JS code here
-            window.open('index.html');
-        });
+        var form = document.getElementById('sheetdb-form');
+
+// Thêm sự kiện submit cho biểu mẫu
+form.addEventListener("submit", e => {
+    e.preventDefault(); // Ngăn chặn hành động mặc định của biểu mẫu
+
+    // Gửi dữ liệu biểu mẫu tới máy chủ
+    fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+    }).then(response => response.json())
+    .then(data => {
+        // Bạn có thể thực hiện bất kỳ mã JS nào ở đây
+        // Chuyển hướng người dùng sau khi gửi thành công
+        window.location.href = 'index.html'; // Thay vì window.open
+    }).catch(error => {
+        console.error('Có lỗi xảy ra:', error);
     });
+});
 
     function Submit(){
-        window.open('index.html');
-    }
+        
+        
+            const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+Toast.fire({
+  icon: "success",
+  title: "Signed in successfully"
+});
+// Chuyển hướng sau khi thông báo hiển thị
+setTimeout(() => {
+                window.location.href = 'index.html'; // Thay đổi đường dẫn đến trang đăng nhập của bạn
+            }, 3000); // Thời gian tương ứng với thời gian của thông báo
+        }
+    
+
     </script>
     
 </body>
