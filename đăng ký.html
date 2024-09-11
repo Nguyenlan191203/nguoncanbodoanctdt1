@@ -35,7 +35,7 @@
                 <div class="input-fi">
                     <label for="gioitinh">Giới tính</label>
                     <label>
-
+                        
                         <input type="radio" name="data[Giới tính]" class="nam" id="nam" value="Nam">Nam 
                         <input type="radio" name="data[Giới tính]" class="nữ" id="nữ" value="Nữ"> Nữ
                     </label>
@@ -75,9 +75,13 @@
             response => response.json()
         ).then((html)=> {
             // you can put any JS code here
-            window.open('d.html','_blank');
+            window.open('index.html');
         });
     });
+
+    function Submit(){
+        window.open('index.html');
+    }
     </script>
     
 </body>
