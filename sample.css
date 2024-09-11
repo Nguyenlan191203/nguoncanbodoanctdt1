@@ -104,3 +104,21 @@ span a{
     text-decoration:none;
     font-weight: bold;
 }
+
+@media (max-width: 768px) {
+    .navbar .menu a {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+    .image1, .image2, .image3, .image4 {
+        width: 100%;
+        max-width: 100%;
+    }
+    .image2, .image3, .image4 {
+        display: block;
+        margin: 10px 0;
+    }
+    .image5 {
+        width: 100%;
+    }
+}
