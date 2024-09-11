@@ -124,6 +124,29 @@
             width: 100%;
             bottom: 0;
         }
+         /* Media Queries - điều chỉnh giao diện khi kích thước màn hình nhỏ hơn */
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+        }
+
+        @media (max-width: 767px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                text-align: center;
+                font-size: 7px;
+                margin-right: 1px
+            }
+            
+            }
         
     </style>
 </head>
