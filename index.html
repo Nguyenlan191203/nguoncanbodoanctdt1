@@ -9,10 +9,13 @@
         <head>
             <link rel="icon" href="BIỂU TƯỢNG.jpg" type="image/png" style=" border-radius: 10px;">
         </head>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
+        
         <form action="https://sheetdb.io/api/v1/aht842jog5nki" method="post" id="sheetdb-form">
             <div class="container">
+                
                 <div class="header">
                     <header>Đăng nhập</header>
                 </div>
@@ -43,6 +46,7 @@
                 </div>
             </div>
           </form>
+          
           
 
 
@@ -77,6 +81,30 @@
         function dangky(){
             window.location.href = 'đăng ký.html';
         }
+
+        function login(){
+        
+        
+        const Toast = Swal.mixin({
+toast: true,
+position: "top-end",
+showConfirmButton: false,
+timer: 3000,
+timerProgressBar: true,
+didOpen: (toast) => {
+toast.onmouseenter = Swal.stopTimer;
+toast.onmouseleave = Swal.resumeTimer;
+}
+});
+Toast.fire({
+icon: "success",
+title: "Đăng nhập thành công"
+});
+// Chuyển hướng sau khi thông báo hiển thị
+setTimeout(() => {
+            window.location.href = 'trang chủ.html'; // Thay đổi đường dẫn đến trang đăng nhập của bạn
+        }, 3000); // Thời gian tương ứng với thời gian của thông báo
+    }
         </script>
          
     
