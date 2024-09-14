@@ -10,6 +10,9 @@
         <link rel="icon" href="BIỂU TƯỢNG.jpg" type="image/png" style=" border-radius: 10px;">
     </head>
     <style>
+        body{
+            font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
         image{
             
             padding: 10px;
@@ -311,6 +314,9 @@
             font-weight: bold;
         }
         @media (min-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
             .container {
                 flex-direction: row;
             }
@@ -320,6 +326,9 @@
             }
         }
         @media (max-width:600px){
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
             .image2{
                 padding:5px;
              margin-left: 10px;
