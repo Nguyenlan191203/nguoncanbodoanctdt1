@@ -44,13 +44,13 @@ body {
                 0.5px 0.5px 0 #00f,  
                 -0.5px -0.5px 0 #00f,  
                 0.5px -0.5px 0 #00f,  
-                -0.5px 0.5px 0 #00f; /* Tạo viền chữ màu xanh */
-    
+                -0.5px 0.5px 0 #00f; /* Tạo viền chữ màu xanh */    
 }
 
 .navbar .menu a:hover {
     background-color: #575757;
     border-radius: 5px;
+    
 }
 
 .content {
@@ -91,13 +91,42 @@ body {
     }
     .navbar .menu a {
         font-size: 9px;
+        
     }
     .dangxuat {
-        margin-left: -35px;
-        margin-right: 10px;
+        margin-left: px;
+        margin-right: 25px;
+        padding: 5px 10px;
+    }
+    .trangchuhtml {
+        margin-left: px;
+        margin-right: 0px;
+        padding: 5px 10px;
     }
     .logo {
         margin-left: -5px;
+    }
+
+    .navbar .menu a:hover {
+        padding: 5px 6px;
+        margin-right: px;
+        margin-left: px;
+        
+        
+    }
+    .navbar .menu .dangxuat {
+        padding: 5px 6px;
+        margin-right: px;
+        margin-left: px;
+        
+        
+    }
+    .navbar .menu .trangchuhtml {
+        padding: 5px 6px;
+        margin-right: px;
+        margin-left: px;
+        
+        
     }
     
 }
