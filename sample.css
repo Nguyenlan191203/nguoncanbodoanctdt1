@@ -147,8 +147,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px;
-    min-height:1000px;
-    min-width:1000px;
+    min-height:100px;
+    min-width:100px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
                 0 2px 20px 0 rgba(0,0,0,0.2);
 }
@@ -162,7 +162,7 @@ body{
 }
 .input-container{
     
-    margin: 100px 100px 90px 100px;
+    margin: 20px 20px 10px 20px;
     
 }
 label{
