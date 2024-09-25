@@ -13,6 +13,7 @@
     .video1 {
         text-align: left; /* Canh giữa video và tên */
         margin: 20px; /* Khoảng cách xung quanh */
+       
     }
     .video2 {
         text-align: left; /* Canh giữa video và tên */
@@ -57,10 +58,12 @@
             }
         }
         @media (max-width: 767px) {
-            .video1 {
+            .video1 .controls {
         text-align: left; /* Canh giữa video và tên */
         margin: 20px; /* Khoảng cách xung quanh */
-        width: 30%;
+        width: 60%;
+        width: 300px;
+        height: 210px;
     }
         }
 </style>
@@ -81,7 +84,7 @@
     <h1>ÂM THANH</h1>
     <br><br>
     <div class="video1">
-    <video controls width="400" height="240">
+    <video class="controls" controls width="400" height="240">
         <source src="ĐOÀN CA.mp4" type="video/mp4">
      
         
