@@ -59,6 +59,16 @@ body {
     height: 200vh; /* Để tạo hiệu ứng cuộn */
     text-align: center;
 }
+.dangxuat {
+    margin-left: px;
+    margin-right: 25px;
+    padding: 5px 10px;
+}
+.trangchuhtml {
+    margin-left: px;
+    margin-right: 0px;
+    padding: 5px 10px;
+}
 @media (min-width: 768px) {
     .container {
         flex-direction: row;
