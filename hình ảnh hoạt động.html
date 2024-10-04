@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biểu Quyết</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .vote-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: none; /* Ẩn phần bình chọn ban đầu */
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+        }
+        button:disabled {
+            background-color: #ccc;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        .timer {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+        .admin-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <input type="password" id="adminPassword" placeholder="Nhập mật khẩu admin" />
+        <button onclick="startVoting()">Bắt đầu bình chọn</button>
+    </div>
+    <div class="vote-container" id="voteContainer">
+        <h2>Biểu Quyết</h2>
+        <p>Bạn có đồng ý không?</p>
+        <button id="agreeButton" onclick="vote('agree')">Đồng ý</button>
+        <button id="disagreeButton" onclick="vote('disagree')">Không đồng ý</button>
+        <div class="result" id="result"></div>
+        <div class="timer" id="timer">00:01:00</div>
+    </div>
+
+    <script>
+        const totalTime = 60; // 1 phút = 60 giây
+        let endTime;
+        let hasVoted = false;
+
+        // Kiểm tra trạng thái khi tải trang
+        if (localStorage.getItem('endTime')) {
+            endTime = parseInt(localStorage.getItem('endTime'), 10);
+            hasVoted = localStorage.getItem('hasVoted') === 'true';
+            if (Date.now() < endTime) {
+                startTimer(); // Nếu vẫn còn thời gian, bắt đầu đếm ngược
+                document.getElementById('voteContainer').style.display = 'block'; // Hiển thị phần bình chọn
+            } else {
+                displayResults(); // Nếu hết thời gian, hiển thị kết quả
+            }
+        }
+
+        function startVoting() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === "admin123") { // Mật khẩu admin
+                endTime = Date.now() + totalTime * 1000; // Tính thời gian kết thúc
+                localStorage.setItem('endTime', endTime);
+                localStorage.setItem('agreeVotes', 0); // Số phiếu đồng ý
+                localStorage.setItem('disagreeVotes', 0); // Số phiếu không đồng ý
+                document.getElementById('voteContainer').style.display = 'block'; // Hiển thị phần bình chọn
+                resetVoting(); // Reset kết quả
+                startTimer(); // Bắt đầu đếm ngược
+            } else {
+                alert("Mật khẩu không chính xác!");
+            }
+        }
+
+        function resetVoting() {
+            hasVoted = false; // Thiết lập lại biến đã bình chọn
+            localStorage.removeItem('hasVoted'); // Xóa bình chọn
+            document.getElementById('agreeButton').disabled = false;
+            document.getElementById('disagreeButton').disabled = false;
+            document.getElementById('result').textContent = ""; // Xóa kết quả
+        }
+
+        function startTimer() {
+            updateTimer();
+            const timerInterval = setInterval(() => {
+                updateTimer();
+                if (Date.now() >= endTime) {
+                    clearInterval(timerInterval);
+                    document.getElementById('timer').textContent = "Thời gian đã hết!";
+                    displayResults(); // Hiển thị kết quả
+                }
+            }, 1000); // Cập nhật đồng hồ mỗi giây
+        }
+
+        function updateTimer() {
+            const now = Date.now();
+            const timeLeft = Math.max(0, endTime - now);
+
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').textContent = 
+                String(minutes).padStart(2, '0') + ":" + 
+                String(seconds).padStart(2, '0');
+        }
+
+        function vote(choice) {
+            if (!hasVoted) {
+                if (choice === 'agree') {
+                    localStorage.setItem('agreeVotes', Number(localStorage.getItem('agreeVotes')) + 1);
+                } else {
+                    localStorage.setItem('disagreeVotes', Number(localStorage.getItem('disagreeVotes')) + 1);
+                }
+                localStorage.setItem('hasVoted', true);
+                hasVoted = true; // Thiết lập biến đã bình chọn
+                document.getElementById('agreeButton').disabled = true;
+                document.getElementById('disagreeButton').disabled = true;
+                document.getElementById('result').textContent = "Bạn đã bình chọn: " + (choice === 'agree' ? 'Đồng ý' : 'Không đồng ý');
+            } else {
+                alert("Bạn đã bình chọn rồi!");
+            }
+        }
+
+        function displayResults() {
+            const agreeVotes = Number(localStorage.getItem('agreeVotes')) || 0;
+            const disagreeVotes = Number(localStorage.getItem('disagreeVotes')) || 0;
+            const totalVotes = agreeVotes + disagreeVotes;
+
+            const agreePercentage = totalVotes ? ((agreeVotes / totalVotes) * 100).toFixed(2) : 0;
+            const disagreePercentage = totalVotes ? ((disagreeVotes / totalVotes) * 100).toFixed(2) : 0;
+
+            document.getElementById('result').innerHTML = `
+                Kết quả biểu quyết:<br>
+                Đồng ý: ${agreeVotes} (${agreePercentage}%)<br>
+                Không đồng ý: ${disagreeVotes} (${disagreePercentage}%)<br>
+            `;
+
+            // Ẩn phần bình chọn sau khi hiển thị kết quả
+            document.getElementById('voteContainer').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
