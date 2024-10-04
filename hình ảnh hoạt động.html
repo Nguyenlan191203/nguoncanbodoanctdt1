@@ -87,8 +87,8 @@
                 localStorage.setItem('endTime', endTime);
                 localStorage.setItem('agreeVotes', 0); // Số phiếu đồng ý
                 localStorage.setItem('disagreeVotes', 0); // Số phiếu không đồng ý
-                document.getElementById('voteContainer').style.display = 'block'; // Hiển thị phần bình chọn
                 resetVoting(); // Reset kết quả
+                document.getElementById('voteContainer').style.display = 'block'; // Hiển thị phần bình chọn
                 startTimer(); // Bắt đầu đếm ngược
             } else {
                 alert("Mật khẩu không chính xác!");
@@ -159,7 +159,8 @@
             `;
 
             // Ẩn phần bình chọn sau khi hiển thị kết quả
-            document.getElementById('voteContainer').style.display = 'none';
+            document.getElementById('agreeButton').disabled = true;
+            document.getElementById('disagreeButton').disabled = true;
         }
     </script>
 </body>
