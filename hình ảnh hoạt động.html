@@ -69,14 +69,16 @@
         let hasVoted = false;
 
         // Kiểm tra trạng thái khi tải trang
-        if (localStorage.getItem('endTime')) {
-            endTime = parseInt(localStorage.getItem('endTime'), 10);
-            hasVoted = localStorage.getItem('hasVoted') === 'true';
-            if (Date.now() < endTime) {
-                startTimer(); // Nếu vẫn còn thời gian, bắt đầu đếm ngược
-                document.getElementById('voteContainer').style.display = 'block'; // Hiển thị phần bình chọn
-            } else {
-                displayResults(); // Nếu hết thời gian, hiển thị kết quả
+        function initializeVoting() {
+            if (localStorage.getItem('endTime')) {
+                endTime = parseInt(localStorage.getItem('endTime'), 10);
+                hasVoted = localStorage.getItem('hasVoted') === 'true';
+                if (Date.now() < endTime) {
+                    startTimer(); // Nếu vẫn còn thời gian, bắt đầu đếm ngược
+                    document.getElementById('voteContainer').style.display = 'block'; // Hiển thị phần bình chọn
+                } else {
+                    displayResults(); // Nếu hết thời gian, hiển thị kết quả
+                }
             }
         }
 
@@ -162,6 +164,9 @@
             document.getElementById('agreeButton').disabled = true;
             document.getElementById('disagreeButton').disabled = true;
         }
+
+        // Khởi tạo khi trang được tải
+        initializeVoting();
     </script>
 </body>
 </html>
