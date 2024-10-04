@@ -125,6 +125,62 @@
             bottom: 0;
             
         }
+        .time-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            justify-items: center;
+            margin: 340px;
+            margin-top: -50px;
+        }
+
+        .time-card {
+            background-color: white;
+            color: #007BFF;
+            border: 4px solid #007BFF;
+            border-radius: 50%;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        .date-card {
+            grid-column: span 3;
+            background-color: white;
+            color: #007BFF;
+            border: 4px solid #007BFF;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+            height: 90%;
+            font-size: 25px;
+            
+            
+            
+            
+        }
+
+        .time {
+            font-size: 60px;
+            font-weight: bold;
+        }
+        .date {
+            font-size:40px;
+            font-weight: bold;
+            margin-top: -15px;
+        }
+
+        
         /* Media Queries - điều chỉnh giao diện khi kích thước màn hình nhỏ hơn */
         @media (min-width: 768px) {
             .container {
@@ -198,6 +254,61 @@
                 margin-bottom: 1px;
                 border-radius: 10px;
             }
+            .time-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            justify-items: center;
+            margin: 340px;
+            margin-top: -50px;
+        }
+
+        .time-card {
+            background-color: white;
+            color: #007BFF;
+            border: 4px solid #007BFF;
+            border-radius: 50%;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .date-card {
+            grid-column: span 3;
+            background-color: white;
+            color: #007BFF;
+            border: 4px solid #007BFF;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 80%;
+            height: 80%;
+            font-size: 20px;
+            
+            
+            
+            
+        }
+
+        .time {
+            font-size: 45px;
+            font-weight: bold;
+        }
+        .date {
+            font-size:30px;
+            font-weight: bold;
+            margin-top: -15px;
+        }
+
         }
 
         
@@ -226,7 +337,7 @@
 
 <nav>
     <a class="gioithieu" href="gioithieu.html">GIỚI THIỆU</a>
-    <a href="#.html">HÌNH ẢNH HOẠT ĐỘNG </a>
+    <a href="hình ảnh hoạt động.html">HÌNH ẢNH HOẠT ĐỘNG </a>
     <a href="#.html">CƠ CẤU TỔ CHỨC</a>
     <a href="bản tin.html">BẢN TIN</a>
     <a href="#.HTML">LIÊN HỆ</a>
@@ -247,14 +358,45 @@
 </section>
 
 
-   
 
+
+<div class="time-container">
+    <div class="date-card">
+        <h2>Ngày Tháng Năm</h2>
+        <div class="date" id="date"></div>
+    </div>
     
+    <div class="time-card">
+        <div class="time" id="hour"></div>
+        <div>Giờ</div>
+    </div>
+    <div class="time-card">
+        <div class="time" id="minute"></div>
+        <div>Phút</div>
+    </div>
+    <div class="time-card">
+        <div class="time" id="second"></div>
+        <div>Giây</div>
+    </div>
+   
+</div>
+<script>
+    function updateDateTime() {
+        const now = new Date();
+        const hour = now.getHours().toString().padStart(2, '0');
+        const minute = now.getMinutes().toString().padStart(2, '0');
+        const second = now.getSeconds().toString().padStart(2, '0');
+        const date = now.toLocaleDateString('vi-VN');
 
-<br>
+        document.getElementById('hour').textContent = hour;
+        document.getElementById('minute').textContent = minute;
+        document.getElementById('second').textContent = second;
+        document.getElementById('date').textContent = date;
+    }
 
-
-
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+</script>
 
 </body>
 </html>
