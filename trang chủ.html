@@ -358,7 +358,7 @@
             width: 100%; /* Chiều rộng của ô chữ chạy */
             padding: 1px;
             padding-bottom: px;
-            
+           
             margin-left: px;
             margin-bottom: 11px;
             background-color: #e6f7ff;
@@ -370,12 +370,17 @@
             display: inline-block;
             animation: marquee 20s linear infinite; /* Tốc độ và kiểu chạy */
             font-size: 15px; /* Kích thước chữ */
-            color: red;
+            background: linear-gradient(90deg, red, orange, rgb(168, 168, 1), green, blue, indigo, violet); /* Gradient màu */
+            -webkit-background-clip: text; /* Chỉ áp dụng gradient cho chữ */
+            -webkit-text-fill-color: transparent; /* Làm cho màu chữ trở thành trong suốt */
+            background-clip: text; /* Chỉ áp dụng gradient cho chữ */
+            text-fill-color: transparent; /* Làm cho màu chữ trở thành trong suốt */
+        
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            
+            font-weight: bold;
         }
         @keyframes marquee {
             0% {
