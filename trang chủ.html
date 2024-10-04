@@ -179,6 +179,36 @@
             font-weight: bold;
             margin-top: -15px;
         }
+        .marquee {
+            white-space: nowrap; /* Không xuống dòng */
+            overflow: hidden; /* Ẩn phần vượt quá */
+            box-sizing: border-box;
+            width: 100%; /* Chiều rộng của ô chữ chạy */
+            padding: 1px;
+            padding-bottom: 2px;
+            
+            margin-left: px;
+            margin-bottom: 11px;
+            background-color: #e6f7ff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            
+        }
+        .marquee p {
+            display: inline-block;
+            animation: marquee 20s linear infinite; /* Tốc độ và kiểu chạy */
+            font-size: 24px; /* Kích thước chữ */
+            color: red;
+            
+        }
+        @keyframes marquee {
+            0% {
+                transform: translateX(160%); /* Bắt đầu từ bên phải */
+            }
+            100% {
+                transform: translateX(-100%); /* Kết thúc ở bên trái */
+            }
+        }
 
         
         /* Media Queries - điều chỉnh giao diện khi kích thước màn hình nhỏ hơn */
@@ -321,6 +351,40 @@
         h2 {
             margin-top: 1px;
         }
+        .marquee {
+            white-space: nowrap; /* Không xuống dòng */
+            overflow: hidden; /* Ẩn phần vượt quá */
+            box-sizing: border-box;
+            width: 100%; /* Chiều rộng của ô chữ chạy */
+            padding: 1px;
+            padding-bottom: px;
+            
+            margin-left: px;
+            margin-bottom: 11px;
+            background-color: #e6f7ff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            
+        }
+        .marquee p {
+            display: inline-block;
+            animation: marquee 20s linear infinite; /* Tốc độ và kiểu chạy */
+            font-size: 15px; /* Kích thước chữ */
+            color: red;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
+        }
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%); /* Bắt đầu từ bên phải */
+            }
+            100% {
+                transform: translateX(-100%); /* Kết thúc ở bên trái */
+            }
+        }
 
         }
 
@@ -346,7 +410,9 @@
     </section>
     
 </header>
-
+<div class="marquee">
+    <p>Chào mừng bạn đến với Dự án phát triển nguồn Cán bộ Đoàn!</p>
+</div>
 
 <nav>
     <a class="gioithieu" href="gioithieu.html">GIỚI THIỆU</a>
