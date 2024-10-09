@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        footer {
+            background-color: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        .contact-icons {
+            margin: 20px 0;
+            
+        }
+        .contact-icons img {
+            
+            border-radius: 50px;
+            padding: 5px;
+            padding-bottom: 5px;
+            
+            
+            margin-bottom: 11px;
+            width: 21%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            
+        }
+        .contact-icons a {
+            margin: 0 15px;
+            display: inline-block;
+        }
+        .contact-icons img {
+            width: 50px;
+            transition: transform 0.3s ease;
+            animation: shake 1s infinite;
+        }
+
+        /* Hiệu ứng rung lắc lư */
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        /* Số điện thoại rung lắc liên tục */
+        .phone-number {
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+            display: inline-block;
+            animation: shake 1s infinite;
+        }
+
+        /* Style cho form liên hệ */
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nội dung trang -->
+
+    <footer>
+        <h2>Liên hệ với chúng tôi</h2>
+
+        <!-- Phần biểu tượng Zalo, Facebook -->
+        <div class="contact-icons">
+            <a href="https://zalo.me" target="_blank">
+                <img src="zalo.jpg" alt="Zalo">
+            </a>
+            <a href="https://facebook.com" target="_blank">
+                <img src="facebook.jpg" alt="Facebook">
+            </a>
+
+            <a href="tel: +84856573020" style="text-decoration: none;" target="_blank">
+                
+                <img src="điện thoại.jpg" alt="Facebook">
+            </a>
+        </div>
+
+        <!-- Số điện thoại với hiệu ứng rung lắc -->
+        <div class="phone-number">
+            Điện thoại: (0123) 456-789
+        </div>
+
+        
+
+        <p>Hoặc liên hệ trực tiếp qua email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+        <p>Địa chỉ: 123 Đường ABC, Phường XYZ, TP. HCM</p>
+    </footer>
+
+</body>
+</html>
