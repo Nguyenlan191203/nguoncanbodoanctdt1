@@ -1,0 +1,153 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 13px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
+                0 2px 20px 0 rgba(0,0,0,0.2);
+}
+
+.navbar .logo a {
+    
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: bold;
+    color: white; /* Màu chữ */
+    text-shadow: 
+        1px 1px 0 #00f,  
+        -1px -1px 0 #00f,  
+        1px -1px 0 #00f,  
+        -1px 1px 0 #00f; /* Tạo viền chữ màu xanh */
+}
+
+.navbar .menu a {
+    
+    text-decoration: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+     /* Kích thước chữ */
+            color: white; /* Màu chữ */
+            text-shadow: 
+                0.5px 0.5px 0 #00f,  
+                -0.5px -0.5px 0 #00f,  
+                0.5px -0.5px 0 #00f,  
+                -0.5px 0.5px 0 #00f; /* Tạo viền chữ màu xanh */    
+}
+
+.navbar .menu a:hover {
+    background-color: 0 4px 8px 0 rgba(0,0,0,0.2),
+    0 2px 20px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
+                0 2px 20px 0 rgba(0,0,0,0.2);
+    
+}
+
+.content {
+    padding: 100px 20px; /* Để bù cho thanh navbar cố định */
+    background-color: #f4f4f4;
+    height: 200vh; /* Để tạo hiệu ứng cuộn */
+    text-align: center;
+}
+.dangxuat {
+    margin-left: px;
+    margin-right: -15px;
+    padding: 5px 10px;
+}
+.trangchuhtml {
+    margin-left: px;
+    margin-right: -10px;
+    padding: 5px 10px;
+}
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .content {
+        flex: 3;
+    }
+    image {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav a {
+        text-align: center;
+        font-size: 7px;
+        margin-right: 1px
+    }
+
+    image {
+        width: 100%;
+    }
+    .navbar .logo a {
+        font-size:9.1px;
+    }
+    .navbar .menu a {
+        font-size: 9.1px;
+        
+    }
+    .dangxuat {
+        margin-left: px;
+        margin-right: 2px;
+        padding: 5px 10px;
+    }
+    .trangchuhtml {
+        margin-left: px;
+        margin-right: 0px;
+        padding: 5px 10px;
+    }
+    .logo {
+        margin-left: -5px;
+    }
+
+    .navbar .menu a:hover {
+        padding: 5px 6px;
+        margin-right: px;
+        margin-left: px;
+        
+        
+    }
+    .navbar .menu .dangxuat {
+        padding: 5px 6px;
+        margin-right: px;
+        margin-left: px;
+        
+        
+    }
+    .navbar .menu .trangchuhtml {
+        padding: 5px 6px;
+        margin-right: px;
+        margin-left: px;
+        
+        
+    }
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        padding: 10px 20px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
+                    0 2px 20px 0 rgba(0,0,0,0.2);
+    }
+
+    
+}
