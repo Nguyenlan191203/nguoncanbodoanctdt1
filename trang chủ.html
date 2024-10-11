@@ -433,13 +433,28 @@
 <body>
     <div class="navbar">
         <div class="logo">
-            <a class="logo" href="trang chủ.html">DỰ ÁN PHÁT TRIỂN NGUỒN CÁN BỘ ĐOÀN</a>
+            <img src="BIỂU TƯỢNG.jpg" class="logo">
+            <a class="logo" alt="Logo" IMAGE="BIỂU TƯỢNG.jpg" href="trang chủ.html"><h1>DỰ ÁN PHÁT TRIỂN NGUỒN CÁN BỘ ĐOÀN</h1></a>
         </div>
-        <div class="menu">
-            <a href="trang chủ.html" class="trangchuhtml">TRANG CHỦ</a>
-            
-            <a href="index.html" class="dangxuat">ĐĂNG XUẤT</a>
-            
+        <button id="menuButton">
+            <img src="https://img.icons8.com/ios-filled/50/black/menu.png" alt="Menu"> 
+        </button>
+        <div class="dropdown-content" id="dropdownMenu">
+            <a href="trang chủ.html">
+                <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Trang Chủ"> Trang Chủ
+            </a>
+            <a href="thư viện.html">
+                <img src="https://img.icons8.com/ios-filled/50/000000/book.png" alt="Thư Viện Tài Liệu"> Thư Viện Tài Liệu
+            </a>
+            <a href="quản lí thành viên.html">
+                <img src="https://img.icons8.com/ios-filled/50/000000/grid.png" alt="Tiện Ích"> Tiện Ích
+            </a>
+            <a href="tủ sách hồ chí minh.html">
+                <img src="https://img.icons8.com/ios-filled/50/000000/books.png" alt="Tủ Sách Hồ Chí Minh"> Tủ Sách Hồ Chí Minh
+            </a>
+            <a href="index.html">
+                <img src="https://img.icons8.com/ios-filled/50/000000/login-rounded-right.png" alt="Đăng Nhập"> Đăng Nhập
+            </a>
         </div>
     </div>
 
@@ -449,14 +464,15 @@
     </section>
     
 </header>
+
 <div class="marquee">
     <p>Chào mừng bạn đến với trang thông tin điện tử Dự án phát triển nguồn cán bộ Đoàn!</p>
 </div>
 
 <nav>
     <a class="gioithieu" href="gioithieu.html">GIỚI THIỆU</a>
-    <a href="#.html">HÌNH ẢNH HOẠT ĐỘNG </a>
-    <a href="#.html">CƠ CẤU TỔ CHỨC</a>
+    <a href="trang chủ 1.html">HÌNH ẢNH HOẠT ĐỘNG </a>
+    <a href="style2.html">CƠ CẤU TỔ CHỨC</a>
     <a href="bản tin.html">BẢN TIN</a>
     <a href="#.html">LIÊN HỆ</a>
 </nav>
@@ -636,6 +652,9 @@ class="p-4 rounded-lg shadow-sm bg-card-light dark:bg-card-dark overflow-hidden"
 
 
 <script>
+
+        
+
     function updateDateTime() {
         const now = new Date();
         const hour = now.getHours().toString().padStart(2, '0');
@@ -652,6 +671,23 @@ class="p-4 rounded-lg shadow-sm bg-card-light dark:bg-card-dark overflow-hidden"
     updateDateTime();
     setInterval(updateDateTime, 1000);
 </script>
+
+<script>
+    const menuButton = document.getElementById('menuButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    menuButton.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('show'); // Chuyển đổi lớp 'show'
+    });
+
+    // Đóng dropdown khi nhấn ngoài
+    window.addEventListener('click', (event) => {
+        if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.remove('show'); // Ẩn dropdown
+        }
+    });
+</script>
+
 
 </body>
 </html>
