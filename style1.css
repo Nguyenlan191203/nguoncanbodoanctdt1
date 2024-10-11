@@ -181,7 +181,7 @@
         justify-content: space-between;
         align-items: center;
         
-        padding: 10px 20px;
+        padding: 5px 20px;
         position: fixed;
         top: 0;
         width: 100%;
@@ -191,17 +191,21 @@
     }
     .navbar h1 {
         font-size: 12px;
-        margin-left: 50px;
-        margin-top: -56px;
+        margin-left: 43px;
+        margin-top: -50px;
         color: #fff;
         display:flex;
         
     }
     .navbar img.logo {
-        width: 40px; /* Kích thước logo */
+        width: 35px; /* Kích thước logo */
         margin-left: 0px;
         
         margin-right: 10px; /* Khoảng cách giữa logo và nút */
+    }
+    .navbar button img {
+        filter: brightness(0) invert(1); /* Đổi màu icon thành trắng */
+        width: 22px; /* Kích thước icon */
     }
     
 
