@@ -676,6 +676,10 @@ class="p-4 rounded-lg shadow-sm bg-card-light dark:bg-card-dark overflow-hidden"
     const menuButton = document.getElementById('menuButton');
     const dropdownMenu = document.getElementById('dropdownMenu');
 
+    menuButton.addEventListener('mouseenter', () => {
+    dropdownMenu.classList.add('show'); // Thêm lớp 'show'
+});
+
     menuButton.addEventListener('click', () => {
         dropdownMenu.classList.toggle('show'); // Chuyển đổi lớp 'show'
     });
