@@ -64,6 +64,7 @@
     width: 30px; /* Kích thước icon */
 }
 .dropdown-content {
+    margin-right: 35px;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -100,7 +101,7 @@
 }
 .dropdown-content img {
     width: 20px; /* Kích thước icon */
-    margin-right: 8px; /* Khoảng cách giữa icon và văn bản */
+    margin-right: 10px; /* Khoảng cách giữa icon và văn bản */
 }
 .navbar img.logo {
     width: 60px; /* Kích thước logo */
@@ -111,10 +112,13 @@
 .navbar h1 {
     font-size: 25px;
     margin-left: 72px;
-    margin-top: -86px;
+    margin-top: -50px;
     color: #fff;
     display:flex;
     
+}
+.navbar button {
+   margin-right: 50px;
 }
 @media (min-width: 768px) {
     .container {
@@ -192,7 +196,7 @@
     .navbar h1 {
         font-size: 12px;
         margin-left: 43px;
-        margin-top: -50px;
+        margin-top: -32px;
         color: #fff;
         display:flex;
         
@@ -200,12 +204,17 @@
     .navbar img.logo {
         width: 35px; /* Kích thước logo */
         margin-left: 0px;
+        margin-bottom: 5px;
         
         margin-right: 10px; /* Khoảng cách giữa logo và nút */
     }
     .navbar button img {
         filter: brightness(0) invert(1); /* Đổi màu icon thành trắng */
         width: 22px; /* Kích thước icon */
+        
+    }
+    .navbar button{
+        margin-right: 30px;
     }
     
 
