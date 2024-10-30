@@ -8,14 +8,7 @@
     <title>TRANG CHỦ</title>
     <head>
         <link rel="icon" href="BIỂU TƯỢNG.jpg" type="image/png" style=" border-radius: 10px;">
-        <link
-      rel="stylesheet"
-      href="https://myaloha.vn/build/assets/app-4752d13f.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://myaloha.vn/build/assets/app-2d130cf1.css"
-    />
+        
     </head>
     <style>
         body {
@@ -314,7 +307,20 @@
             transform: translateY(-10px);
         }
     }
+    .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none; /* Ẩn hình ảnh ban đầu */
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
 
+        .scroll-to-top img {
+            width: 50px; /* Đặt kích thước hình ảnh */
+            height: auto; /* Giữ tỉ lệ */
+            border-radius: 50%;
+        }
 
         
        
@@ -363,6 +369,7 @@
                 margin-top: 50px;
                 
             }
+            
             .gioithieu {
                 margin-left: -10px;
             }
@@ -649,6 +656,25 @@
         <img src="email.jpg" alt="Email" class="icon">
     </a>
 </div>
+
+<div class="scroll-to-top" id="scrollToTop">
+    <img src="Về đầu trang.jpg" alt="Về đầu trang">
+</div> <!-- Hình ảnh mũi tên -->
+
+<script>
+    window.onscroll = function() {
+        const scrollToTopButton = document.getElementById("scrollToTop");
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            scrollToTopButton.style.display = "block"; // Hiển thị hình ảnh
+        } else {
+            scrollToTopButton.style.display = "none"; // Ẩn hình ảnh
+        }
+    };
+
+    document.getElementById("scrollToTop").onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // Cuộn về đầu trang
+    };
+</script>
 
     
 
