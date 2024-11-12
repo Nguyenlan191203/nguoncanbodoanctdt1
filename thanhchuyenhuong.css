@@ -132,8 +132,8 @@ a:not(:first-of-type) .label {
         .circle-container {
             display: inline-block;
             position: relative;
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background-color: white;
             border: 3px solid #004AAD; /* Viền mặc định là màu xanh */
@@ -145,8 +145,8 @@ a:not(:first-of-type) .label {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             background-color: white;
             border-radius: 50%;
             display: flex;
@@ -162,9 +162,9 @@ a:not(:first-of-type) .label {
         }
         .thanhchuyenhuong {
             flex: 1 0 auto; /* Các container chiếm đều không gian */
-            min-width: 120px; /* Đặt chiều rộng tối thiểu cho các container nhỏ hơn */
-            max-width: 85px; /* Đặt chiều rộng tối đa nhỏ hơn */
-            margin: -8px;
+            min-width: 100px; /* Đặt chiều rộng tối thiểu cho các container nhỏ hơn */
+            max-width: 60px; /* Đặt chiều rộng tối đa nhỏ hơn */
+            margin: -12px;
             
             position: relative;
             text-align: center;
@@ -175,11 +175,11 @@ a:not(:first-of-type) .label {
             background-color: #004AAD; /* Nền label màu xanh mặc định */
             color: white;
             
-            padding: 8px 5px;
-            max-width: 65%;
+            padding: 10px 5px;
+            max-width: 63%;
             margin: 0 auto;
         
-            font-size: 12px;
+            font-size: 8px;
             font-weight: bold;
             border-radius: 10px;
             transition: background-color 0.3s ease; /* Transition cho label */
@@ -195,10 +195,5 @@ a:not(:first-of-type) .label {
             
     }
     
-    .label {
-        padding: 10px;
-         /* Giảm padding của label để nó nhỏ hơn */
-        font-size: 10px; /* Giảm kích thước chữ của label */
-        
-    }
+    
 }
