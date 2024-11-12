@@ -162,7 +162,7 @@ a:not(:first-of-type) .label {
         }
         .thanhchuyenhuong {
             flex: 1 0 auto; /* Các container chiếm đều không gian */
-            min-width: 80px; /* Đặt chiều rộng tối thiểu cho các container nhỏ hơn */
+            min-width: 85px; /* Đặt chiều rộng tối thiểu cho các container nhỏ hơn */
             max-width: 60px; /* Đặt chiều rộng tối đa nhỏ hơn */
             margin: -9px;
             
