@@ -11,6 +11,25 @@
         
     </head>
     <style>
+         .container {
+            
+            width: 100%;
+            margin: 0px auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding-top: 50px;
+        }
+        .header {
+            color: white;
+            text-align: center;
+        }
+        .header img {
+            width: 100%;
+            vertical-align: middle;
+        }
         .rectangle-bottom {
             width: 90%; /* Chiều rộng hình chữ nhật */
             height: 250px; /* Chiều cao hình chữ nhật */
@@ -92,9 +111,14 @@
             }
         }
         @media (max-width:767px) {
+            .container{
+                padding-top:35px;
+            }
+
             .rectangle-bottom {
-            width: 90%; /* Chiều rộng hình chữ nhật */
-            height: 250px; /* Chiều cao hình chữ nhật */
+
+            width: 85%; /* Chiều rộng hình chữ nhật */
+            height: 200px; /* Chiều cao hình chữ nhật */
             background-color: #2435D0; /* Màu nền của hình chữ nhật */
             border-top-left-radius: 0; /* Không bo góc trên trái */
             border-top-right-radius: 0; /* Không bo góc trên phải */
@@ -105,26 +129,26 @@
             justify-content: center; /* Căn giữa theo chiều ngang */
             align-items: center; /* Căn giữa theo chiều dọc */
             font-weight: bold;
-            font-size: 55px;
+            font-size: 45px;
             color: white;
         }
         
         .rectangle-top {
-            width: 75%; /* Chiều rộng hình chữ nhật */
+            width: 70%; /* Chiều rộng hình chữ nhật */
             height: 450px; /* Chiều cao hình chữ nhật */
             background-color: #FFFFED; /* Màu nền của hình chữ nhật */
             border-top-left-radius: 40px; /* Bo góc trên trái */
             border-top-right-radius: 40px; /* Bo góc trên phải */
             border-bottom-left-radius: 0; /* Không bo góc dưới trái */
             border-bottom-right-radius: 0; /* Không bo góc dưới phải */
-            margin: -80px auto; /* Căn giữa hình chữ nhật */
+            margin: -65px auto; /* Căn giữa hình chữ nhật */
             position: relative; /* Để có thể đặt hình chữ nhật con vào bên trong */
             
         }
 
         .inner-rectangle {
             width: 80%; /* Chiều rộng hình chữ nhật con */
-            height: 130px; /* Chiều cao hình chữ nhật con */
+            height: 110px; /* Chiều cao hình chữ nhật con */
             background-color: #DCEED7; /* Màu nền của hình chữ nhật con */
             border-radius: 20px; /* Bo góc cho hình chữ nhật con */
             position: absolute; /* Để đặt vị trí hình chữ nhật con */
@@ -135,7 +159,7 @@
             justify-content: center; /* Căn giữa theo chiều ngang */
             align-items: center; /* Căn giữa theo chiều dọc */
             font-weight: bold;
-            font-size: 40px;
+            font-size: 35px;
             color: #3A6929;
         }
         .inner-rectangle img{
@@ -144,7 +168,7 @@
         }
         .kiemtra {
             width: 80%; /* Chiều rộng hình chữ nhật con */
-            height: 130px; /* Chiều cao hình chữ nhật con */
+            height: 110px; /* Chiều cao hình chữ nhật con */
             background-color: #FFEAEA; /* Màu nền của hình chữ nhật con */
             border-radius: 20px; /* Bo góc cho hình chữ nhật con */
             position: absolute; /* Để đặt vị trí hình chữ nhật con */
@@ -155,7 +179,7 @@
             justify-content: center; /* Căn giữa theo chiều ngang */
             align-items: center; /* Căn giữa theo chiều dọc */
             font-weight: bold;
-            font-size: 40px;
+            font-size: 35px;
             color: #FF3131;
         }
         .kiemtra img{
