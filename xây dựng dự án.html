@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Giao Diện Hoạt Động</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            width: 100%;
+            margin: 0px auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding-top: 50px;
+        }
+        .header {
+            color: white;
+            text-align: center;
+        }
+        .header img {
+            width: 100%;
+            vertical-align: middle;
+        }
+        .content {
+            padding: 30px; /* Thêm padding cho phần nội dung */
+            text-align: center;
+        }
+        .content h2 {
+            margin: 10px 0;
+            font-size: 20px;
+            color: white; /* Màu chữ tối cho tiêu đề */
+            padding: 15px 0; /* Padding cho phía trên và dưới */
+            background-color: #0078d7; /* Nền màu xanh */
+        }
+
+        /* Tạo phần padding và màu nền phía dưới h2 */
+        .content h2::after {
+            content: ""; /* Không có chữ */
+            display: block;
+            margin-top: 15px;
+            margin-bottom: -15px;
+            padding-top: 40px; /* Khoảng cách phía dưới */
+            background-color: #EAF2FF; /* Màu nền xanh nhạt */
+            height: 100px; /* Chiều cao của phần màu nền dưới h2 */
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            gap: 20px; /* Khoảng cách giữa các nút */
+            flex-wrap: wrap; /* Cho phép các phần tử xuống dòng nếu cần thiết */
+        }
+
+        /* Nút Button */
+        .button {
+            width: 45%;
+            padding: 100px 10px; /* Thêm padding bên trái và phải để chữ không bị che khuất */
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white; /* Chữ màu trắng */
+            font-size: 14px;
+            background-color: transparent; /* Nền trong suốt để dễ nhìn viền */
+            border: 2px solid transparent; /* Mặc định viền trong suốt */
+            display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
+            flex-direction: column; /* Đặt các phần tử theo chiều dọc */
+            justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            white-space: nowrap; /* Ngăn ngừa xuống dòng */
+            box-sizing: border-box; /* Đảm bảo padding không làm ảnh hưởng đến tổng chiều rộng */
+            margin-top: 20px;
+        }
+
+        .button img {
+            margin-top: 20px; /* Khoảng cách giữa hình ảnh và chữ */
+            max-width: 280px;
+        }
+
+        .button.schedule {
+            background-color: #FFCCCC; /* Nền màu đỏ nhạt cho Hồ Sơ Quản Lí */
+            border-color: #FF6347; /* Viền màu đỏ */
+            color: #FF6347;
+            font-weight: bold;
+            font-size: 50px;
+            
+        }
+
+        .button.docs {
+            background-color: #D0E7FF; /* Nền màu xanh nhạt cho Lịch Hoạt Động */
+            border-color: #0078D7; /* Viền màu xanh */
+            color: #0078D7;
+            font-weight: bold;
+            font-size: 50px;
+            
+        }
+
+        .button.tasks {
+            background-color: #D9F9D9; /* Nền màu xanh lá cho Tài Liệu Công Tác */
+            border-color: #28A745; /* Viền màu xanh lá */
+            color: #28A745;
+            font-weight: bold;
+            font-size: 50px;
+        }
+
+        .button.files {
+            background-color: #FFEBCC; /* Nền màu cam nhạt cho Văn Bản Chỉ Đạo */
+            border-color: #FF8C00; /* Viền màu cam */
+            color: #FF6A00; /* Màu chữ cam đậm cho Văn Bản Chỉ Đạo */
+            font-weight: bold;
+            font-size: 50px;
+            
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+        }
+
+        @media (max-width:767px) {
+            .container{
+                padding-top:35px;
+            }
+            .button{ 
+                padding: 40px 10px;}
+            .button img{
+                width: 50%;
+                
+        }
+        .button.schedule {
+            font-size: 25px;}
+
+        
+        .button.docs {
+            font-size: 25px;}
+
+        .button.tasks {
+           
+            font-size: 25px;
+        }
+
+        .button.files {
+            font-size:25px;}
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="trang chủ.html">DỰ ÁN PHÁT TRIỂN NGUỒN CÁN BỘ ĐOÀN</a>
+        </div>
+        <div class="menu">
+            <a href="trang chủ.html" class="trangchuhtml">TRANG CHỦ</a>
+            
+            <a href="index.html" class="dangxuat">ĐĂNG XUẤT</a>
+            
+        </div>
+    </div>
+    <div class="container">
+        <div class="header">
+            <img src="nenxaydungduan.jpg" alt="Logo">
+        </div>
+        <div class="content">
+            
+            <div class="buttons">
+                <a href="#" class="button schedule">
+                    Hệ thống biểu quyết<img src="icon hệ thống biểu quyết.png">
+                </a>
+                <a href="#" class="button docs">
+                    Văn Bản Chỉ Đạo<img src="icon họp.png">
+                </a>
+                <!-- Thêm 2 nút mới -->
+                <a href="#" class="button tasks">
+                    Tài Liệu Công Tác<img src="icon tài liệu công tác.png">
+                </a>
+                <a href="#" class="button files">
+                    Hồ Sơ Quản Lí<img src="icon hồ sơ quản lý.png">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
