@@ -14,11 +14,11 @@ a {
 
 /* Chỉ áp dụng cho thẻ <a> đầu tiên */
 a:first-of-type .circle-container {
-    border-color: #FF3131; /* Viền màu đỏ */
+    border-color: #004AAD; /* Viền màu đỏ */
 }
 
 a:first-of-type .label {
-    background-color: #FF3131; /* Nền label màu đỏ */
+    background-color: #004AAD; /* Nền label màu đỏ */
 }
 
 /* Màu xanh cho các thẻ <a> còn lại */
@@ -49,6 +49,7 @@ a:not(:first-of-type) .label {
     text-align: center;
     font-family: Arial, sans-serif;
     cursor: pointer; /* Thêm con trỏ chuột để biết phần tử có thể nhấn */
+    
 }
 
 .circle-container {
@@ -95,6 +96,7 @@ a:not(:first-of-type) .label {
     font-weight: bold;
     border-radius: 10px;
     transition: background-color 0.3s ease; /* Transition cho label */
+    
 }
 
 /* Khi hover lên container, thay đổi màu sắc và hiệu ứng hình ảnh */
@@ -181,10 +183,11 @@ a:not(:first-of-type) .label {
             max-width: 63%;
             margin: 0 auto;
         
-            font-size: 6.55px;
+            font-size: 6.9px;
             font-weight: bold;
             border-radius: 10px;
             transition: background-color 0.3s ease; /* Transition cho label */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .container-thanhchuyenhuong {
             display: flex; /* Sử dụng flexbox để các phần tử nằm theo hàng ngang */
