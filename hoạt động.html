@@ -106,7 +106,32 @@
     font-weight: bold;
     font-size: 50px;
         }
-        
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+        }
+        @media (max-width:767px) {
+            .container{
+                padding-top:35px;
+            }
+            .button{ 
+                padding: 40px 10px;}
+            .button img{
+                width: 50%;
+                
+        }
+        .button.schedule {
+            font-size: 25px;}
+
+        }
+        .button.docs {
+            font-size: 25px;}
+
     </style>
 </head>
 <body>
