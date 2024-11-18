@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hình Chữ Nhật Bo Cả 2 Cạnh Trên và Dưới</title>
+    <style>
+        .rectangle-bottom {
+            width: 90%; /* Chiều rộng hình chữ nhật */
+            height: 250px; /* Chiều cao hình chữ nhật */
+            background-color: #2435D0; /* Màu nền của hình chữ nhật */
+            border-top-left-radius: 0; /* Không bo góc trên trái */
+            border-top-right-radius: 0; /* Không bo góc trên phải */
+            border-bottom-left-radius: 40px; /* Bo góc dưới trái */
+            border-bottom-right-radius: 40px; /* Bo góc dưới phải */
+            margin: 0px auto; /* Căn giữa hình chữ nhật */
+            display: flex; /* Sử dụng Flexbox */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            font-weight: bold;
+            font-size: 60px;
+            color: white;
+            
+        }
+        
+        .rectangle-top {
+            width: 75%; /* Chiều rộng hình chữ nhật */
+            height: 450px; /* Chiều cao hình chữ nhật */
+            background-color: #FFFFED; /* Màu nền của hình chữ nhật */
+            border-top-left-radius: 40px; /* Bo góc trên trái */
+            border-top-right-radius: 40px; /* Bo góc trên phải */
+            border-bottom-left-radius: 0; /* Không bo góc dưới trái */
+            border-bottom-right-radius: 0; /* Không bo góc dưới phải */
+            margin: -80px auto; /* Căn giữa hình chữ nhật */
+            position: relative; /* Để có thể đặt hình chữ nhật con vào bên trong */
+            
+        }
+
+        .inner-rectangle {
+            width: 80%; /* Chiều rộng hình chữ nhật con */
+            height: 130px; /* Chiều cao hình chữ nhật con */
+            background-color: #DCEED7; /* Màu nền của hình chữ nhật con */
+            border-radius: 20px; /* Bo góc cho hình chữ nhật con */
+            position: absolute; /* Để đặt vị trí hình chữ nhật con */
+            margin-top: 15% ; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            left: 50%; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            transform: translate(-50%, -50%); /* Căn giữa hoàn hảo */
+            display: flex; /* Sử dụng Flexbox */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            font-weight: bold;
+            font-size: 40px;
+            color: #3A6929;
+        }
+        .inner-rectangle img{
+            width: 15%;
+            margin-right: 15px;
+        }
+        .kiemtra {
+            width: 80%; /* Chiều rộng hình chữ nhật con */
+            height: 130px; /* Chiều cao hình chữ nhật con */
+            background-color: #FFEAEA; /* Màu nền của hình chữ nhật con */
+            border-radius: 20px; /* Bo góc cho hình chữ nhật con */
+            position: absolute; /* Để đặt vị trí hình chữ nhật con */
+            margin-top: 35% ; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            left: 50%; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            transform: translate(-50%, -50%); /* Căn giữa hoàn hảo */
+            display: flex; /* Sử dụng Flexbox */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            font-weight: bold;
+            font-size: 40px;
+            color: #FF3131;
+        }
+        .kiemtra img{
+            width: 15%;
+            margin-right: 15px;
+        }
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+        }
+        @media (max-width:767px) {
+            .rectangle-bottom {
+            width: 90%; /* Chiều rộng hình chữ nhật */
+            height: 250px; /* Chiều cao hình chữ nhật */
+            background-color: #2435D0; /* Màu nền của hình chữ nhật */
+            border-top-left-radius: 0; /* Không bo góc trên trái */
+            border-top-right-radius: 0; /* Không bo góc trên phải */
+            border-bottom-left-radius: 40px; /* Bo góc dưới trái */
+            border-bottom-right-radius: 40px; /* Bo góc dưới phải */
+            margin: 0px auto; /* Căn giữa hình chữ nhật */
+            display: flex; /* Sử dụng Flexbox */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            font-weight: bold;
+            font-size: 55px;
+            color: white;
+        }
+        
+        .rectangle-top {
+            width: 75%; /* Chiều rộng hình chữ nhật */
+            height: 450px; /* Chiều cao hình chữ nhật */
+            background-color: #FFFFED; /* Màu nền của hình chữ nhật */
+            border-top-left-radius: 40px; /* Bo góc trên trái */
+            border-top-right-radius: 40px; /* Bo góc trên phải */
+            border-bottom-left-radius: 0; /* Không bo góc dưới trái */
+            border-bottom-right-radius: 0; /* Không bo góc dưới phải */
+            margin: -80px auto; /* Căn giữa hình chữ nhật */
+            position: relative; /* Để có thể đặt hình chữ nhật con vào bên trong */
+            
+        }
+
+        .inner-rectangle {
+            width: 80%; /* Chiều rộng hình chữ nhật con */
+            height: 130px; /* Chiều cao hình chữ nhật con */
+            background-color: #DCEED7; /* Màu nền của hình chữ nhật con */
+            border-radius: 20px; /* Bo góc cho hình chữ nhật con */
+            position: absolute; /* Để đặt vị trí hình chữ nhật con */
+            margin-top: 25% ; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            left: 50%; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            transform: translate(-50%, -50%); /* Căn giữa hoàn hảo */
+            display: flex; /* Sử dụng Flexbox */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            font-weight: bold;
+            font-size: 40px;
+            color: #3A6929;
+        }
+        .inner-rectangle img{
+            width: 15%;
+            margin-right: 12px;
+        }
+        .kiemtra {
+            width: 80%; /* Chiều rộng hình chữ nhật con */
+            height: 130px; /* Chiều cao hình chữ nhật con */
+            background-color: #FFEAEA; /* Màu nền của hình chữ nhật con */
+            border-radius: 20px; /* Bo góc cho hình chữ nhật con */
+            position: absolute; /* Để đặt vị trí hình chữ nhật con */
+            margin-top: 60% ; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            left: 50%; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            transform: translate(-50%, -50%); /* Căn giữa hoàn hảo */
+            display: flex; /* Sử dụng Flexbox */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            font-weight: bold;
+            font-size: 40px;
+            color: #FF3131;
+        }
+        .kiemtra img{
+            width: 15%;
+            margin-right: 12px;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    <div class="rectangle-bottom">Học tập</div>
+    <div class="rectangle-top">
+        <!-- Hình chữ nhật nằm trong rectangle-top -->
+        <div class="inner-rectangle"><img src="icon nội dung.png">Nội dung</div>
+        <div class="kiemtra"><img src="icon kiểm tra.png">Kiểm tra</div>
+    </div>
+</body>
+</html>
