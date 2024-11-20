@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <link rel="icon" href="BIỂU TƯỢNG.jpg" type="image/png" style=" border-radius: 10px;">
+    </head>
+    <title>Trang Đăng Sách</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 91.5%;
+            margin: 0 auto;
+            padding: 60px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .book-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 55px;
+            margin-bottom: 20px;
+        }
+
+        .book-item {
+            width: 30%;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .book-item h3 {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .book-item p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .ellipsis {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .ellipsis:hover {
+            color: #ff5733;
+        }
+
+        .ellipsis-menu {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .ellipsis:hover .ellipsis-menu {
+            display: block;
+        }
+
+        .menu-item {
+            padding: 8px 12px;
+            border: none;
+            background: none;
+            color: #333;
+            text-align: left;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .menu-item:active {
+            background-color: #e0e0e0;
+        }
+
+        .pdf-btn {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .pdf-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .pdf-btn:active {
+            background-color: #003d80;
+        }
+
+        .add-book-btn {
+            background-color: #4CAF50;
+            color: white;
+            width: 30%;
+            height: 200px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 10px;
+            font-size: 36px;
+            font-weight: bold;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .add-book-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal for adding/editing book */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 24px;
+            font-weight: bold;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: red;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+
+        /* Password Modal */
+        .password-modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .password-modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        .password-modal .form-group {
+            margin-bottom: 15px;
+        }
+
+        .password-modal .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .password-modal .form-group input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .password-modal button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .password-modal button:hover {
+            background-color: #45a049;
+        }
+        @media (max-width: 768px) {
+    .container {
+        width: 91.5%;
+            
+            padding: 25px;
+        /* Thêm căn giữa cho container nếu cần */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+    }
+
+    .book-list {
+        /* Căn giữa danh sách sách */
+        display: flex;
+        flex-direction: column;
+        align-items: center;  /* Căn giữa tất cả các item sách */
+        gap: 30px; /* Khoảng cách giữa các sách */
+    }
+
+    .book-item {
+        width: 55%; /* Mỗi sách chiếm 70% chiều rộng màn hình */
+        text-align: center; /* Căn giữa nội dung trong mỗi sách */
+    }
+
+    .add-book-btn {
+        width: 55%; /* Làm nút thêm sách rộng hơn trên điện thoại */
+        height: 10%;
+        font-size: 32px; /* Giảm kích thước font */
+        margin: 0 auto; /* Căn giữa nút */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 30px;
+        /* Đảm bảo container cũng căn giữa */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .book-list {
+        /* Căn giữa danh sách sách */
+        display: flex;
+        flex-direction: column;
+        align-items: center;  /* Căn giữa tất cả các item sách */
+        gap: 15px; /* Khoảng cách giữa các sách */
+    }
+
+    .book-item {
+        width: 80%; /* Mỗi sách chiếm 80% chiều rộng trên màn hình nhỏ */
+        text-align: center; /* Căn giữa nội dung trong mỗi sách */
+    }
+
+    .add-book-btn {
+        width: 80%; /* Làm nút thêm sách càng lớn */
+        font-size: 28px; /* Giảm kích thước font */
+        margin: 0 auto; /* Căn giữa nút */
+    }
+
+    .modal-content {
+        width: 90%; /* Làm modal rộng hơn trên các màn hình nhỏ */
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+
+        <!-- Modal for adding/editing book -->
+        <div id="book-detail-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="close-book-detail-modal">×</span>
+                <h2>Thêm Sách Mới</h2>
+                <form id="edit-book-form">
+                    <div class="form-group">
+                        <label for="edit-book-title">Tên Sách:</label>
+                        <input type="text" id="edit-book-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-book-author">Tác Giả:</label>
+                        <input type="text" id="edit-book-author" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-book-year">Năm Xuất Bản:</label>
+                        <input type="number" id="edit-book-year" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-book-description">Mô Tả:</label>
+                        <textarea id="edit-book-description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-book-image">Ảnh Sách:</label>
+                        <input type="file" id="edit-book-image" accept="image/*">
+                        <img id="preview-image" src="" alt="Ảnh Sách" style="max-width: 100%; margin-top: 10px; display: none;">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-book-pdf-url">Link PDF:</label>
+                        <input type="url" id="edit-book-pdf-url" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Lưu Sách</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Password Modal -->
+        <div id="password-modal" class="password-modal">
+            <div class="password-modal-content">
+                <span class="close" id="close-password-modal">×</span>
+                <h2>Nhập Mật Khẩu</h2>
+                <div class="form-group">
+                    <label for="password">Mật Khẩu:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-group">
+                    <button id="submit-password-btn">Xác Nhận</button>
+                </div>
+                <p id="error-message" style="color: red; display: none;">Mật khẩu sai! Vui lòng thử lại.</p>
+            </div>
+        </div>
+
+        <!-- Book List -->
+        <div class="book-list" id="book-list"></div>
+
+        <!-- Add Book Button -->
+        <div class="add-book-btn" id="add-book-btn">+</div>
+    </div>
+
+    <script>
+        let books = JSON.parse(localStorage.getItem('books')) || [];
+        let currentBookIndex = null;
+
+        // Display books
+        function displayBooks() {
+            const bookList = document.getElementById('book-list');
+            bookList.innerHTML = ''; // Clear current list
+            books.forEach((book, index) => {
+                const bookItem = document.createElement('div');
+                bookItem.classList.add('book-item');
+                bookItem.innerHTML = `
+                    <div class="ellipsis">
+                        &#8230;
+                        <div class="ellipsis-menu">
+                            <button class="menu-item" onclick="editBook(${index})">Sửa</button>
+                        </div>
+                    </div>
+                    <img src="${book.imageUrl || 'https://via.placeholder.com/150'}" alt="${book.title}">
+                    <h3>${book.title}</h3>
+                    <p><strong>Năm Xuất Bản:</strong> ${book.year}</p>
+                    <a href="${book.pdfUrl}" class="pdf-btn" target="_blank">Mở sách</a>
+                `;
+                bookList.appendChild(bookItem);
+            });
+        }
+
+        // Add book function
+        document.getElementById('add-book-btn').addEventListener('click', () => {
+            currentBookIndex = null;
+            document.getElementById('edit-book-form').reset();
+            document.getElementById('preview-image').style.display = 'none';
+            document.getElementById('book-detail-modal').style.display = 'block';
+        });
+
+        // Edit book function
+        function editBook(index) {
+            currentBookIndex = index;
+            const book = books[index];
+            document.getElementById('edit-book-title').value = book.title;
+            document.getElementById('edit-book-author').value = book.author;
+            document.getElementById('edit-book-year').value = book.year;
+            document.getElementById('edit-book-description').value = book.description;
+            document.getElementById('edit-book-pdf-url').value = book.pdfUrl;
+            document.getElementById('preview-image').style.display = 'block';
+            document.getElementById('preview-image').src = book.imageUrl;
+            document.getElementById('book-detail-modal').style.display = 'block';
+        }
+
+        // Open password modal when save button is clicked
+        document.getElementById('edit-book-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            document.getElementById('password-modal').style.display = 'block';
+        });
+
+        // Close modals
+        document.getElementById('close-book-detail-modal').addEventListener('click', () => {
+            document.getElementById('book-detail-modal').style.display = 'none';
+        });
+
+        document.getElementById('close-password-modal').addEventListener('click', () => {
+            document.getElementById('password-modal').style.display = 'none';
+        });
+
+        // Handle password submission
+        document.getElementById('submit-password-btn').addEventListener('click', () => {
+            const password = document.getElementById('password').value;
+            const correctPassword = "12345"; // Set your password here
+
+            if (password === correctPassword) {
+                const title = document.getElementById('edit-book-title').value;
+                const author = document.getElementById('edit-book-author').value;
+                const year = document.getElementById('edit-book-year').value;
+                const description = document.getElementById('edit-book-description').value;
+                const pdfUrl = document.getElementById('edit-book-pdf-url').value;
+                const imageUrl = document.getElementById('edit-book-image').files[0] ? URL.createObjectURL(document.getElementById('edit-book-image').files[0]) : '';
+
+                if (currentBookIndex === null) {
+                    books.push({ title, author, year, description, pdfUrl, imageUrl });
+                } else {
+                    books[currentBookIndex] = { title, author, year, description, pdfUrl, imageUrl };
+                }
+
+                localStorage.setItem('books', JSON.stringify(books));
+                displayBooks();
+                document.getElementById('book-detail-modal').style.display = 'none';
+                document.getElementById('password-modal').style.display = 'none';
+            } else {
+                document.getElementById('error-message').style.display = 'block';
+            }
+        });
+
+        // Display books when the page loads
+        displayBooks();
+    </script>
+</body>
+</html>
