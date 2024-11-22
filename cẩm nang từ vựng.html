@@ -135,17 +135,17 @@ button:hover {
         }
         @media (max-width: 767px) {
             .container {
-            width: 85%;
-            height: 1025px;
-            margin: 0 auto;
-            padding: 35px;
-            background-image: url('nền cẩm nang từ vựng 1.jpg');
-            background-size: 100%; /* Đảm bảo hình ảnh nền phù hợp với container mà không bị kéo giãn */
-    background-position: center; /* Căn giữa hình nền */
-    background-repeat: no-repeat; /* Không lặp lại hình nền */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding-top: 70px;
-        } 
+        width: 85%;
+        height: 1025px; /* Hoặc có thể thay đổi tùy theo nhu cầu */
+        margin: 0 auto;
+        padding: 35px;
+        background-image: url('nền cẩm nang từ vựng 1.jpg');
+        background-size: cover; /* Hình nền sẽ tự động điều chỉnh cho phù hợp */
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding-top: 70px;
+    }
         button {
             width: 30%;
     padding: 10px;
@@ -167,7 +167,7 @@ button:hover {
             margin-top: 30px;
             width: 100%;
             border-collapse: collapse;
-            font-size: 10px;
+            font-size: 9px;
         }
         /* Cố định chiều rộng cho các cột */
 .dictionary-table th:nth-child(1), .dictionary-table td:nth-child(1) {
