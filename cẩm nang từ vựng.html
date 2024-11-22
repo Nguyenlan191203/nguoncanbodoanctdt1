@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Cẩm nang từ vựng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            height: 1370px;
+            margin: 0 auto;
+            padding: 100px;
+            background-image: url('nền cẩm nang từ vựng.jpg');
+            background-size: 100%; /* Đảm bảo hình ảnh nền phù hợp với container mà không bị kéo giãn */
+    background-position: center; /* Căn giữa hình nền */
+    background-repeat: no-repeat; /* Không lặp lại hình nền */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding-top: 230px;
+        }
+        
+        input[type="text"] {
+            
+            width: 99.2%;
+            padding: 10px 5px;
+            
+            
+            
+            
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        button {
+            width: 15%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        }
+        button i {
+    margin-right: 8px;  /* Khoảng cách giữa biểu tượng và văn bản */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .dictionary-table {
+            margin-top: 30px;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 17px;
+            table-layout: fixed; /* Giúp giữ kích thước cột cố định */
+        }
+        .dictionary-table th, .dictionary-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+            word-wrap: break-word; /* Ensure long words break onto the next line */
+        }
+        .dictionary-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        /* Cố định chiều rộng cho các cột */
+.dictionary-table th:nth-child(1), .dictionary-table td:nth-child(1) {
+    width: 7%; /* Cột thứ tự có chiều rộng 10% */
+}
+
+.dictionary-table th:nth-child(2), .dictionary-table td:nth-child(2), 
+.dictionary-table th:nth-child(3), .dictionary-table td:nth-child(3) {
+    width: 45%; /* Cột Nghĩa Tiếng Việt và Tiếng Anh đều có chiều rộng 45% */
+}
+        .dictionary-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .dictionary-table tr:nth-child(odd) {
+            background-color: #ffffff; /* Màu nền cho các dòng lẻ */
+        }
+        .pagination {
+         margin-top: 20px;
+         text-align: center;
+         display: flex;              /* Sử dụng Flexbox */
+         justify-content: center;    /* Căn giữa các nút */
+         align-items: center;        /* Căn các nút theo chiều dọc */
+        }
+
+        .pagination button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .pagination button:hover {
+            background-color: #45a049;
+        }
+        .pagination button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .page-number {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .container {
+            width: 80%;
+            height: 695px;
+            margin: 0 auto;
+            padding: 50px;
+            background-image: url('nền cẩm nang từ vựng.jpg');
+            background-size: 100%; /* Đảm bảo hình ảnh nền phù hợp với container mà không bị kéo giãn */
+    background-position: center; /* Căn giữa hình nền */
+    background-repeat: no-repeat; /* Không lặp lại hình nền */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding-top: 90px;
+        } 
+        button {
+            width: 19%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+        }
+        button i {
+    margin-right: 6px;  /* Khoảng cách giữa biểu tượng và văn bản */
+    font-size: 11px;
+}
+.dictionary-table {
+            margin-top: 30px;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+        }
+        /* Cố định chiều rộng cho các cột */
+.dictionary-table th:nth-child(1), .dictionary-table td:nth-child(1) {
+    width: 8%; /* Cột thứ tự có chiều rộng 10% */
+}
+
+.dictionary-table th:nth-child(2), .dictionary-table td:nth-child(2), 
+.dictionary-table th:nth-child(3), .dictionary-table td:nth-child(3) {
+    width: 45%; /* Cột Nghĩa Tiếng Việt và Tiếng Anh đều có chiều rộng 45% */
+}
+        }
+    
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <input type="text" id="wordInput" placeholder="Nhập từ cần tra" oninput="clearResult()">
+    <button onclick="lookupWord()" > <i class="fas fa-search"></i>Tra Cứu</button>
+
+    <div id="result" class="result"></div>
+
+    <!-- Bảng danh sách từ điển -->
+    <div class="dictionary-list">
+        
+         <!-- Phân trang -->
+    <div class="pagination" id="pagination">
+        <button onclick="previousPage()" id="prevBtn">Trước</button>
+        <span class="page-number" id="pageNumber">Trang 1 / 4</span>
+        <button onclick="nextPage()" id="nextBtn">Tiếp theo</button>
+    </div>
+        <table class="dictionary-table" id="dictionaryTable">
+            <thead>
+                <tr>
+                    <th>Thứ tự</th>
+                    <th>Nghĩa Tiếng Việt</th>
+                    <th>Nghĩa Tiếng Anh</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Các dòng từ sẽ hiển thị ở đây -->
+            </tbody>
+        </table>
+    </div>
+
+    
+</div>
+
+<script>
+    const dictionary = {
+        "Trung ương Đoàn TNCS Hồ Chí Minh": "- HCYU Central Committee<br>- Central Committee of HCYU",
+        "Đoàn TNCS Hồ Chí Minh tỉnh, thành": "Lào Cai Provincial HCYU<br>Hải Phòng Municipal HCYU<br>HCYU of Hanoi City <br>HCYU of Hưng Yên Province",
+        "Đoàn TNCS Hồ Chí Minh quận/huyện": "HCYU of + tên quận/huyện + District",
+        "Đoàn TNCS Hồ Chí Minh quận Đống Đa": "- HCYU of Đống Đa District <br>- Đống Đa District’s HCYU",
+        "Đoàn TNCS Hồ Chí Minh huyện Nam Đàn": "- HCYU of Nam Đàn District<br>- Nam Đàn District’s HCYU",
+        "Đoàn TNCS Hồ Chí Minh xã/phường": "HCYU of + tên xã/phường + Commune (nếu là xã)/Ward (nếu là phường)",
+        "Đoàn TNCS Hồ Chí Minh xã Bắc Hồng": "- HCYU of Bắc Hồng Commune<br>- Bắc Hồng Commune’s HCYU",
+        "Đoàn TNCS Hồ Chí Minh phường Láng Hạ": "- HCYU of Láng Hạ Ward<br>- Láng Hạ Ward’s HCYU",
+        "Ban Chấp hành Trung ương Đoàn TNCS Hồ Chí Minh": "Central Executive Committee of the HCYU",
+        "Ủy viên Ban Chấp hành Trung ương Đoàn TNCS Hồ Chí Minh": "Member of the Central Executive Committee of the HCYU",
+        "Ban Chấp hành Đoàn TNCS Hồ Chí Minh từ cấp tỉnh/thành phố đến cấp xã/phường": "Executive Committee of + tổ chức Đoàn cấp tương ứng",
+        "Ban Chấp hành Đoàn TNCS Hồ Chí Minh tỉnh Lâm Đồng": "Executive Committee of Lâm Đồng Provincial HCYU",
+        "Ban Chấp hành Đoàn TNCS Hồ Chí Minh quận Hồng Bàng": "Executive Committee of Hồng Bàng District’s HCYU",
+        "Ủy viên Ban Chấp hành Đoàn TNCS Hồ Chí Minh cấp tỉnh/thành phố đến cấp xã/phường": "Member of Executive Committee of + tổ chức Đoàn cấp tương ứng",
+        "Ủy viên Ban Chấp hành Đoàn TNCS Hồ Chí Minh tỉnh Thừa Thiên- Huế": "Member of Executive Committee of Thừa Thiên- Huế Provincial HCYU",
+        "Ban Chấp hành lâm thời": "Provisional Executive Committee",
+        "Ban Thường vụ Trung ương Đoàn TNCS Hồ Chí Minh": "Central Standing Committee of HCYU",
+        "Ủy viên Ban Thường vụ Trung ương Đoàn TNCS Hồ Chí Minh": "Member of the Central Standing Committee of the HCYU",
+        "Ban Thường vụ Đoàn TNCS Hồ Chí Minh từ cấp tỉnh/thành phố đến cấp xã/phường": "Standing Committee of + tổ chức Đoàn cấp tương ứng",
+        "Ban Thường vụ Đoàn TNCS Hồ Chí Minh tỉnh Bà Rịa-Vũng Tàu": "Standing Committee of Bà Rịa-Vũng Tàu Provincial HCYU",
+        "Ban Thường vụ Đoàn TNCS Hồ Chí Minh huyện Giồng Trôm": "Standing Committee of Giồng Trôm District’s HCYU",
+        "Ủy viên Ban Thường vụ Đoàn TNCS Hồ Chí Minh cấp tỉnh/thành phố đến cấp xã/phường": "Member of Standing Committee of + tổ chức Đoàn cấp tương ứng",
+        "Ủy viên Ban Thường vụ Đoàn TNCS Hồ Chí Minh tỉnh Sóc Trăng": "Member of Executive Committee of Sóc Trăng Provincial HCYU",
+        "Ban Bí thư Trung ương Đoàn TNCS Hồ Chí Minh": "Secretariat of HCYU Central Committee",
+        "Ủy ban Kiểm tra": "Commission of Inspection/ Inspection Commission",
+        "Ủy ban Kiểm tra Trung ương Đoàn TNCS Hồ Chí Minh": "Inspection Commission of HCYU Central Committee",
+        "Ủy ban Kiểm tra Đoàn TNCS Hồ Chí Minh cấp tỉnh/thành phố đến cấp quận/huyện": "Inspection Commission of + tổ chức Đoàn cấp tương ứng",
+        "Ủy ban Kiểm tra Đoàn TNCS Hồ Chí Minh tỉnh Đắk Nông": "Inspection Commission of Đắk Nông Provincial HCYU",
+        "Chủ nhiệm Ủy ban Kiểm tra": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of Inspection Commission",
+        "Chủ nhiệm Ủy ban Kiểm tra Trung ương Đoàn TNCS Hồ Chí Minh": "Chairperson of Inspection Commission of HCYU Central Committee",
+        "Chủ nhiệm Ủy ban Kiểm tra Đoàn TNCS Hồ Chí Minh tỉnh Lạng Sơn": "Chairperson of Inspection Commission of Lạng Sơn Provincial HCYU",
+        "Phó Chủ nhiệm Ủy ban Kiểm tra": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Vice Chairwoman nếu là nữ) of Inspection Commission",
+        "Phó Chủ nhiệm Ủy ban Kiểm tra Trung ương Đoàn TNCS Hồ Chí Minh": "Vice Chairperson of Inspection Commission of HCYU Central Committee",
+        "Phó Chủ nhiệm Ủy ban Kiểm tra Đoàn TNCS Hồ Chí Minh tỉnh Cao Bằng": "Vice Chairperson of Inspection Commission of Cao Bằng Provincial HCYU",
+        "Uỷ viên Ủy ban Kiểm tra": "Member of Inspection Commission + tổ chức trong hệ thống Đoàn",
+        "Ủy viên Ủy ban Kiểm tra Trung ương Đoàn TNCS Hồ Chí Minh": "Member of Inspection Commission of HCYU Central Committee",
+        "Ủy viên Ủy ban Kiểm tra Đoàn TNCS Hồ Chí Minh tỉnh Đắk Nông": "Member of Inspection Commission of Đắk Nông Provincial HCYU",
+        "Đoàn Khối Cơ quan Trung ương": "HCYU of Central-level Public Agencies’ Bloc",
+        "Đoàn Khối Doanh nghiệp Trung ương": "HCYU of National-level State-Owned Enterprises’ Bloc",
+        "Đoàn Khối Cơ quan - Doanh nghiệp tỉnh/thành phố": "HCYU of + tên tỉnh/thành phố + Provincial/Municipal (hoặc City) Public Agencies and/or State-Owned Enterprises’ Bloc",
+        "Đoàn Khối Cơ quan tỉnh Bình Thuận": "HCYU of Bình Thuận Provincial Public Agencies’ Bloc",
+        "Đoàn Khối Cơ quan - Doanh nghiệp thành phố Đà Nẵng": "HCYU of Đà Nẵng Municipal/City Public Agencies and State-Owned Enterprises’ Bloc",
+        "Đoàn TNCS Hồ Chí Minh Bộ Công an": "HCYU of Ministry of Public Security",
+        "Đoàn TNCS Hồ Chí Minh Công an tỉnh/ thành phố": "HCYU of tên tỉnh + Provincial Police Department",
+        " Đoàn TNCS Hồ Chí Minh Công an tỉnh Điện Biên": "HCYU of Điện Biên Provincial Police Department",
+        "Ban Thanh niên Quân đội": "Department of Military Youth",
+        "Đoàn TNCS Hồ Chí Minh ngoài nước": "HCYUs in other countries",
+        "Đoàn TNCS Hồ Chí Minh ngoài nước tại + tên nước": "HCYU + in + tên nước",
+        "Đoàn TNCS Hồ Chí Minh tại Liên bang Nga": "HCYU in the Russian Federation",
+        "Các cấp bộ Đoàn": "HCYU levels",
+        "Cấp Trung ương": "Central level",
+        "Cấp tỉnh và tương đương": "Provincial level and equivalent",
+        "Đoàn trực thuộc ": "Directly subordinate HCYU/ affiliated HCYU",
+        "Cấp huyện và tương đương": "District level and equivalent",
+        "Cấp cơ sở ": "Grassroots level ",
+        "Ban cán sự Đoàn": "HCYU Steering Committee",
+        "Chi đoàn/Chi đoàn cơ sở ": "HCYU chapter",
+        "Chi đoàn Ban Quốc tế Trung ương Đoàn": "HCYU chapter of the International Department of the HCYU Central Committee",
+        "Liên chi đoàn": "HCYU inter-chapter",
+        "Phân đoàn": "Unit HCYU",
+        "Đoàn cấp trên": "superior HCYU",
+        "Đoàn cấp dưới": "subordinate HCYU",
+        "Văn phòng": "Administrative Office",
+        "Phòng Thư ký": "Secretary’s Assistant Desk",
+        "Phòng Tổng hợp - Thi đua": "Division of General Issues and Emulationn",
+        "Phòng Quản trị - Tài vụ": "Division of Assets Management and Accounting",
+        "Phòng Kế hoạch Tài chính": "Division of Finance and Planning",
+        "Phòng công tác Đoàn phía Nam": "Division of Central HCYU in the South",
+        "Trung tâm Công nghệ Thông tin": "Information Technology Center",
+        "Cổng thông tin điện tử Trung ương Đoàn": "HCYU Central Committee Web Portal",
+        "Ban Tổ chức": "Department of Organization/ Organization Department",
+        "Ban Kiểm tra": "Department of Inspection/ Inspection Department",
+        "Ban Tuyên giáo": "Department of Publicity and Education",
+        "Ban Xây dựng Đoàn": "Department of HCYU Development",
+        "Ban Đoàn kết Tập hợp Thanh niên": "Department of Youth Unity and Mobilization",
+        "Ban Thanh niên Nông thôn": "Department of Rural Youth",
+        "Ban Thanh niên Công nhân và Đô thị": "Department of Young Workers and Urban Youth",
+        "Ban Thanh niên Nông thôn, Công nhân và Đô thị": "Department of Rural Youth, Young Workers and Urban Youth",
+        "Ban Thanh niên Trường học": "Department of School-aged Youth",
+        "Ban Công tác Thiếu nhi": "Department of Children Affairs",
+        "Ban Thanh thiếu nhi Trường học": "Department of School-aged Youth and Children Affairs",
+        "Ban Thanh niên Xung phong": "Department of Pioneering Youth",
+        "Ban Quốc tế": "International Department",
+        "Văn phòng Ủy ban quốc gia về thanh niên Việt Nam": "Office of the National Committee on Youth of Viet Nam",
+        "Trung tâm Thanh thiếu niên Trung ương": "National Center for Youth and Children",
+        "Trung tâm dịch vụ việc làm Thanh niên Trung ương Đoàn": "HCYU’s Youth Employment Service Center",
+        "Trung tâm Giáo dục Dạy nghề Thanh niên": "Youth Vocational Education and Training Center",
+        "Trung tâm Hướng dẫn hoạt động thanh thiếu nhi Trung ương": "National Center for Children’s Activities",
+        "Trung tâm Thanh thiếu niên miền Nam": "Center for Youth and Children in the Southern region",
+        "Trung tâm Thanh thiếu niên miền Trung": "Center for Youth and Children in the Central region",
+        "Học viện Thanh thiếu niên": "Viet Nam Youth Academy",
+        "Viện Nghiên cứu Thanh niên": "Youth Research Institute",
+        "Báo Tiền Phong": "Tiền Phong Newspaper",
+        "Báo Thanh Niên": "Thanh Niên Newspaper",
+        "Tạp chí Thanh niên": "Youth Magazine",
+        "Báo Thiếu niên tiền phong và Nhi đồng": "Youth Vanguard and Children Newspaper",
+        "Nhà xuất bản Thanh niên": "Youth Publishing House",
+        "Nhà xuất bản Kim Đồng": "Kim Dong Publishing House",
+        "Nhà văn hóa Thanh niên": "Youth Culture House",
+        "Nhà văn hóa học sinh - sinh viên": "Youth- Students Culture House",
+        "Bí thư thứ nhất Ban Chấp hành Trung ương Đoàn TNCS Hồ Chí Minh": "First Secretary of HCYU Central Committee",
+        "Bí thư Thường trực Ban Chấp hành Trung ương Đoàn TNCS Hồ Chí Minh": "Permanent Secretary of HCYU Central Committee",
+        "Bí thư Ban Chấp hành Trung ương Đoàn TNCS Hồ Chí Minh": "Secretary of HCYU Central Committee",
+        "Bí thư Đoàn TNCS Hồ Chí Minh tỉnh Hà Tĩnh": "Secretary of Hà Tĩnh provincial HCYU",
+        "Bí thư Đoàn TNCS Hồ Chí Minh quận Phú Nhuận": "Secretary of Phú Nhuận District’s HCYU",
+        "Bí thư Đoàn TNCS Hồ Chí Minh xã Thịnh Liệt": "Bí thư Đoàn TNCS Hồ Chí Minh xã Thịnh Liệt",
+        "Bí thư Đoàn TNCS Hồ Chí Minh phường Ngọc Khánh": "Secretary of Ngọc Khánh Ward’s HCYU",
+        "Phó Bí thư thường trực": "Permanent Deputy Secretary",
+        "Phó Bí thư": "Deputy Secretary",
+        "Bí thư Đoàn TNCS Hồ Chí Minh Khối Cơ quan Trung ương": "Secretary of HCYU of Central-level Agencies’ Bloc",
+        "Bí thư Đoàn TNCS Hồ Chí Minh Khối Doanh nghiệp Trung ương": "Secretary of HCYU of National-level StateOwned Enterprises’ Bloc",
+        "Bí thư Đoàn TNCS Hồ Chí Minh Bộ Công an": "Secretary of HCYU of the Ministry of Public Security",
+        "Trưởng Ban Thanh niên Quân đội": "Head of Department of Youth Military",
+        "Bí thư Đoàn TNCS Hồ Chí Minh Khối Cơ quan - Doanh nghiệp tỉnh/thành phố": "Secretary of (tên tỉnh/ thành phố) + Provincial (nếu là tỉnh)/Municipal hoặc City (nếu là thành phố) + HCYU of Public Agencies and State-Owned Enterprises’ Bloc",
+        "Bí thư Đoàn TNCS Hồ Chí Minh Khối Cơ quan - Doanh nghiệp tỉnh Hải Dương": "Secretary of Hải Dương Provincial HCYU of Public Agencies and State-Owned Enterprises’ Bloc",
+        "Bí thư Đoàn TNCS HỒ CHÍ MINH Khối Cơ quan - Doanh nghiệp thành phố Buôn Ma Thuột": "Secretary of Buôn Ma Thuột Municipal (hoặc City) HCYU of Public Agencies and State-Owned Enterprises’ Bloc",
+        "Chánh Văn phòng": "Chief of Administrative Office",
+        "Phó Chánh Văn phòng": "Deputy Chief of Administrative Office",
+        "Trưởng Ban": "Head/Director of + tên Ban",
+        "Phó Trưởng Ban": "Deputy Head/ Deputy Director of + tên Ban",
+        "Trưởng phòng": "Head/Chief of + tên Phòng",
+        "Phó Trưởng phòng": "Deputy Head/ Deputy Chief of + tên Phòng",
+        "Khẩu hiệu hành động: Tuổi trẻ Việt Nam tiên phong, bản lĩnh, đoàn kết, sáng tạo, phát triển": "Slogan: Vietnamese youth - Vanguard, Steadfastness, Unity, Innovation, Development",
+        "“3 phong trào hành động cách mạng”": "“Three Revolutionary Action Movements”",
+        "Thanh niên tình nguyện": "Youth volunteer",
+        "Tuổi trẻ sáng tạo": "Youth with innovation",
+        "Tuổi trẻ xung kích bảo vệ Tổ quốc": "Youth pioneering to defend the Homeland",
+        "“3 Chương trình đồng hành với thanh niên”": "“3 supporting youth Programs”",
+        "Đồng hành với thanh niên trong học tập": "Supporting youth in studying",
+        "Đồng hành với thanh niên khởi nghiệp, lập nghiệp": "Supporting youth in business start-up and self-establishment",
+        "Đồng hành với thanh niên rèn luyện và phát triển kỹ năng trong cuộc sống, nâng cao thể chất, đời sống văn hóa tinh thần": "Supporting youth in life-skills training and development, and in improvement of physical health, cultural and spiritual living standards",
+        "Đề án Tăng cường giáo dục lý tưởng cách mạng, đạo đức, lối sống văn hóa cho thanh thiếu nhi": "Project on enhancing education of revolutionary ideals, ethics and cultured lifestyles for young people",
+        "Đề án Thanh niên khởi nghiệp": "Project on supporting Youth Start-up",
+        "Đề án Tư vấn, hướng nghiệp và giới thiệu việc làm cho thanh thiếu niên": "Project on vocational counseling and employment placement for young people",
+        "Đề án Đoàn TNCS Hồ Chí Minh tham gia xây dựng nông thôn mới": "Project on HCYU’s participation in building new-style rural areas",
+        "Đề án Đoàn TNCS Hồ Chí Minh xung kích bảo vệ môi trường và ứng phó biến đổi khí hậu": "Project on HCYU in the frontline in environmental protection and climate change response",
+        "Đề án Đoàn TNCS Hồ Chí Minh tham gia bảo đảm trật tự an toàn giao thông": "Project on HCYU’s participation in ensuring traffic order and safety",
+        "Đề án Phòng, chống ma túy trong thanh thiếu niên": "Project on drug control among young people",
+        "Đề án Nâng cao năng lực tiếng Anh cho thanh thiếu niên Việt Nam": "Project on improving English competency for Vietnamese young people",
+        "Đề án Đào tạo, bồi dưỡng cán bộ Đoàn, Hội, Đội": "Project on training and fostering children and youth organizations’ cadres.",
+        "Đề án Đoàn TNCS Hồ Chí Minh tham gia phòng chống đuối nước và tai nạn thương tích trẻ em": "Project on HCYU participating in prevention of child drowning and injury",
+        "Đảng bộ cơ quan Trung ương Đoàn": "Party Committee of HCYU Central Committee",
+        "Đảng ủy": "Party Committee",
+        "Bí thư Đảng ủy + cơ quan/đơn vị": "Secretary of + Party Committee of + (tên cơ quan/đơn vị)",
+        "Bí thư Đảng ủy Trung ương Đoàn": "Secretary of Party Committee of HCYU Central Committee",
+        "Phó Bí thư thường trực Đảng ủy + cơ quan/ đơn vị": "Permanent Deputy Secretary of + Party Committee of + (tên cơ quan/đơn vị)",
+        "Phó Bí thư Đảng ủy + cơ quan/đơn vị": "Deputy Secretary of + Party Committee of + (tên cơ quan/ đơn vị)",
+        "Ban Thường vụ Đảng ủy + cơ quan/đơn vị": "Standing Committee of + Party Committee of + (tên cơ quan/đơn vị)",
+        "Ban Chấp hành Đảng ủy + cơ quan/đơn vị": "Executive Committee of + Party Committee of + (tên cơ quan/đơn vị)",
+        "Ban Tổ chức Đảng ủy": "Organization Department of Party Committee",
+        "Ban Tuyên giáo Đảng ủy": "Publicity and Education Department of Party Committee",
+        "Ủy ban Kiểm tra Đảng Ủy": "Inspection Commission of Party Committee",
+        "Văn phòng Đảng - Đoàn thể": "Joint Party and Mass Organizations Administrative Office",
+        "Chánh Văn phòng Đảng - Đoàn thể": "Chief of Joint Party and Mass Organizations Administrative Office",
+        "Phó Chánh Văn phòng Đảng - Đoàn thể": "Deputy Chief of Joint Party and Mass Organizations Administrative Office",
+        "Tổng Liên đoàn Lao động Việt Nam": "Viet Nam General Confederation of Labor",
+        "Công đoàn Trung ương Đoàn TNCS Hồ Chí Minh": "Trade Union in HCYU Central Committee",
+        "Chủ tịch Công đoàn + cơ quan/đơn vị": "President of + Trade Union in + (tên cơ quan/đơn vị)",
+        "Phó Chủ tịch Công đoàn": "Vice President of Trade Union in + (tên cơ quan/đơn vị)",
+        "Ban Thường vụ Công đoàn": "Standing Committee of Trade Union in + (tên cơ quan/đơn vị)",
+        "Ban Chấp hành Công đoàn": "Executive Committee of Trade Union in + (tên cơ quan/đơn vị)",
+        "Ủy viên Ban Chấp hành Công đoàn": "Member of Executive Committee of Trade Union in + (tên cơ quan/ đơn vị)",
+        "Ban Nữ công Công đoàn": "Women’s Affairs Committee of Trade Union in + (tên cơ quan/đơn vị)",
+        "Hội Liên hiệp Thanh niên Việt Nam": "Viet Nam Youth Federation",
+        "Ủy ban Trung ương Hội LHTN Việt Nam": "- VYF’s Central Committee <br>- VYF Central Committee<br>- Central Committee of VYF",
+        "Đoàn Chủ tịch Ủy ban Trung ương Hội LHTN Việt Nam": "Presidium of VYF Central Committee",
+        "Chủ tịch Trung ương Hội LHTN Việt Nam": "President of VYF Central Committee",
+        "Phó Chủ tịch thường trực Trung ương Hội LHTN Việt Nam": "Permanent Vice President of VYF Central Committee",
+        "Phó Chủ tịch Trung ương Hội LHTN Việt Nam": "Vice President of VYF Central Committee",
+        "Ủy viên Đoàn Chủ tịch Ủy ban Trung ương Hội LHTN Việt Nam": "Member of Presidium of VYF Central Committee",
+        "Ủy viên Ủy ban Trung ương Hội Liên hiệp Thanh niên Việt Nam": "Member of the VYF Central Committee",
+        "Văn phòng Trung ương Hội LHTN Việt Nam": "- Administrative Office of VYF Central Committee <br>- VYF Central Committee’s Office <br>- VYF Central Committee Office",
+        "Chánh Văn phòng Trung ương Hội LHTN Việt Nam": "Chief of Admininstrative Office of the VYF Central Committee",
+        "Phó Chánh Văn phòng Trung ương Hội LHTN Việt Nam": "Deputy Chief of Admininstrative Office of the VYF Central Committee",
+        "Hội LHTN Việt Nam tỉnh/thành, quận/huyện và xã/phường": "- VYF of (tên tỉnh/thành phố, quận/huyện và xã/phường) + Province (nếu là tỉnh)/City (nếu là thành phố), District (nếu là quận/huyện) và Commune (nếu là xã)/Ward (nếu là phường)<br>- Tên tỉnh/thành phố + Provincial (nếu là tỉnh)/Municipal (nếu là thành phố), District (nếu là quận/ huyện) và Commune (nếu là xã)/Ward (nếu là phường) + VYF",
+        "Chủ tịch Hội LHTN Việt Nam tỉnh/thành phố, quận/ huyện và xã/phường": "President of + cấp Hội như trên",
+        "Phó Chủ tịch Hội LHTN Việt Nam tỉnh/thành phố, quận/huyện và xã/phường": "Vice President of VYF of + cấp Hội như trên",
+        "Ban Thư ký Ủy ban Hội LHTN Việt Nam tỉnh/ thành phố": "- Secretariat of VYF of + tên tỉnh/thành phố + Province (nếu là tỉnh)/City (nếu là thành phố)<br>- Secretariat of + tên tỉnh/thành phố + Provincial (nếu là tỉnh)/Municipal (nếu là thành phố) + VYF",
+        "Uỷ viên Thư ký": "- Member of Secretariat <br>- Secretariat Member",
+        "Đoàn TNCS Hồ Chí Minh": "Ho Chi Minh Communist Youth Union",
+        "Hội Sinh viên Việt Nam": "Viet Nam National Union of Students",
+        "Hội Doanh nhân Trẻ Việt Nam": "Viet Nam Young Entrepreneurs’ Association",
+        "Hội Thầy thuốc Trẻ Việt Nam": "Viet Nam Young Physicians’ Association",
+        "Hội Trí thức Khoa học và Công nghệ Trẻ Việt Nam": "Viet Nam Association of Young Scientists & Technologists",
+        "Câu lạc bộ Thanh niên Khuyết tật Việt Nam": "Viet Nam Club of Youth with Disabilities",
+        "Câu lạc bộ Nghệ sĩ trẻ Việt Nam": "Viet Nam Club of Young Artists",
+        "Cổng Tri thức Thánh Gióng": "Thánh Gióng Knowledge Portal",
+        "Trung tâm Thông tin Nguồn lực tình nguyện Việt Nam": "Viet Nam Volunteer Center",
+        "Trung tâm Công tác xã hội Thanh thiếu niên Việt Nam": "Viet Nam Youth Social Work Center",
+        "Trung tâm Hỗ trợ thanh niên khởi nghiệp": "Supporting Center for Youth Startup",
+        "Các nguyên tắc hoạt động của Hội": "VYF operating principles",
+        "Tự nguyện, tự quản": "Voluntary and self-governing",
+        "Hiệp thương dân chủ": "Democratic consultations",
+        " Đoàn kết, tôn trọng lẫn nhau": "Unity, mutual respect",
+        "Hợp tác bình đẳng, phối hợp và thống nhất hành động": "Equal-footing cooperation, coordination and unanimity in action",
+        "Tổ chức xã hội rộng rãi": "Broad-based social organization",
+        "Hội nghị hiệp thương": "Consultative conference",
+        "Thành viên tập thể": "Collective member/Institutional member",
+        "Diễn đàn Trí thức trẻ Việt Nam Toàn cầu": "Global Young Vietnamese Intellectuals’ Forum",
+        "Phong trào “Tôi yêu Tổ quốc tôi”": "“I love my country” movement",
+        "Hội Sinh viên Việt Nam": "Viet Nam National Union of Students ",
+        "Trung ương Hội Sinh viên Việt Nam": "- Central Committee of Viet Nam National Union of Students <br>- Viet Nam National Union of Students’ Central Committee <br>- Viet Nam National Union of Students Central Committee",
+        "Chủ tịch Trung ương Hội Sinh viên Việt Nam": "President of VNUS Central Committee",
+        "Phó Chủ tịch thường trực Trung ương Hội Sinh viên Việt Nam": "Permanent Vice President of VNUS Central Committee",
+        "Phó Chủ tịch Trung ương Hội Sinh viên Việt Nam": "Vice President of VNUS Central Committee",
+        "Ban Thư ký Trung ương Hội Sinh viên Việt Nam": "- Secretariat of VNUS Central Committee<br>- VNUS Central Secretariat",
+        "Ban Chấp hành Trung ương Hội Sinh viên Việt Nam": "- Executive Committee of VNUS Central Committee <br>- VNUS Central Executive Committee",
+        "Văn phòng Trung ương Hội Sinh viên Việt Nam": "- Administrative Office of VNUS Central Committee <br>- VNUS Central Committee’s Administrative Office",
+        "Chánh Văn phòng Trung ương Hội Sinh viên Việt Nam": "Chief of Admininstrative Office of the VNUS Central Committee",
+        "Phó Chánh Văn phòng Trung ương Hội Sinh viên Việt Nam": "Deputy Chief of Admininstrative Office of the VNUS Central Committee",
+        "Ban Kiểm tra Trung ương Hội Sinh viên Việt Nam": "- VNUS Central Committee’s Inspection Commission <br>- Inspection Commission under VNUS Central Committee",
+        "Trưởng Ban Kiểm tra Trung ương Hội Sinh viên Việt Nam": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of Inspection Commission of VNUS Central Committee",
+        "Phó Trưởng Ban Kiểm tra Trung ương Hội Sinh viên Việt Nam": "Vice Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of Inspection Commission of VNUS Central Committee",
+        "Trung tâm Hỗ trợ và Phát triển Sinh viên Việt Nam": "Vietnamese Students Development and Support Center",
+        "Hội Sinh viên Việt Nam tỉnh/thành phố": "- VUS of + tên tỉnh/thành phố + Province (nếu là tỉnh)/City (nếu là thành phố)<br>- Tên tỉnh/thành phố + Provincial (nếu là tỉnh)/Municipal (nếu là thành phố) + VUS",
+        "Chủ tịch Hội Sinh viên Việt Nam tỉnh/thành phố": "President of + cấp Hội như trên",
+        "Phó Chủ tịch Thường trực Hội Sinh viên Việt Nam tỉnh/thành phố": "Permanent Vice President of + cấp Hội như trên",
+        "Phó Chủ tịch Hội Sinh viên Việt Nam tỉnh/thành phố": "Vice President of + cấp Hội như trên",
+        "Ban Thư ký Hội Sinh viên Việt Nam tỉnh/thành phố": "Secretariat of + cấp Hội như trên",
+        "Ban Chấp hành Hội Sinh viên Việt Nam tỉnh/thành phố": "Executive Committee of + cấp Hội như trên",
+        "Ban Kiểm tra Hội Sinh viên Việt Nam tỉnh/thành phố": "- VUS Inspection Commission of + cấp Hội như trên <br>+ Cách 2: <br>- Cấp hội như trên + VUS’s Inspection Commission <br>- Inspection Commission under the VUS of + cấp Hội như trên",
+        "Trưởng Ban Kiểm tra Hội Sinh viên Việt Nam tỉnh/ thành phố": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of Inspection Commission of + cấp Hội như trên",
+        "Phó Trưởng Ban Kiểm tra Trung ương Hội Sinh viên Việt Nam": "Vice Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of Inspection Commission of + cấp Hội như trên",
+        "Hội Sinh viên Việt Nam trường đại học, cao đẳng, học viện, viện đào tạo hệ đại học, cao đẳng (sau đây gọi tắt là “trường”)": "VUS of + tên trường",
+        "Chủ tịch Hội Sinh viên Việt Nam trường": "President of + VUS of + tên trường",
+        "Phó Chủ tịch thường trực Hội Sinh viên Việt Nam trường": "Permanent Vice President of + VUS of + tên trường",
+        "Phó Chủ tịch Hội Sinh viên Việt Nam trường": "Vice President of + VUS + tên trường",
+        "Ban Thư ký Hội Sinh viên Việt Nam trường": "- Secretariat of VUS + tên trường<br>- VUS Secretariat + tên trường",
+        "Ban Chấp hành Hội Sinh viên Việt Nam trường": "- Executive Committee of VUS + tên trường<br>- VUS Executive Committee + tên trường",
+        "Ban Kiểm tra Hội Sinh viên Việt Nam trường": "- VUS’s Inspection Commission + tên trường <br>- Inspection Commission under the VUS of + tên trường",
+        "Trưởng Ban Kiểm tra Hội Sinh viên Việt Nam trường": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of Inspection Commission of + tên trường",
+        "Phó Trưởng Ban Kiểm tra Trung ương Hội Sinh viên Việt Nam": "Vice Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of Inspection Commission of + tên trường",
+        "Chi hội": "VUS Chapter + tên trường, khoa, lớp",
+        "Liên chi Hội": "VUS Inter-Chapter + tên khoa",
+        "Hội Sinh viên ngoài nước tại + tên nước": "VUS in + tên nước",
+        "Hội Sinh viên Quốc tế": "International Union of Students (IUS)",
+        "Thẻ hội viên": "VUS membership card",
+        "Công tác Hội": "VUS affairs; VUS activity; VUS work",
+        "Phong trào sinh viên": "- Students’ movement <br>- Student movement",
+        "Phong trào “Sinh viên 5 tốt” (đạo đức tốt, học tập tốt, thể lực tốt, tình nguyện tốt, hội nhập tốt)": "“Student with 5 Good Criteria” Movement (good morality, good studying, good physical training, good volunteering, good integration)",
+        "Danh hiệu “Sinh viên 5 tốt” cấp Trung ương": "“Student with 5 Good Criteria” title - Central level",
+        "Danh hiệu “Sinh viên 5 tốt” cấp tỉnh": "Student with 5 Good Criteria” title - Provincial level",
+        "Danh hiệu “Sinh viên 5 tốt” cấp trường": "Student with 5 Good Criteria” title - University/ College level",
+        "Danh hiệu “Tập thể Sinh viên 5 tốt” cấp Trung ương": "“Student Collectives with 5 Good Criteria” title - Central level",
+        " Danh hiệu “Tập thể Sinh viên 5 tốt” cấp tỉnh": "Student Collectives with 5 Good Criteria” title - Provincial level",
+        "Danh hiệu “Tập thể Sinh viên 5 tốt” cấp trường": "Student Collectives with 5 Good Criteria” title - University/College level",
+        "Giải thưởng “Sao tháng Giêng”": "“January Star” award",
+        "Phong trào “Học sinh 3 tốt” (đạo đức tốt, học tập tốt, thể lực tốt)": "“Student with 3 Good Criteria” movement (good morality, good studying, good physical training)",
+        "Danh hiệu “Học sinh 3 tốt” cấp Trung ương": "“Student with 3 Good Criteria” title - Central level",
+        "Danh hiệu “Học sinh 3 tốt” cấp tỉnh": "“Student with 3 Good Criteria” title - Provincial level",
+        "Danh hiệu “Học sinh 3 tốt” cấp trường": "“Student with 3 Good Criteria” title - School level",
+        "Phong trào “Học sinh 3 rèn luyện”": "“Student with 3 Good Training Criteria” movement",
+        "Danh hiệu “Học sinh 3 rèn luyện” cấp Trung ương": "Danh hiệu “Học sinh 3 rèn luyện” cấp Trung ương",
+        "Danh hiệu “Học sinh 3 rèn luyện” cấp tỉnh": "“Student with 3 Good Training Criteria” title - Provincial level",
+        "Danh hiệu “Học sinh 3 rèn luyện” cấp trường": "“Student with 3 Good Training Criteria” title - School level",
+        "Chương trình “Tri thức trẻ vì giáo dục”": "“Young intellectuals for education” program",
+        "Cuộc vận động “Sinh viên Việt Nam - Những câu chuyện đẹp”": "“Vietnamese students with good stories” campaign",
+        "Diễn đàn “Xây dựng tình bạn đẹp - Nói không với bạo lực học đường”": "“Building good friendship - Saying no to school violence” forum",
+        "Các tổ chức sinh viên quốc tế": "International students’ organizations",
+        "Đội Thiếu niên Tiền phong Hồ Chí Minh": "Ho Chi Minh Young Pioneers’ Organization (HYPO)",
+        "Hội đồng Đội Trung ương": "Central Council of HYPO",
+        "Chủ tịch Hội đồng Đội Trung ương": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of the Central Council of HYPO",
+        " Phó Chủ tịch Thường trực Hội đồng Đội Trung ương": "Permanent Vice Chairperson (hoặc Permanent Vice Chairman nếu là nam, Permanent Vice Chairwoman nếu là nữ) of the Central Council of HYPO",
+        "Phó Chủ tịch Hội đồng Đội Trung ương": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Vice Chairwoman nếu là nữ) of the Central Council of HYPO",
+        "Văn phòng Hội đồng Đội Trung ương": "Administrative Office of the Central Council of HYPO",
+        "Hội đồng Đội tỉnh/thành phố, quận/huyện, xã/phường": "Tên địa phương + Provincial (nếu là tỉnh)/Municipal (nếu là thành phố), Disrtict (nếu là quận/huyện), Commune (nếu là xã)/Ward (nếu là phường) + Council of HYPO",
+        "Chủ tịch Hội đồng Đội tỉnh/thành phố, quận/ huyện, xã/phường": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of + cấp Đội như trên",
+        "Phó Chủ tịch Thường trực Hội đồng Đội tỉnh/ thành phố, quận/huyện, xã/phường": "Permanent Vice Chairperson (hoặc Permanent Vice Chairman nếu là nam, Permanent Vice Chairwoman nếu là nữ) of + cấp Đội như trên",
+        "Phó Chủ tịch Hội đồng Đội tỉnh/thành phố, quận/ huyện, xã/phường": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Vice Chairwoman nếu là nữ) of + cấp Đội như trên",
+        "Văn phòng Hội đồng Đội tỉnh/thành phố, quận/ huyện, xã/phường": "Administrative Office of the Central Council of + cấp Đội như trên",
+        "Đội Thiếu niên Tiền phong Hồ Chí Minh trường": "HYPO of + tên trường",
+        "Chi đội": "- Ho Chi Minh Young Pioneers’ Chapter <br>- Chapter of HYPO",
+        "Liên đội": "Inter-Chapter of HYP",
+        "Thiếu nhi": "Children",
+        "Công tác Nhi đồng": "Children’s affairs; work on children; child-related work",
+        "5 điều Bác Hồ dạy": "Uncle Ho’s 5 teachings",
+        "Công ước Liên Hợp Quốc về Quyền Trẻ em": "The United Nations Convention on the Rights of the Child",
+        "Luật Trẻ em": "Law on Children",
+        "Khăn quàng đỏ": "Red scarf",
+        " Khẩu hiệu Đội “Vì Tổ quốc xã hội chủ nghĩa, Vì lý tưởng của Bác Hồ vĩ đại, Sẵn sàng!”": "Motto of HYPO “For the socialist Homeland, For great Uncle Ho’s ideals, Ready!”",
+        "Chương trình rèn luyện đội viên": "Membership Training Program",
+        "Cung/Nhà thiếu nhi": "House of Children; Children’s House; Children’s Palace",
+        "Ủy ban Quốc gia về Thanh niên Việt Nam": "National Committee on Youth of Viet Nam",
+        "Chủ nhiệm": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ)",
+        "Phó Chủ nhiệm thường trực": "Permanent Vice Chairperson (hoặc Permanent Vice Chairman nếu là nam, Permanent Vice Chairwoman nếu là nữ)",
+        "Phó Chủ nhiệm": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Vice Chairwoman nếu là nữ)",
+        "Tổng Thư ký": "Secretary-General",
+        "Chánh Văn phòng": "Chief of Administrative Office",
+        "Văn phòng": "Administrative Office",
+        "Lực lượng xung kích cách mạng": "Revolutionary Pioneering Force",
+        "Trường học Xã hội chủ nghĩa": "School of socialism",
+        "Bảo vệ quyền lợi hợp pháp của tuổi trẻ": "To protect legitimate interests of young people",
+        "Thanh niên tiến bộ": "Progressive youth",
+        "Tổ chức thanh niên tiến bộ": "Progressive youth organization(s)",
+        "Thanh niên yếu thế": "Disadvantaged youth/Youth in disadvantaged conditions/Youth in disadvantaged circumstances",
+        "Cán bộ Đoàn": "HCYU cadre(s)",
+        "Đoàn viên": "HCYU member",
+        "Được kết nạp vào Đoàn": "To be admitted to HCYU",
+        "Kết nạp (ai đó) vào Đoàn": "To admit (someone) to/ into HCYU",
+        "Lễ kết nạp Đoàn viên": "HCYU Membership Admission Ceremony",
+        "Đơn xin vào Đoàn": "- Application to join HCYU <br>- Application for HCYU membership <br>- HCYU membership application",
+        "Đoàn viên danh dự": "Honorary HCYU member",
+        "Thẻ Đoàn viên": "HCYU membership card",
+        "Sổ Đoàn viên": "- HCYU membership book<br>- HCYU membership handbook",
+        "Huy hiệu Đoàn": "HCYU badge",
+        "Lễ trưởng thành Đoàn": "HCYU Membership Completion Ceremony",
+        "Đoàn phí": "HCYU membership fee",
+        "Các vấn đề thanh niên": "Youth issues; youth-related questions",
+        "Xung kích, Xung phong": "Pioneering",
+        "Tiên phong, tiền phong": "Vanguard",
+        "Chiến dịch tình nguyện hè": "Summer Volunteer Campaign/ Summer Volunteers’Campaign",
+        "Chiến dịch “Mùa hè xanh”": "“Green Summer” Campaign",
+        "Chiến dịch “Kỳ nghỉ hồng”": "“Pink Holiday” Campaign",
+        "Chiến dịch “Hoa phượng đỏ”": "“Red Flamboyant Flower” Campaign",
+        "Chiến dịch “Hành quân xanh”": "“Green Marching” Campaign",
+        "Chương trình “Tiếp sức mùa thi”": "University Entrance Exam Support Program",
+        "Sinh hoạt Đoàn": "- To participate in HCYU’s activity <br>- To participate in HCYU activity",
+        "Sinh hoạt Chi đoàn": "- To participate in HCYU chapter’s activity <br>- To participate in HCYU chapter’s activity",
+        "Đoàn thể quần chúng": "Mass organization(s)",
+        "Tổ chức nhân dân": "People’s organization(s)",
+        "Tổ chức chính trị - xã hội": "Socio-political Organization(s)",
+        "Nhiệm kỳ": "Term/Tenure",
+        "Văn kiện": "Document",
+        "Nghị quyết": "Resolution",
+        "Nghị quyết Đại hội Đoàn toàn quốc lần thứ XI": "- Resolution of the Eleventh (hoặc 11th) National Congress of HCYU <br>- HCYU’s Eleventh National (hoặc 11th) Congress Resolution",
+        "Điều lệ": "Regulations/ Statutes/ Charter",
+        "Lý tưởng": "Ideal",
+        "Tư tưởng Hồ Chí Minh": "Ho Chi Minh Thought",
+        "Giáo dục lý tưởng cách mạng": "Revolutionary ideal education/ Education of revolutionary ideals",
+        "Nhiệm vụ chính trị": "Political task(s)",
+        "Sứ mệnh chính trị": "Political mission/ Political mandate",
+        "Phong trào/Cuộc vận động": "Movement/Campaign",
+        "Phong trào hành động cách mạng": "Revolutionary action movement",
+        "Lực lượng dự bị": "Reserve force",
+        "Đội dự bị tin cậy": "Trust-worthy reserve team/ Reliable reserve team",
+        "Nòng cốt": "Core",
+        "Lực lượng": "Force",
+        "Lực lượng chính trị nòng cốt": "Core political force",
+        "Chất lượng cán bộ Đoàn": "Quality of HCYU cadre(s)",
+        "Cán bộ Đoàn chuyên trách": "Full-time HCYU cadre(s)",
+        "Cán bộ Đoàn kiêm nhiệm": "Part-time HCYU cadre(s)",
+        "Luật Thanh niên": "Law on Youth/ Youth Law",
+        "Chiến lược phát triển thanh niên": "Youth Development Strategy",
+        "Huy động/Tập hợp": "Mobilize; rally",
+        "Hoạt động xã hội": "Social activity",
+        "Báo cáo chính trị": "Political report",
+        "Báo cáo tổng kết": "Final report",
+        "Báo cáo vắn tắt/Báo cáo rút gọn": "Summary Report",
+        "Báo cáo kiểm điểm": "Review report",
+        "Triển khai/Thực hiện": ": implement/ execute/ put in place/ exercise/ carry out/put into practice/ translate into reality/ materialize/ put into effect/ realize/ perform/ discharge/ enact",
+        "Chương trình hành động": "Program of Action/ Action Program",
+        "Đại biểu": "Representative; delegate; participant; attendee",
+        "Đại biểu chính thức (tham dự Đại hội Đoàn)": "Official delegate(s) to HCYU Congress",
+        "Đại biểu chính thức (tham dự hội thảo, hội nghị bàn tròn, tọa đàm…)": "Official participant(s)",
+        "Đại biểu dự bị": "Reserve …/ Alternate …",
+        "Tổ chức thành viên/thành viên tập thể": "Collective Member/ Institutional Member",
+        "Thành lập": "Form; establish; found; set up; constitute",
+        "Sân chơi trẻ em": "Children playground",
+        "Công tác quốc tế thanh niên": "International affairs for youth",
+        "Hội nhập quốc tế": "International integration",
+        "Các tầng lớp thanh niên": "Youth strata",
+        "Ngày truyền thống/Ngày thành lập": "Founding Day; Day of establishment",
+        "Tuyên truyền": "Publicize",
+        "Trụ sở": "Office",
+        "Trụ sở chính": "Headquarters/ Head Office",
+        "Cơ quan thường trực": "Executive organ/ Executive agency",
+        "Ban Đoàn kết Tập hợp Thanh niên Trung ương Đoàn là cơ quan thường trực của Hội LHTN Việt Nam": "HCYU’s Department of Youth Unity and Mobilization is the executive organ/agency of the Viet Nam Youth Federation",
+        "Biểu trưng": "Emblem",
+        "Bài hát chính thức": "Official song",
+        "Bài hát truyền thống": "Traditional song",
+        "Câu lạc bộ, đội, nhóm": "Club, Team, Group",
+        "Thông cáo báo chí": "Press release",
+        "Câu lạc bộ Lý luận trẻ": "Young Theorist Club",
+        "Báo cáo viên/ Tuyên truyền viên": "Rapporteur",
+        "Cuộc vận động “Mỗi ngày một tin tốt, mỗi tuần một câu chuyện đẹp”": "“A piece of good news everyday, a piece of beautiful story every week” campaign",
+        "Cuộc vận động “Xây dựng giá trị hình mẫu thanh niên Việt Nam thời kỳ mới”": "“Building the value of Vietnamese youth model in the new period” campaign",
+        "Học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh": "Study and follow President Ho Chi Minh’s ideology, morality and style",
+        "Hành trình “Tuổi trẻ vì biển, đảo quê hương”": "“Youth toward/ Youth act for the country’s sea and islands” journey",
+        "Lễ thắp nến tri ân các Anh hùng, Liệt sỹ": "Candle lighting ceremony for Heroes and Martyrs",
+        "Thanh niên tiên tiến làm theo lời Bác": "Thanh niên tiên tiến làm theo lời Bác",
+        "ĐẢNG CỘNG SẢN VIỆT NAM": "Communist Party of Viet Nam (CPV)",
+        "Ban Chấp hành Trung ương Đảng": "- Central Committee of CPV <br>- CPV Central Committee",
+        "Bộ Chính trị": "Political Bureau/ Politburo",
+        "Ban Bí thư Trung ương Đảng": "Secretariat of CPV Central Committee",
+        "Văn phòng Trung ương Đảng": "- Office of CPV Central Committee <br>- CPV Central Committee Office <br>- CPV Central Committee’s Office",
+        "Ban Tổ chức Trung ương Đảng": "- CPV Central Committee’s Organization Commission <br>- Organization Commission under CPV Central Committee",
+        "Ban Tuyên giáo Trung ương Đảng": "- Central Committee’s Publicity and Education Commission <br>- Publicity and Education Commission under CPV Central Committee",
+        "Ban Dân vận Trung ương Đảng": "- CPV Central Committee’s Commission for Mass Mobilization<br>- Commission for Mass Mobilization under CPV Central Committee",
+        "Ủy ban Kiểm tra Trung ương Đảng": "- CPV Central Committee’s Inspection Commission <br>- Inspection Commission under CPV Central Committee",
+        "Ban Đối ngoại Trung ương Đảng": "- CPV Central Committee’s Commission for External Relations <br>- Commission for External Relations under CPV Central Committee",
+        "Ban Nội chính Trung ương Đảng": "- CPV Central Committee’s Internal Political Commission <br>- Internal Political Commission under CPV Central Committee",
+        "Ban Kinh tế Trung ương Đảng": "- CPV Central Committee’s Economic Commission <br>- Economic Commission under CPV Central Committee",
+        "Đảng ủy khối các Cơ quan Trung ương": "CPV Committee of Central-level Agencies’ Group",
+        "Đảng ủy khối các Doanh nghiệp Trung ương": "CPV Committee of National-level State-owned Enterprises’ Group",
+        "Ban Cán sự Đảng/ Đảng đoàn": "CPV Designated Representation",
+        "Ban Bảo vệ chăm sóc sức khỏe cán bộ Trung ương": "Central-level Senior Officials Healthcare Service",
+        "Hội đồng Lý luận Trung ương": "Central Council of Theoretical Studies",
+        "Học viện Chính trị Quốc gia Hồ Chí Minh": "Ho Chi Minh National Academy of Politics",
+        "Tạp chí Cộng sản": "Communist Review",
+        "Báo Nhân dân": "People’s Newspaper",
+        "Nhà Xuất bản Chính trị Quốc gia – Sự thật": "National Political Publishing House",
+        "Ban Chỉ đạo Cải cách Tư pháp Trung ương": "Central Steering Committee for Judicial Reforms",
+        "Ban Chỉ đạo Trung ương về phòng, chống tham nhũng": "Central Steering Committee on Anti-Corruption",
+        "Tổng Bí thư Ban Chấp hành Trung ương Đảng": "General Secretary of CPV Central Committee",
+        "Ủy viên Bộ Chính trị": "- Member of Political Bureau <br>- Political Bureau Member",
+        "Thường trực Ban Bí thư Trung ương Đảng": "- CPV Central Committee’s Executive Secretary <br>- Executive Secretary of CPV Central Committee",
+        "Bí thư Trung ương Đảng": "- Secretary of CPV Central Committee <br>- Member of CPV Central Committee’s Secretariat",
+        "Ủy viên Ban Chấp hành Trung ương Đảng": "- Member of CPV Central Committee <br>- CPV Central Committee member<br>- CPV Central Committee’s member",
+        "Ủy viên dự khuyết Ban Chấp hành Trung ương Đảng": "- Alternate member of CPV Central Committee <br>- CPV Central Committee Alternate member <br>- CPV Central Committee’s Alternate member",
+        "Trưởng Ban (Ban Trung ương Đảng)": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of + tên Ban",
+        "Chánh Văn phòng Trung ương Đảng": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of Office of CPV Central Committee",
+        "Chủ nhiệm Ủy ban Kiểm tra Trung ương Đảng": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of Committee for Inspection under CPV Central Committee",
+        "Phó Trưởng Ban thường trực (Ban Trung ương Đảng)": "Permanent Deputy Chairperson (hoặc Permanent Deputy Chairman nếu là nam, Permanent Deputy Chairwoman nếu là nữ) of + Tên Ban",
+        "Phó Trưởng Ban Trung ương Đảng": "Deputy Chairperson (hoặc Deputy Chairman nếu là nam, Deputy Chairwoman nếu là nữ) of + Tên Ban",
+        "Phó Chánh Văn phòng Trung ương Đảng": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Vice Chairwoman nếu là nữ) of + tên Văn phòng như trên",
+        "Phó Chủ nhiệm Ủy ban Kiểm tra Trung ương": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Vice Chairwoman nếu là nữ) of + tên Ủy ban như trên",
+        "Ủy viên Ủy ban Kiểm tra Trung ương": "Member of + tên Ủy ban như trên",
+        "Quận ủy Trung ương": "Central Military Party Committee",
+        "Đảng ủy Công an Trung ương": "Central Public Security Party Committee",
+        "Đảng ủy Khối Doanh nghiệp Trung ương": "Party Committee of National-level State-Owned Enterprises’ Group",
+        "Đảng ủy Khối Cơ quan Trung ương": "PartyCommittee of Central-level Agencies’ Group",
+        "Chủ tịch nước Cộng hòa Xã hội chủ nghĩaViệt Nam": "President of the Socialist Republic of Viet Nam",
+        "Chủ tịch nước": "State President",
+        "Phó Chủ tịch nước Cộng hòa Xã hội chủ nghĩa Việt Nam": "Vice President of the Socialist Republic of Viet Nam",
+        "Phó Chủ tịch nước": "Vice State President",
+        "Văn phòng Chủ tịch nước": "- Office of State President <br>- State President’s Office <br>- State Presidential Office",
+        "Chủ nhiệm Văn phòng Chủ tịch nước": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of + tên Văn phòng như trên",
+        "Phó Chủ nhiệm Văn phòng Chủ tịch nước": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Chairwoman nếu là nữ) of + tên Văn phòng như trên",
+        "Trợ lý Chủ tịch nước": "Assistant to State President",
+        "Thư ký Chủ tịch nước": "Secretary of State President",
+        "Thủ tướng": "Prime Minister",
+        "Phó Thủ tướng thường trực": "Permanent Deputy Prime Minister",
+        "Phó Thủ tướng": "Deputy Prime Minister",
+        "Văn phòng Chính phủ": "- Office of Government <br>- Government Office <br>- Government’s Office",
+        "Chủ nhiệm Văn phòng Chính phủ": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of + tên Văn phòng như trên",
+        "Phó Chủ nhiệm Văn phòng Chính phủ": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Chairwoman nếu là nữ) of + tên Văn phòng như trên",
+        "Trợ lý Thủ tướng": "Assistant to Prime Minister",
+        "Thư ký Thủ tướng": "Secretary of Prime Minister",
+        "Bộ Quốc phòng": "Ministry of National Defense",
+        "Bộ Công an": "Ministry of Public Security",
+        "Bộ Ngoại giao": "Ministry of Foreign Affairs",
+        "Bộ Tư pháp": "Ministry of Justice",
+        "Bộ Tài chính": "Ministry of Finance",
+        "Bộ Công Thương": "Ministry of Industry and Trade",
+        "Bộ Lao động - Thương binh và Xã hội": "Ministry of Labor, War Invalids and Social Affairs",
+        "Bộ Giao thông Vận tải": "Ministry of Transport",
+        "Bộ Xây dựng": "Ministry of Construction",
+        "Bộ Thông tin và Truyền thông": "Ministry of Information and Communications",
+        "Bộ Giáo dục và Đào tạo": "Ministry of Education and Training",
+        "Bộ Nông nghiệp và Phát triển Nông thôn": "Ministry of Agriculture and Rural Development",
+        "Bộ Kế hoạch và Đầu tư": "Ministry of Planning and Investment",
+        "Bộ Nội vụ": "Ministry of Home Affairs",
+        "Bộ Y tế": "Ministry of Health",
+        "Bộ Khoa học và Công nghệ": "Ministry of Science and Technology ",
+        "Bộ Văn hóa, Thể thao và Du lịch": "Ministry of Culture, Sports and Tourism ",
+        "Bộ Tài nguyên và Môi trường": "Ministry of Natural Resources and Environment ",
+        "Thanh tra Chính phủ": "Government Inspectorate ",
+        "Ngân hàng Nhà nước Việt Nam": "The State Bank of Viet Nam",
+        "Ủy ban Dân tộc": "Committee on Ethnic Minority Affairs",
+        "Ban Quản lý Lăng Chủ tịch Hồ Chí Minh": "President Ho Chi Minh Mausoleum Administration ",
+        "Kiểm toán Nhà nước": "State Audit of Viet Nam",
+        "Bảo hiểm xã hội Việt Nam": "Viet Nam Social Insurance ",
+        "Thông tấn xã Việt Nam": "Viet Nam News Agency",
+        "Đài Tiếng nói Việt Nam": "Voice of Viet Nam",
+        "Đài Truyền hình Việt Nam": "Viet Nam Television",
+        "Viện Khoa học và Công nghệ Việt Nam": "Viet Nam Academy of Science and Technology",
+        "Viện Khoa học Xã hộiViệt Nam": "Viet Nam Academy of Social Sciences",
+        "Văn phòng Bộ": "- Ministry Office <br>- Ministry’s Office <br>- Office of Ministry",
+        "Thanh tra Bộ": "Ministry Inspectorate ",
+        "Tổng cục": "Directorate/ General Department/ Adminnistration ",
+        "Ban, Ủy ban": "Committee/Commission/Panel",
+        "Cục": "Department/Authority/Agency/Administration ",
+        "Vụ": "Department",
+        "Vụ Tổ chức - Cán bộ": "Department of Personnel and Organization",
+        "Vụ Pháp chế": "Department of Legal Affairs/Legal Department",
+        "Vụ Hợp tác Quốc tế": "Department ofInternational Cooperation/ International Cooperation Department",
+        "Học viện": "Academy",
+        "Viện": "Institute",
+        "Trung tâm": "Center",
+        "Hội đồng": "Board/Council/Panel",
+        "Phòng": "Division/Desk/Section",
+        "Bộ trưởng": "Minister ",
+        "Thứ trưởng Thường trực": "Permanent Deputy Minister",
+        "Thứ trưởng": "Deputy Minister",
+        "Tổng Cục trưởng": "Director-General",
+        "Phó Tổng Cục trưởng": "Deputy Director-General ",
+        "Phó Chủ nhiệm Thường trực": "Permanent Vice Chairperson (hoặc Permanent Vice Chairman nếu là nam, Permanent Vice Chairwoman nếu là nữ) ",
+        "Phó Chủ nhiệm": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Chairwoman nếu là nữ) ",
+        "Trợ lý Bộ trưởng": "Assistant Minister ",
+        "Chủ nhiệm Ủy ban": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of + tên Ủy ban",
+        "Phó Chủ nhiệm Ủy ban": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Chairwoman nếu là nữ) of + tên Ủy ban",
+        "Chánh Văn phòng Bộ": "Chief of + tên Văn phòng",
+        "Phó Chánh Văn phòng Bộ": "Deputy Chief of + tên Văn phòng",
+        "Cục trưởng/Vụ trưởng": "Director-General",
+        "Phó Cục trưởng/Phó Vụ trưởng": "Deputy DirectorGeneral",
+        "Giám đốc Học viện": "President ofAcademy/Academy President",
+        "Phó Giám đốc Học viện": "Vice President of Academy",
+        "Viện trưởng": "Director of Institute",
+        "Phó Viện trưởng": "Deputy Director of Institute",
+        "Giám đốc Trung tâm": "Director of Center/Center Director",
+        "Phó Giám đốc Trung tâm": "Deputy Director of Center",
+        "Trưởng phòng": "Head/Chief/Director of + Division ",
+        "Phó trưởng phòng": "Deputy Head/Deputy Chief/ Deputy Director of + Division",
+        "Chuyên viên cao cấp": "Senior Official",
+        "Chuyên viên chính": "Principal Official",
+        "Chuyên viên": "Official",
+        "Thanh tra viên cao cấp": "Senior Inspector",
+        "Thanh tra viên chính": "Principal Inspector",
+        "Thanh tra viên": "Inspector",
+        "Quốc hội nước Cộng hòa Xã hội chủ nghĩa Việt Nam": "The National Assembly of the Socialist Republic of Vietnam ",
+        "Chủ tịch Quốc hội": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of + tên Quốc hội",
+        "Phó Chủ tịch thường trực Quốc hội": "Permanent Vice Chairperson (hoặc Permanent Vice Chairman nếu là nam, Permanent Vice Chairwoman nếu là nữ) + tên Quốc hội",
+        "Phó Chủ tịch Quốc hội": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Vice Chairwoman nếu là nữ) + tên Quốc hội",
+        " Ủy ban Thường vụ Quốc hội": "- Standing Committee of National Assembly <br>- National Assembly Standing Committee + <br>- NationalAssembly’s Standing Committee",
+        "Văn phòng Quốc hội": "- Office of National Assembly <br>- National Assembly Office <br>- National Assembly’s Office",
+        "Chủ nhiệm Văn phòng Quốc hội": "Chairperson (hoặc Chairman nếu là nam, Chairwoman nếu là nữ) of + tên Văn phòng như trên",
+        "Phó Chủ nhiệm Văn phòng Quốc Hội": "Vice Chairperson (hoặc Vice Chairman nếu là nam, Chairwoman nếu là nữ) of + tên Văn phòng như trên",
+        "Tổng thư ký Quốc hội": "Secretary-General of National Assembly.",
+        "Trợ lý Chủ tịch Quốc hội": "Assistant to National Assembly Chairperson",
+        "Thư ký Chủ tịch Quốc hội": "Secretary of National Assembly Chairperson",
+        "Ủy ban Pháp luật Quốc hội": "National Assembly Committee on Law ",
+        "Ủy ban Tư pháp Quốc hội": "National Assembly Judical Committee ",
+        "Ủy ban Kinh tế Quốc hội": "National Assembly Committee on Economy",
+        "Ủy ban Tài chính, Ngân sách Quốc hội": "National Assembly Committee on Finance and Budget ",
+        "Ủy ban Quốc phòng và An ninh Quốc hội": "National Assembly Committee on Security and National Defense ",
+        "Uỷ ban văn hoá, giáo dục, thanh niên, thiếu niên và nhi đồng Quốc hội": "National Assembly Committee on Culture, Education, Youth and Teneeger ",
+        "Uỷ ban về các vấn đề xã hội Quốc hội": "National Assembly Committee on Social Affairs ",
+        "Ủy ban Khoa học, Công nghệ và Môi trường Quốc hội": "National Assembly Committee on Science, Technology and Environment ",
+        "Ủy ban Đối ngoại Quốc hội": "National Assembly Committee on Foreign Affairs",
+        "Viện Kiểm sát Nhân dân Tối cao": "Supreme People’s Procuracy",
+        "Viện trưởng Viện Kiểm sát Nhân dân Tối cao": "President of + tên Viện ",
+        "Phó Viện trưởng Viện Kiểm sát Nhân dân Tối cao": "Vice President of + tên Viện",
+        "Tòa án Nhân dân Tối cao": "Supreme People’s Court ",
+        "Chánh án": "Chief Justice ",
+        "Phó Chánh án": "Deputy Chief Justice",
+        "Mặt trận Tổ quốc Việt Nam": "Viet Nam Fatherland Front ",
+        "Ủy ban Trung ương Mặt trận Tổ quốc Việt Nam": "- Central Committee of Viet Nam Fatherland Front <br>- Viet Nam Fatherland Front Central Committee <br>- Viet Nam Fatherland Front’s Central Committee",
+        "Đoàn Chủ tịch Ủy ban Trung ương Mặt trận Tổ quốc Việt Nam": "Presidium of + tên Ủy ban Trung ương",
+        "Tổng Liên đoàn Lao động Việt Nam": "Viet Nam Confederation of Labor ",
+        "Hội Nông dân Việt Nam": "Viet Nam Farmers’ Union",
+        "Hội Liên hiệp Phụ nữ Việt Nam": "Viet Nam Women’s Union ",
+        "Hội Cựu Chiến binh Việt Nam": "Veterans’ Association of Viet Nam",
+    };
+
+    const itemsPerPage = 10; // Số từ mỗi trang
+    let currentPage = 1;
+    let totalPages = Math.ceil(Object.keys(dictionary).length / itemsPerPage);
+
+    // Hiển thị danh sách từ điển dưới dạng bảng
+    function displayDictionaryList() {
+        const tableBody = document.getElementById('dictionaryTable').getElementsByTagName('tbody')[0];
+        tableBody.innerHTML = '';  // Xóa các dòng cũ
+
+        const startIdx = (currentPage - 1) * itemsPerPage;
+        const endIdx = Math.min(startIdx + itemsPerPage, Object.keys(dictionary).length);
+
+        const words = Object.keys(dictionary).slice(startIdx, endIdx);
+
+        let indexOffset = startIdx;  // Đảm bảo thứ tự không bị thay đổi
+
+        words.forEach((word, index) => {
+            const row = document.createElement('tr');
+            const meaning = dictionary[word];
+
+            // Không chia hàng cho "Thứ tự", chỉ thêm một hàng cho từ và nghĩa
+            row.innerHTML = `<td><strong>${indexOffset + 1}</strong></td><td><strong>${word}</strong></td><td>${meaning}</td>`;
+            tableBody.appendChild(row);
+
+            indexOffset++;  // Tăng chỉ số cho từ hiện tại
+        });
+
+        updatePagination();
+    }
+
+    // Cập nhật các nút phân trang và số trang
+    function updatePagination() {
+        const prevButton = document.getElementById('prevBtn');
+        const nextButton = document.getElementById('nextBtn');
+        const pageNumber = document.getElementById('pageNumber');
+
+        prevButton.disabled = currentPage === 1;
+        nextButton.disabled = currentPage === totalPages;
+
+        // Hiển thị trang hiện tại và tổng số trang
+        pageNumber.textContent = `Trang ${currentPage} / ${totalPages}`;
+    }
+
+    // Chuyển đến trang trước
+    function previousPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            displayDictionaryList();
+        }
+    }
+
+    // Chuyển đến trang sau
+    function nextPage() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayDictionaryList();
+        }
+    }
+
+    // Xóa kết quả khi người dùng nhập từ
+    function clearResult() {
+        document.getElementById('result').innerHTML = '';
+    }
+
+    function lookupWord() {
+    const wordInput = document.getElementById('wordInput').value.trim().toLowerCase();
+    const resultDiv = document.getElementById('result');
+    
+    if (wordInput) {
+        let found = false;
+        if (wordInput) {
+            let found = false;
+            let results = '';
+
+            // Tìm kiếm tất cả các từ trong dictionary, kiểm tra nếu từ nhập vào có trong từ điển
+            for (const word in dictionary) {
+                if (word.toLowerCase().includes(wordInput)) {
+                    results += `<strong>${word}</strong>: ${dictionary[word]}<br><br>`;
+                    found = true;
+                }
+            }
+
+            if (found) {
+                resultDiv.innerHTML = results;  // Hiển thị tất cả các kết quả tìm được
+            } else {
+                resultDiv.innerHTML = 'Không tìm thấy kết quả cho từ này.';
+            }
+        } else {
+            resultDiv.innerHTML = '';  // Nếu không có từ nhập, xóa kết quả
+        }
+    }}
+
+// Lắng nghe sự kiện "Enter" khi người dùng nhập từ
+document.getElementById('wordInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        lookupWord();  // Gọi hàm tra cứu khi nhấn Enter
+    }
+});
+
+
+    // Hiển thị danh sách từ điển khi trang được tải
+    displayDictionaryList();
+    
+</script>
+
+</body>
+</html>
