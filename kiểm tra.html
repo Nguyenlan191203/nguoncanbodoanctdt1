@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Tạo Bài Kiểm Tra</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #f05454;
+}
+
+.form-container h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input[type="text"], input[type="number"], input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button.save-btn {
+  width: 100%;
+  background: #28a745;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.question-container {
+  margin-top: 20px;
+}
+
+.answer-options {
+  margin-top: 10px;
+}
+
+.answer-options input {
+  margin-right: 10px;
+}
+
+h3 {
+  color: #333;
+}
+
+#created-test {
+  display: none;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+</style>
+<body>
+  <div class="container">
+    <h1>Tạo Bài Kiểm Tra</h1>
+    <div class="form-container">
+      <!-- Tiêu đề bài kiểm tra -->
+      <label for="title">Nhập tiêu đề bài kiểm tra</label>
+      <input type="text" id="title" placeholder="Nhập tiêu đề bài kiểm tra">
+
+      <!-- Số câu hỏi -->
+      <div class="form-group">
+        <label for="questions">Số câu hỏi</label>
+        <input type="number" id="questions" placeholder="Số câu hỏi" min="1">
+      </div>
+
+      <!-- Thời gian làm bài -->
+      <div class="form-group">
+        <label for="time">Thời gian làm bài (phút)</label>
+        <input type="number" id="time" placeholder="Thời gian làm bài" min="1">
+      </div>
+
+      <!-- Số điểm -->
+      <div class="form-group">
+        <label for="score">Tổng số điểm</label>
+        <input type="number" id="score" placeholder="Tổng số điểm" min="1">
+      </div>
+
+      <!-- Tải lên từ file -->
+      <div class="form-group">
+        <label for="upload">Tải lên từ file</label>
+        <input type="file" id="upload">
+      </div>
+
+      <!-- Checkbox công bố điểm khi hoàn thành -->
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="auto-publish"> Công bố điểm khi làm bài xong
+        </label>
+      </div>
+
+      <!-- Câu hỏi -->
+      <div id="questions-container">
+        <div class="question-container" id="question1">
+          <h3>Câu 1</h3>
+          <input type="text" placeholder="Nhập nội dung câu hỏi" class="question-text">
+
+          <div class="answer-options">
+            <input type="text" placeholder="Phương án 1" class="answer-option">
+            <input type="text" placeholder="Phương án 2" class="answer-option">
+            <input type="text" placeholder="Phương án 3" class="answer-option">
+            <input type="text" placeholder="Phương án 4" class="answer-option">
+          </div>
+
+          <button type="button" class="add-answer-option">Thêm phương án</button>
+        </div>
+      </div>
+
+      <!-- Thêm câu hỏi mới -->
+      <button type="button" id="add-question" class="save-btn">Thêm câu hỏi mới</button>
+      
+      <!-- Lưu bài kiểm tra -->
+      <button id="save-quiz" class="save-btn">Lưu bài kiểm tra</button>
+    </div>
+  </div>
+
+  <!-- Mục bài kiểm tra đã tạo -->
+  <div id="created-test">
+    <h2>Bài kiểm tra đã tạo</h2>
+    <p><strong>Tiêu đề:</strong> <span id="created-title"></span></p>
+    <p><strong>Số câu hỏi:</strong> <span id="created-questions"></span></p>
+    <p><strong>Thời gian làm bài:</strong> <span id="created-time"></span> phút</p>
+    <p><strong>Tổng số điểm:</strong> <span id="created-score"></span></p>
+    <!-- Không hiển thị công bố điểm -->
+  </div>
+
+  <script>
+    let questionCount = 1;
+
+// Kiểm tra nếu có dữ liệu bài kiểm tra đã lưu trong localStorage
+window.onload = function() {
+  if (localStorage.getItem("quizData")) {
+    const savedData = JSON.parse(localStorage.getItem("quizData"));
+    document.getElementById("title").value = savedData.title;
+    document.getElementById("questions").value = savedData.questions;
+    document.getElementById("time").value = savedData.time;
+    document.getElementById("score").value = savedData.score;
+    if (savedData.autoPublish) {
+      document.getElementById("auto-publish").checked = true;
+    }
+
+    savedData.questionsData.forEach((question, index) => {
+      addQuestion(question.questionText, question.options);
+    });
+
+    // Cập nhật bài kiểm tra đã tạo
+    document.getElementById("created-title").textContent = savedData.title;
+    document.getElementById("created-questions").textContent = savedData.questions;
+    document.getElementById("created-time").textContent = savedData.time;
+    document.getElementById("created-score").textContent = savedData.score;
+
+    // Hiển thị mục bài kiểm tra đã tạo
+    document.getElementById("created-test").style.display = "block";
+  }
+};
+
+// Thêm câu hỏi mới
+document.getElementById("add-question").addEventListener("click", function() {
+  questionCount++;
+  addQuestion();
+});
+
+// Hàm thêm câu hỏi
+function addQuestion(questionText = "", options = ["", "", "", ""]) {
+  const questionContainer = document.createElement("div");
+  questionContainer.classList.add("question-container");
+  questionContainer.id = "question" + questionCount;
+
+  questionContainer.innerHTML = `
+    <h3>Câu ${questionCount}</h3>
+    <input type="text" placeholder="Nhập nội dung câu hỏi" class="question-text" value="${questionText}">
+    <div class="answer-options">
+      ${options.map((option, index) => `
+        <input type="text" placeholder="Phương án ${index + 1}" class="answer-option" value="${option}">
+      `).join('')}
+    </div>
+    <button type="button" class="add-answer-option">Thêm phương án</button>
+  `;
+
+  document.getElementById("questions-container").appendChild(questionContainer);
+}
+
+// Thêm phương án trả lời cho câu hỏi
+document.addEventListener("click", function(event) {
+  if (event.target && event.target.classList.contains("add-answer-option")) {
+    const questionContainer = event.target.closest(".question-container");
+    const newOption = document.createElement("input");
+    newOption.type = "text";
+    newOption.placeholder = "Phương án mới";
+    questionContainer.querySelector(".answer-options").appendChild(newOption);
+  }
+});
+
+// Lưu bài kiểm tra và hiển thị thông tin
+document.getElementById("save-quiz").addEventListener("click", function() {
+  const quizData = {
+    title: document.getElementById("title").value,
+    questions: document.getElementById("questions").value,
+    time: document.getElementById("time").value,
+    score: document.getElementById("score").value,
+    autoPublish: document.getElementById("auto-publish").checked,
+    questionsData: []
+  };
+
+  // Lưu thông tin câu hỏi và phương án trả lời
+  const questionContainers = document.querySelectorAll(".question-container");
+  questionContainers.forEach((container) => {
+    const questionText = container.querySelector(".question-text").value;
+    const options = Array.from(container.querySelectorAll(".answer-option")).map(option => option.value);
+    quizData.questionsData.push({ questionText, options });
+  });
+
+  // Lưu vào localStorage
+  localStorage.setItem("quizData", JSON.stringify(quizData));
+
+  // Cập nhật thông tin bài kiểm tra đã lưu
+  document.getElementById("created-title").textContent = quizData.title;
+  document.getElementById("created-questions").textContent = quizData.questions;
+  document.getElementById("created-time").textContent = quizData.time;
+  document.getElementById("created-score").textContent = quizData.score;
+
+  // Hiển thị mục bài kiểm tra đã tạo
+  document.getElementById("created-test").style.display = "block";
+
+  // Cuộn trang đến mục bài kiểm tra đã tạo
+  document.getElementById("created-test").scrollIntoView({ behavior: 'smooth' });
+});
+
+  </script>
+</body>
+</html>
