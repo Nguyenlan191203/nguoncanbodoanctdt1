@@ -124,10 +124,19 @@ button:hover {
             margin: 0 10px;
             font-weight: bold;
         }
-        @media (max-width: 768px) {
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+        }
+        @media (max-width: 767px) {
             .container {
             width: 85%;
-            height: 897px;
+            height: 920px;
             margin: 0 auto;
             padding: 35px;
             background-image: url('nền cẩm nang từ vựng 1.jpg');
@@ -138,7 +147,7 @@ button:hover {
             padding-top: 70px;
         } 
         button {
-            width: 28%;
+            width: 30%;
     padding: 10px;
     background-color: #4CAF50;
     color: white;
