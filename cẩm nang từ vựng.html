@@ -182,6 +182,56 @@ button:hover {
     font-size: 11.5px;
 }
         }
+
+        @media (max-width: 567px) {
+            .container {
+        width: 62%;
+        height: 1025px; /* Hoặc có thể thay đổi tùy theo nhu cầu */
+        margin: 0 auto;
+        padding: 35px;
+        background-image: url('nền cẩm nang từ vựng 1.jpg');
+        background-size: cover; /* Hình nền sẽ tự động điều chỉnh cho phù hợp */
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding-top: 70px;
+    }
+        button {
+            width: 30%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+        }
+        button i {
+    margin-right: 6px;  /* Khoảng cách giữa biểu tượng và văn bản */
+    font-size: 11px;
+}
+.dictionary-table {
+            margin-top: 30px;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+        }
+        /* Cố định chiều rộng cho các cột */
+.dictionary-table th:nth-child(1), .dictionary-table td:nth-child(1) {
+    width: 10.5%; /* Cột thứ tự có chiều rộng 10% */
+}
+
+.dictionary-table th:nth-child(2), .dictionary-table td:nth-child(2), 
+.dictionary-table th:nth-child(3), .dictionary-table td:nth-child(3) {
+    width: 45%; /* Cột Nghĩa Tiếng Việt và Tiếng Anh đều có chiều rộng 45% */
+}
+.page-number{
+    font-size: 11.5px;
+}
+        }
     
 
     </style>
