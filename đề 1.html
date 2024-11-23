@@ -19,6 +19,15 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        image {
+    border-radius: 5px;
+    margin-left: 0; /* Bạn có thể bỏ margin nếu cần */
+    margin-top: 80px;
+    margin-bottom: 10px;
+    width: 100%; /* Đảm bảo chiều rộng là 100% của phần tử cha */
+    height: auto; /* Chiều cao tự động để giữ tỷ lệ */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
         h1 {
             text-align: center;
             color: #4CAF50;
@@ -102,6 +111,46 @@
         .circle.active {
             background-color: #45a049;
         }
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+           
+            }
+            section image{
+            
+            padding: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 500%;
+            height: 100%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            
+
+            
+         
+            
+        }
+        
+
+        @media (max-width: 767px) {
+           
+            .gioithieu {
+                margin-left: -10px;
+            }
+            .image {
+        width: 100%; /* Đảm bảo chiều rộng là 100% trong màn hình nhỏ */
+        height: auto; /* Giữ tỷ lệ */
+        margin-top: 0px;
+        margin-bottom: -10px;
+    }}
+            
     </style>
 </head>
 <body>
