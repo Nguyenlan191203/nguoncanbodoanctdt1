@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuộc Thi Trắc Nghiệm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 300vh;
+            background-color: #f0f0f0;
+             
+            
+        }
+        .exam-container {
+            margin-top: -10px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 300vh;
+            background-color: #fff;
+            background-size: 100%;
+            background-image: url('Bài kiểm tra.jpg');
+           
+            
+           
+            
+           
+            
+            
+        }
+        .container {
+            
+            width: 60%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: absolute; /* Để đặt vị trí hình chữ nhật con */
+            margin-top: 52% ; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            left: 50%; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            transform: translate(-50%, -50%); /* Căn giữa hoàn hảo */
+        }
+        image {
+    border-radius: 5px;
+    margin-left: 0; /* Bạn có thể bỏ margin nếu cần */
+    margin-top: 80px;
+    margin-bottom: 10px;
+    width: 100%; /* Đảm bảo chiều rộng là 100% của phần tử cha */
+    height: auto; /* Chiều cao tự động để giữ tỷ lệ */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .question {
+            display: none; /* Hide all questions initially */
+            margin: 20px 0;
+        }
+        .question p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .answers {
+            margin: 10px 0;
+        }
+        .answers label {
+            display: block;
+            padding: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd; /* Tạo đường kẻ phân cách */
+        }
+        .answers input[type="radio"] {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            background-color: #0040ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #80c6ff;
+        }
+        .result {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+        #timer {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF0000;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 8px;
+        }
+        
+
+        /* Style for the circles */
+        .circle-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .circle {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            border-radius: 50%;
+            background-color: #ddd;
+    color: #000;
+            line-height: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .circle.active {
+            background-color: #0040ff;
+            color:white;
+            
+        }
+        #form-container {
+    display: none; /* Ẩn form-container ban đầu */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Đảm bảo form xuất hiện trên tất cả các phần tử khác */
+}
+.thongtin {
+            width: 60%;
+            margin: 60px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+           
+            
+           
+            position: absolute; /* Để đặt vị trí hình chữ nhật con */
+            margin-top: 24% ; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            left: 50%; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            transform: translate(-50%, -50%); /* Căn giữa hoàn hảo */
+            
+           
+            
+            
+           
+            
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+           
+            }
+            section image{
+            
+            padding: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 500%;
+            height: 100%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            
+
+            
+         
+            
+        }
+        
+
+        @media (max-width: 767px) {
+           
+            .gioithieu {
+                margin-left: -10px;
+            }
+            .image {
+        width: 100%; /* Đảm bảo chiều rộng là 100% trong màn hình nhỏ */
+        height: auto; /* Giữ tỷ lệ */
+        margin-top: 0px;
+        margin-bottom: -10px;
+    }
+    .container {
+            width: 85%;
+            margin-top: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    h1{
+        font-size: 20px;
+    }
+#timer{
+    font-size: 20px;
+}
+.question{
+    font-size: 15px;
+}
+.question p{
+    font-size: 17px;
+}
+.submit-btn{
+    font-size:15px;
+    margin-top: 0px;
+}
+.result{
+    font-size: 15px;
+}
+.thongtin{
+    width: 85%;
+    margin-top: 180px;
+}
+}
+@media (max-width: 567px) {
+    .container {
+            width: 85%;
+            margin-top: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .thongtin{
+    width: 85%;
+    margin-top: 150px;
+}
+
+}
+@media (max-width: 467px) {
+    .container {
+            width: 85%;
+            margin-top: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .thongtin{
+    width: 85%;
+    margin-top: 120px;
+}
+
+}
+
+            
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+        <section>
+            <img class="image" src="đoàn thanh niên.jpg" alt="Example Image" style="padding-top: -100px;">
+        </section>
+    </div>
+    </header>
+<div class="exam-container">
+    
+    <div class="thongtin">
+    <h1>Đề 1</h1>
+    <p><strong>Họ và tên:</strong> <span id="displayName"></span></p>
+    <p><strong>Đơn vị:</strong> <span id="displayUnit"></span></p>
+</div>
+
+    <div class="container">
+        
+
+        <!-- Hiển thị thời gian đếm ngược -->
+        <div id="timer">2:00</div>
+
+        <form id="quizForm">
+            <!-- Vòng tròn điều hướng câu hỏi -->
+            <div class="circle-container">
+                <span class="circle active" onclick="showQuestion(1)">1</span>
+                <span class="circle" onclick="showQuestion(2)">2</span>
+                <span class="circle" onclick="showQuestion(3)">3</span>
+                <span class="circle" onclick="showQuestion(4)">4</span>
+                <span class="circle" onclick="showQuestion(5)">5</span>
+                <span class="circle" onclick="showQuestion(6)">6</span>
+                <span class="circle" onclick="showQuestion(7)">7</span>
+                <span class="circle" onclick="showQuestion(8)">8</span>
+                <span class="circle" onclick="showQuestion(9)">9</span>
+                <span class="circle" onclick="showQuestion(10)">10</span>
+            </div>
+
+            <!-- Câu 1 -->
+            <div class="question" id="question1">
+                <p>Câu 1: Đại hội Đoàn toàn quốc lần thứ V diễn ra vào thời gian nào?</p>
+                <table class="question-table">
+                    <tr>
+                        <td><input type="radio" name="q1" value="a"> Từ 27/11 đến 30/11/1987.</td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q1" value="b"> Từ 15/10 đến 18/10/1992.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q1" value="c"> Từ 15/10 đến 20/10/1992.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q1" value="d"> Từ 26/11 đến 29/11/1997.</label></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Câu 2 -->
+            <div class="question" id="question2">
+                <p>Câu 2: Đoàn Thanh niên Đoàn Thanh niên Lao động Việt Nam được chính thức đổi tên thành Đoàn Thanh niên Lao động Hồ Chí Minh vào?</p>
+                <table class="question-table">
+                    <tr>
+                        <td><label><input type="radio" name="q2" value="a"> Từ 1937 - 1939.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q2" value="b"> Từ 2/1970 - 11/1976.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q2" value="c"> Từ 25/10/1956 - 1970.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q2" value="d"> Từ 5/1941 - 1956.</label></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Câu 3 -->
+            <div class="question" id="question3">
+                <p>Câu 3: Đoàn Thanh niên từ khi thành lập cho đến nay đã đổi tên mấy lần?</p>
+                <table class="question-table">
+                    <tr>
+                        <td><label><input type="radio" name="q3" value="a"> 5 lần.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q3" value="b"> 6 lần.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q3" value="c"> 7 lần.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q3" value="d"> 8 lần.</label></td>
+                    </tr>
+                </table>
+            </div>
+
+             <!-- Câu 4 -->
+             <div class="question" id="question4">
+                <p>Câu 4: Tại Đại hội Đoàn toàn quốc lần thứ II, đồng chí được bầu làm Bí thư thứ nhất là ai?</p>
+                <table class="question-table">
+                    <tr>
+                        <td><label><input type="radio" name="q4" value="a"> Vũ Quang.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q4" value="b"> Vũ Mão.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q4" value="c"> Nguyễn Lam.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q4" value="d"> Vũ Trọng Kim.</label></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Câu 5 -->
+            <div class="question" id="question5">
+                <p>Câu 5: Tại Đại hội Đoàn toàn quốc lần thứ III, đồng chí được bầu làm Bí thư thứ nhất là ai?</p>
+                <table class="question-table">
+                    <tr>
+                        <td><label><input type="radio" name="q5" value="a"> Nguyễn Lam.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q5" value="b"> Vũ Quang.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q5" value="c"> Đặng Quốc Bảo.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q5" value="d"> Vũ Trọng Kim.</label></td>
+                    </tr>
+                </table>
+            </div>
+
+             <!-- Câu 6 -->
+             <div class="question" id="question6">
+                <p>Câu 6: Tại Đại hội Đoàn toàn quốc lần thứ IV, đồng chí được bầu làm Bí thư thứ 1 là ai?</p>
+                <table class="question-table">
+                    <tr>
+                        <td><label><input type="radio" name="q6" value="a"> Hồ Đức Việt.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q6" value="b"> Vũ Mão.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q6" value="c"> Đặng Quốc Bảo.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q6" value="d"> H Quang Dự.</label></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Câu 7 -->
+            <div class="question" id="question7">
+                <p>Câu 7: Đại hội Đoàn toàn quốc lần thứ V diễn ra tại đâu?</p>
+                <table class="question-table">
+                    <tr>
+                        <td><label><input type="radio" name="q7" value="a"> Thái Nguyên.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q7" value="b"> Thái Bình.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q7" value="c"> Hà Nội.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q7" value="d"> Hà Tây.</label></td>
+                    </tr>
+                </table>
+            </div>
+
+             <!-- Câu 8 -->
+             <div class="question" id="question8">
+                <p>Câu 8: Đại hội Đoàn toàn quốc lần thứ III diễn ra vào thời gian nào?</p>
+                <table class="question-table">
+                    <tr>
+                        <td><label><input type="radio" name="q8" value="a"> Từ 25/10 đến 4/11/1956.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q8" value="b"> Từ 23/3 đến 25/3/1961.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q8" value="c"> Từ 20/11 đến 22/11/1980.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q8" value="d"> Từ 27/11 đến 30/11/1987.</label></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Câu 9 -->
+            <div class="question" id="question9">
+                <p>Câu 9: Bí thư thứ nhất Trung ương Đoàn hiện nay là ai?</p>
+                <table class="question-table">
+                    <tr>
+                        <td><label><input type="radio" name="q9" value="a"> Vũ Trọng Kim.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q9" value="b"> Hồng Bình Quân.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q9" value="c"> Lê Quốc Phong</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q9" value="d"> Nguyễn Thị Mai.</label></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Câu 10 -->
+            <div class="question" id="question10">
+                <p>Câu 10: Đại hội Đoàn toàn quốc lần thứ VIII diễn ra vào thời gian nào?</p>
+                <table class="question-table">
+                    <tr>
+                        <td><label><input type="radio" name="q10" value="a"> Từ 15/10 đến 18/10/1992.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q10" value="b"> Từ 26/10 đến 30/10/1995.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q10" value="c"> Từ 26/11 đến 29/11/1997.</label></td>
+                    </tr>
+                    <tr>
+                        <td><label><input type="radio" name="q10" value="d">  Từ 07/12 đến 11/12/2002.</label></td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <!-- Nút Tiếp theo và Nộp bài -->
+            <button type="button" class="submit-btn" id="nextBtn" onclick="nextQuestion()">Tiếp theo</button>
+            <button type="button" class="submit-btn" id="submitBtn" onclick="submitQuiz()" style="display: none;">Nộp bài</button>
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+
+</div>
+    <script>
+        // Lấy thông tin từ localStorage và hiển thị lên trang
+        const fullName = localStorage.getItem("fullName");
+        const unit = localStorage.getItem("unit");
+
+        // Hiển thị thông tin nếu có
+        document.getElementById("displayName").textContent = fullName || "Chưa có thông tin";
+        document.getElementById("displayUnit").textContent = unit || "Chưa có thông tin";
+
+
+        let currentQuestion = 1; // Track which question the user is on
+const totalQuestions = 10;
+
+// Check if there's a saved timer value in sessionStorage
+let timeLeft = sessionStorage.getItem("timeLeft") ? parseInt(sessionStorage.getItem("timeLeft")) : 120;
+
+// Update the timer every second
+const timerElement = document.getElementById("timer");
+const timerInterval = setInterval(function() {
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+    if (seconds < 10) {
+        seconds = "0" + seconds; // Add leading zero if seconds < 10
+    }
+    timerElement.textContent = minutes + ":" + seconds;
+
+    timeLeft--;
+   
+
+    if (timeLeft < 0) {
+        clearInterval(timerInterval);
+        submitQuiz();
+    }
+}, 1000);
+
+// Show the first question when the page loads
+document.getElementById("question1").style.display = "block";
+
+function showQuestion(questionNumber) {
+            for (let i = 1; i <= totalQuestions; i++) {
+                document.getElementById(`question${i}`).style.display = "none";
+                document.querySelector(`.circle:nth-child(${i})`).classList.remove('active');
+            }
+            document.getElementById(`question${questionNumber}`).style.display = "block";
+            document.querySelector(`.circle:nth-child(${questionNumber})`).classList.add('active');
+            currentQuestion = questionNumber;
+}
+
+function nextQuestion() {
+    if (currentQuestion < totalQuestions) {
+        currentQuestion++;
+        showQuestion(currentQuestion);
+    }
+
+    // If it's the last question, hide "Next" and show "Submit"
+    if (currentQuestion === totalQuestions) {
+        document.getElementById("nextBtn").style.display = "none";
+        document.getElementById("submitBtn").style.display = "block";
+    }
+}
+
+function submitQuiz() {
+    var score = 0;
+    var form = document.getElementById("quizForm");
+    const answer1 = document.querySelector('input[name="q1"]:checked');
+    if (answer1 && answer1.value === "a") {score++};
+    const answer2 = document.querySelector('input[name="q2"]:checked');
+    if (answer2 && answer2.value === "b") {score++};
+    const answer3 = document.querySelector('input[name="q3"]:checked');
+    if (answer3 && answer3.value === "c") score++;
+    const answer4 = document.querySelector('input[name="q4"]:checked');
+    if (answer4 && answer4.value === "a") {score++};
+    const answer5 = document.querySelector('input[name="q5"]:checked');
+    if (answer5 && answer5.value === "c") {score++};
+    const answer6 = document.querySelector('input[name="q6"]:checked');
+    if (answer6 && answer6.value === "b") {score++};
+    const answer7 = document.querySelector('input[name="q7"]:checked');
+    if (answer7 && answer7.value === "c") {score++};
+    const answer8 = document.querySelector('input[name="q8"]:checked');
+    if (answer8 && answer8.value === "b") {score++};
+    const answer9 = document.querySelector('input[name="q9"]:checked');
+    if (answer9 && answer9.value === "c") {score++};
+    const answer10 = document.querySelector('input[name="q10"]:checked');
+    if (answer10 && answer10.value === "d") {score++};
+
+    const scorePercentage = (score / totalQuestions) * 100;
+    document.getElementById("result").textContent = `Bạn đã trả lời đúng ${score} / ${totalQuestions} câu, tương đương ${scorePercentage} điểm.`;
+
+    var buttons = form.querySelectorAll('input[type="radio"]');
+    buttons.forEach(button => button.disabled = true);
+    document.getElementById("submitBtn").disabled = true;
+
+    // Clear the sessionStorage once quiz is submitted
+    sessionStorage.removeItem("timeLeft");
+
+    // Gửi dữ liệu đến API
+    sendDataToAPI(fullName, unit, score, totalQuestions, scorePercentage, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10   );
+    
+}
+ 
+  // Hàm gửi dữ liệu đến API
+  function sendDataToAPI(fullName, unit, score, totalQuestions, scorePercentage, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10) {
+            const apiUrl = "https://sheetdb.io/api/v1/18qsjpyoq2wu9"; // Địa chỉ API của bạn
+
+            // Lấy nội dung của phần <h1> (đề 1)
+    const examTitle = document.querySelector('h1').textContent; // Lấy nội dung của phần <h1> (đề 1)
+
+            const data = {
+                fullName: fullName,
+                unit: unit,
+                
+                score: score,
+                totalQuestions: totalQuestions,
+                scorePercentage: scorePercentage,
+                examTitle: examTitle,  // Thêm thông tin <h2> vào dữ liệu
+                answers: {
+                    q1: answer1 ? encodeURIComponent(answer1.value) : "Chưa trả lời", // Mã hóa câu trả lời
+                    q2: answer2 ? encodeURIComponent(answer2.value) : "Chưa trả lời", // Mã hóa câu trả lời
+                    q3: answer3 ? encodeURIComponent(answer3.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q4: answer4 ? encodeURIComponent(answer4.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q5: answer5 ? encodeURIComponent(answer5.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q6: answer6 ? encodeURIComponent(answer6.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q7: answer7 ? encodeURIComponent(answer7.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q8: answer8 ? encodeURIComponent(answer8.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q9: answer9 ? encodeURIComponent(answer9.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q10: answer10 ? encodeURIComponent(answer10.value) : "Chưa trả lời"  // Mã hóa câu trả lời
+                }
+            };
+
+
+            fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Dữ liệu đã được gửi thành công:", data);
+                // Thông báo gửi dữ liệu thành công (tùy chỉnh theo yêu cầu)
+            })
+            .catch(error => {
+                console.error("Lỗi khi gửi dữ liệu:", error);
+            });
+        }
+
+
+    </script>
+
+</body>
+</html>
