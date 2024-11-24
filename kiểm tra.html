@@ -22,6 +22,7 @@
             background-size: 100%;
             background-image: url('Bài kiểm tra.jpg');
             background-repeat: no-repeat;
+            flex-direction: column; /* Stack exams vertically */
         }
 
         .exam-content {
@@ -32,7 +33,8 @@
             padding: 20px 170px;
             max-width: 400px;
             text-align: center;
-            margin-top: -1000px;
+            margin-top: 20px;
+            
         }
 
         .exam-content h1 {
@@ -249,10 +251,47 @@
             <h1>Đề thi số 1</h1>
             <p class="exam-details">Thời gian: 5 phút</p>
             <p class="exam-details">Số câu hỏi: 10 câu</p>
-            
-            <button class="join-button" onclick="showForm()">Tham gia</button>
+            <button class="join-button" onclick="showForm(1)">Tham gia</button>
         </div>
+
+         <!-- Second Exam (Đề thi số 2) -->
+         <div class="exam-content">
+            <h1>Đề thi số 2</h1>
+            <p class="exam-details">Thời gian: 7 phút</p>
+            <p class="exam-details">Số câu hỏi: 10 câu</p>
+            <button class="join-button" onclick="showForm(2)">Tham gia</button>
+        </div>
+
+        <!-- Second Exam (Đề thi số 2) -->
+        <div class="exam-content">
+            <h1>Đề thi số 3</h1>
+            <p class="exam-details">Thời gian: 5 phút</p>
+            <p class="exam-details">Số câu hỏi: 10 câu</p>
+            <button class="join-button" onclick="showForm(3)">Tham gia</button>
+        </div>
+
+        <div class="exam-content">
+            <h1>Đề thi số 4</h1>
+            <p class="exam-details">Thời gian: 5 phút</p>
+            <p class="exam-details">Số câu hỏi: 10 câu</p>
+            <button class="join-button" onclick="showForm(4)">Tham gia</button>
+        </div>
+
+        <div class="exam-content">
+            <h1>Đề thi số 5</h1>
+            <p class="exam-details">Thời gian: 5 phút</p>
+            <p class="exam-details">Số câu hỏi: 10 câu</p>
+            <button class="join-button" onclick="showForm(5)">Tham gia</button>
+        </div>
+        <div class="exam-content">
+            <h1>Đề thi số 6</h1>
+            <p class="exam-details">Thời gian: 5 phút</p>
+            <p class="exam-details">Số câu hỏi: 10 câu</p>
+            <button class="join-button" onclick="showForm(6)">Tham gia</button>
+        </div>
+        
     </div>
+    
 
     <!-- Overlay and Form -->
     <div class="overlay" id="overlay"></div>
@@ -266,33 +305,49 @@
     </div>
 
     <script>
-        // Hiển thị form khi nhấn vào nút "Tham gia"
-        function showForm() {
-            document.getElementById('form-container').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
+        
 
-        // Đóng form khi nhấn vào overlay
-        document.getElementById('overlay').onclick = function() {
-            document.getElementById('form-container').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        };
-// Hàm lưu thông tin và chuyển tới trang mới
+
+
+
+    // Show form and set the exam number when the "Tham gia" button is clicked
+function showForm(examNumber) {
+    // Store the exam number in localStorage
+    localStorage.setItem('examNumber', examNumber);
+
+    document.getElementById('form-container').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+}
+
+// Close the form when the overlay is clicked
+document.getElementById('overlay').onclick = function() {
+    document.getElementById('form-container').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+};
+
+// Save the form data and redirect to the correct exam page
 document.getElementById("user-form").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    // Lấy thông tin từ form
+    // Get form values
     const fullName = document.getElementById("fullName").value;
     const unit = document.getElementById("unit").value;
 
-    // Lưu thông tin vào localStorage
+    // Save form data to localStorage
     localStorage.setItem("fullName", fullName);
     localStorage.setItem("unit", unit);
 
-    // Chuyển đến trang mới
-    window.location.href = "đề 1.html";
+    // Get the exam number from localStorage
+    const examNumber = localStorage.getItem("examNumber");
+
+    // Redirect to the appropriate exam page
+    if (examNumber) {
+        window.location.href = `đề ${examNumber}.html`;  // Redirect based on exam number
+    } else {
+        alert("Lỗi: Không có thông tin về kỳ thi.");
+    }
 });
-        
+
         
     </script>
 </body>
