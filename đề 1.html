@@ -518,7 +518,7 @@
 </div>
     <script>
         // Lấy thông tin từ localStorage và hiển thị lên trang
-        const fullName = localStorage.getItem("fullName");
+        const fullName = localStorage.getItem("name");
         const unit = localStorage.getItem("unit");
          
 
@@ -622,7 +622,7 @@ function submitQuiz() {
             const apiUrl = "https://sheetdb.io/api/v1/18qsjpyoq2wu9"; // Địa chỉ API của bạn
 
             const data = {
-                name: fullName,
+                name: name,
                 unit: unit,
                 
                 score: score,
