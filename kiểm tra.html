@@ -116,56 +116,43 @@
     </style>
 </head>
 <body>
-    <div class="exam-container">
-        <div class="exam-content">
-            <h1>Đề thi số 1</h1>
-            <p class="exam-details">Thời gian: 5 phút</p>
-            <p class="exam-details">Số câu hỏi: 10 câu</p>
-            
-            <button class="join-button" onclick="showForm()">Tham gia</button>
-        </div>
-    </div>
+    <h2>Tham gia</h2>
+    <button onclick="openForm()">Tham gia</button>
 
-    <!-- Overlay and Form -->
-    <div class="overlay" id="overlay"></div>
-    <div class="form-container" id="form-container">
-        <h2>Nhập thông tin</h2>
-        <form id="user-form">
-            <input type="text" id="name" name="name" placeholder="Họ và tên" required>
-            <input type="text" id="unit" name="unit" placeholder="Đơn vị" required>
-            <button type="submit">Gửi thông tin</button>
+    <!-- Form nhập thông tin -->
+    <div id="form" style="display:none;">
+        <h3>Nhập thông tin</h3>
+        <form id="infoForm">
+            <label for="fullName">Họ và tên:</label>
+            <input type="text" id="fullName" name="fullName" required><br><br>
+            <label for="unit">Đơn vị:</label>
+            <input type="text" id="unit" name="unit" required><br><br>
+            <button type="submit">Lưu</button>
         </form>
     </div>
 
     <script>
-        // Hiển thị form khi nhấn vào nút "Tham gia"
-        function showForm() {
-            document.getElementById('form-container').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
+        // Hàm mở form khi nhấn tham gia
+function openForm() {
+    document.getElementById("form").style.display = "block";
+}
 
-        // Đóng form khi nhấn vào overlay
-        document.getElementById('overlay').onclick = function() {
-            document.getElementById('form-container').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        };
 // Hàm lưu thông tin và chuyển tới trang mới
-document.getElementById("user-form").addEventListener("submit", function(event) {
+document.getElementById("infoForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
     // Lấy thông tin từ form
-    const fullName = document.getElementById("name").value;
+    const fullName = document.getElementById("fullName").value;
     const unit = document.getElementById("unit").value;
 
     // Lưu thông tin vào localStorage
-    localStorage.setItem("name", name);
+    localStorage.setItem("fullName", fullName);
     localStorage.setItem("unit", unit);
 
     // Chuyển đến trang mới
     window.location.href = "đề 1.html";
 });
-        
-        
+
     </script>
 </body>
 </html>

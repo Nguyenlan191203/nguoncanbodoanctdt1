@@ -518,9 +518,8 @@
 </div>
     <script>
         // Lấy thông tin từ localStorage và hiển thị lên trang
-        const fullName = localStorage.getItem("name");
+        const fullName = localStorage.getItem("fullName");
         const unit = localStorage.getItem("unit");
-         
 
         // Hiển thị thông tin nếu có
         document.getElementById("displayName").textContent = fullName || "Chưa có thông tin";
@@ -613,16 +612,16 @@ function submitQuiz() {
     sessionStorage.removeItem("timeLeft");
 
     // Gửi dữ liệu đến API
-    sendDataToAPI(name, unit, score, totalQuestions, scorePercentage, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10   );
+    sendDataToAPI(fullName, unit, score, totalQuestions, scorePercentage, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10   );
     
 }
  
   // Hàm gửi dữ liệu đến API
-  function sendDataToAPI(name, unit, score, totalQuestions, scorePercentage, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10) {
+  function sendDataToAPI(fullName, unit, score, totalQuestions, scorePercentage, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10) {
             const apiUrl = "https://sheetdb.io/api/v1/18qsjpyoq2wu9"; // Địa chỉ API của bạn
 
             const data = {
-                name: name,
+                fullName: fullName,
                 unit: unit,
                 
                 score: score,
