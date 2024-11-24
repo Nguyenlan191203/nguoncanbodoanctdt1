@@ -5,125 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giao Diện Đề Thi</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .exam-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 300vh;
+            background-color: #fff;
+            background-size: 100%;
+            background-image: url('Bài kiểm tra.jpg');
+        }
+
+        .exam-content {
+            width: 90%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px 170px;
+            max-width: 400px;
+            text-align: center;
+            margin-top: -1000px;
+        }
+
+        .exam-content h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .exam-details {
+            font-size: 16px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .exam-description {
+            font-size: 14px;
+            color: #777;
+            margin: 20px 0;
+        }
+
+        .join-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .join-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Form cho việc nhập thông tin */
+        .form-container {
+            display: none; /* Ẩn form khi chưa nhấn Tham gia */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 1000;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Overlay */
+        .overlay {
+            display: none; /* Ẩn overlay khi chưa nhấn Tham gia */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
 </head>
-<style>
-    body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    
-}
-
-.exam-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 300vh;
-    background-color: #fff;
-    background-size: 100%;
-    background-image: url('Bài kiểm tra.jpg');
-}
-
-.exam-content {
-    width: 90%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px 170px;
-    max-width: 400px;
-    text-align: center;
-    margin-top: -1000px;
-}
-
-.exam-content h1 {
-    font-size: 24px;
-    color: #333;
-}
-
-.exam-details {
-    font-size: 16px;
-    color: #555;
-    margin: 10px 0;
-}
-
-.exam-description {
-    font-size: 14px;
-    color: #777;
-    margin: 20px 0;
-}
-
-.join-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.join-button:hover {
-    background-color: #45a049;
-}
-
-@media (min-width: 768px) {
-            .container {
-                flex-direction: row;
-            }
-
-            .content {
-                flex: 3;
-            }
-        }
-        @media (max-width: 767px) {
-            .exam-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 115vh;
-    background-color: #fff;
-    background-size: 100%;
-    background-image: url('Bài kiểm tra.jpg');
-    background-repeat: no-repeat; /* Không lặp lại hình ảnh */
-}
-.exam-content {
-    width: 90%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px 90px;
-    max-width: 200px;
-    text-align: center;
-    margin-top: -280px;
-}
-        }
-        @media (max-width: 467px) {
-            .exam-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 115vh;
-    background-color: #fff;
-    background-size: 100%;
-    background-image: url('Bài kiểm tra.jpg');
-    background-repeat: no-repeat; /* Không lặp lại hình ảnh */
-}
-.exam-content {
-    width: 90%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px 90px;
-    max-width: 200px;
-    text-align: center;
-    margin-top: -300px;
-}
-        }
-</style>
 <body>
     <div class="exam-container">
         <div class="exam-content">
@@ -131,8 +122,50 @@
             <p class="exam-details">Thời gian: 5 phút</p>
             <p class="exam-details">Số câu hỏi: 10 câu</p>
             
-            <button class="join-button" onclick="window.location.href='đề 1.html'">Tham gia</button>
+            <button class="join-button" onclick="showForm()">Tham gia</button>
         </div>
     </div>
+
+    <!-- Overlay and Form -->
+    <div class="overlay" id="overlay"></div>
+    <div class="form-container" id="form-container">
+        <h2>Nhập thông tin</h2>
+        <form id="user-form">
+            <input type="text" id="name" name="name" placeholder="Họ và tên" required>
+            <input type="text" id="unit" name="unit" placeholder="Đơn vị" required>
+            <button type="submit">Gửi thông tin</button>
+        </form>
+    </div>
+
+    <script>
+        // Hiển thị form khi nhấn vào nút "Tham gia"
+        function showForm() {
+            document.getElementById('form-container').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        // Đóng form khi nhấn vào overlay
+        document.getElementById('overlay').onclick = function() {
+            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        };
+// Hàm lưu thông tin và chuyển tới trang mới
+document.getElementById("user-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Lấy thông tin từ form
+    const fullName = document.getElementById("name").value;
+    const unit = document.getElementById("unit").value;
+
+    // Lưu thông tin vào localStorage
+    localStorage.setItem("name", name);
+    localStorage.setItem("unit", unit);
+
+    // Chuyển đến trang mới
+    window.location.href = "đề 1.html";
+});
+        
+        
+    </script>
 </body>
 </html>
