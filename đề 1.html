@@ -9,15 +9,40 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            height: 300vh;
             background-color: #f0f0f0;
+             
+            
+        }
+        .exam-container {
+            margin-top: -10px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 300vh;
+            background-color: #fff;
+            background-size: 100%;
+            background-image: url('Bài kiểm tra.jpg');
+           
+            
+           
+            
+           
+            
+            
         }
         .container {
+            
             width: 60%;
             margin: 50px auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: absolute; /* Để đặt vị trí hình chữ nhật con */
+            margin-top: 52% ; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            left: 50%; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            transform: translate(-50%, -50%); /* Căn giữa hoàn hảo */
         }
         image {
     border-radius: 5px;
@@ -57,7 +82,7 @@
             width: 100%;
             padding: 10px;
             font-size: 18px;
-            background-color: #4CAF50;
+            background-color: #0040ff;
             color: white;
             border: none;
             cursor: pointer;
@@ -65,7 +90,7 @@
             margin-top: 20px;
         }
         .submit-btn:hover {
-            background-color: #45a049;
+            background-color: #80c6ff;
         }
         .result {
             text-align: center;
@@ -102,15 +127,53 @@
             height: 30px;
             margin: 5px;
             border-radius: 50%;
-            background-color: #4CAF50;
-            color: white;
+            background-color: #ddd;
+    color: #000;
             line-height: 30px;
             cursor: pointer;
             font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
         }
         .circle.active {
-            background-color: #45a049;
+            background-color: #0040ff;
+            color:white;
+            
         }
+        #form-container {
+    display: none; /* Ẩn form-container ban đầu */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Đảm bảo form xuất hiện trên tất cả các phần tử khác */
+}
+.thongtin {
+            width: 60%;
+            margin: 60px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+           
+            
+           
+            position: absolute; /* Để đặt vị trí hình chữ nhật con */
+            margin-top: 24% ; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            left: 50%; /* Đặt vào vị trí giữa hình chữ nhật mẹ */
+            transform: translate(-50%, -50%); /* Căn giữa hoàn hảo */
+            
+           
+            
+            
+           
+            
+        }
+        
         @media (min-width: 768px) {
             .container {
                 flex-direction: row;
@@ -152,7 +215,7 @@
     }
     .container {
             width: 85%;
-            margin: 50px auto;
+            margin-top: 500px;
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
@@ -177,6 +240,25 @@
 .result{
     font-size: 15px;
 }
+.thongtin{
+    width: 85%;
+    margin-top: 180px;
+}
+}
+@media (max-width: 567px) {
+    .container {
+            width: 85%;
+            margin-top: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .thongtin{
+    width: 85%;
+    margin-top: 150px;
+}
+
 }
 
             
@@ -190,9 +272,16 @@
         </section>
     </div>
     </header>
+<div class="exam-container">
     
+    <div class="thongtin">
+    
+    <p><strong>Họ và tên:</strong> <span id="displayName"></span></p>
+    <p><strong>Đơn vị:</strong> <span id="displayUnit"></span></p>
+</div>
+
     <div class="container">
-        <h1>Cuộc Thi Trắc Nghiệm</h1>
+        
 
         <!-- Hiển thị thời gian đếm ngược -->
         <div id="timer">2:00</div>
@@ -217,16 +306,16 @@
                 <p>Câu 1: Đoàn TNCS Hồ Chí Minh thành lập vào ngày, tháng, năm nào? Do ai sáng lập và lãnh đạo?</p>
                 <table class="question-table">
                     <tr>
-                        <td><input type="radio" name="q1" value="26/3/1931. Do Chủ tịch Hồ Chí Minh"> 26/3/1931. Do Chủ tịch Hồ Chí Minh</td>
+                        <td><input type="radio" name="q1" value="a"> 26/3/1931. Do Chủ tịch Hồ Chí Minh</td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q1" value="26/3/1931. Do Đảng Cộng sản Việt Nam và Chủ tịch Hồ Chí Minh"> 26/3/1931. Do Đảng Cộng sản Việt Nam và Chủ tịch Hồ Chí Minh</label></td>
+                        <td><label><input type="radio" name="q1" value="b"> 26/3/1931. Do Đảng Cộng sản Việt Nam và Chủ tịch Hồ Chí Minh</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q1" value="26/3/1931. Do Đảng Cộng sản Việt Nam và Trần Phú"> 26/3/1931. Do Đảng Cộng sản Việt Nam và Trần Phú</label></td>
+                        <td><label><input type="radio" name="q1" value="c"> 26/3/1931. Do Đảng Cộng sản Việt Nam và Trần Phú</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q1" value="26/3/1931. Do Đảng Cộng sản Việt Nam"> 26/3/1931. Do Đảng Cộng sản Việt Nam</label></td>
+                        <td><label><input type="radio" name="q1" value="d"> 26/3/1931. Do Đảng Cộng sản Việt Nam</label></td>
                     </tr>
                 </table>
             </div>
@@ -236,16 +325,16 @@
                 <p>Câu 2: Bài ca chính thức của Đoàn có tên là gì?</p>
                 <table class="question-table">
                     <tr>
-                        <td><label><input type="radio" name="q2" value="Thanh niên làm theo lời Bác - Hoàng Hòa"> Thanh niên làm theo lời Bác - Hoàng Hòa</label></td>
+                        <td><label><input type="radio" name="q2" value="a"> Thanh niên làm theo lời Bác - Hoàng Hòa</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q2" value="Thanh niên làm theo lời Bác - Hoàng Hà"> Thanh niên làm theo lời Bác - Hoàng Hà</label></td>
+                        <td><label><input type="radio" name="q2" value="b"> Thanh niên làm theo lời Bác - Hoàng Hà</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q2" value="Kết niên lại - Hoàng Hòa"> Kết niên lại - Hoàng Hà</label></td>
+                        <td><label><input type="radio" name="q2" value="c"> Kết niên lại - Hoàng Hà</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q2" value="Lên đàng - Hoàng Hà"> Lên đàng - Hoàng Hà</label></td>
+                        <td><label><input type="radio" name="q2" value="d"> Lên đàng - Hoàng Hà</label></td>
                     </tr>
                 </table>
             </div>
@@ -255,16 +344,16 @@
                 <p>Câu 3: Tác giả của huy hiệu Đoàn Thanh niên Cộng sản Hồ Chí Minh là ai? Ra đời vào thời gian nào?</p>
                 <table class="question-table">
                     <tr>
-                        <td><label><input type="radio" name="q3" value="Hoàng Hòa, 1931"> Hoàng Hòa, 1931</label></td>
+                        <td><label><input type="radio" name="q3" value="a"> Hoàng Hòa, 1931</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q3" value="Phạm Tuyên, 1932"> Phạm Tuyên, 1932</label></td>
+                        <td><label><input type="radio" name="q3" value="b"> Phạm Tuyên, 1932</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q3" value="Huỳnh Văn Thuận, 1951"> Huỳnh Văn Thuận, 1951</label></td>
+                        <td><label><input type="radio" name="q3" value="c"> Huỳnh Văn Thuận, 1951</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q3" value="Tôn Đức Lượng, 1951"> Tôn Đức Lượng, 1951</label></td>
+                        <td><label><input type="radio" name="q3" value="d"> Tôn Đức Lượng, 1951</label></td>
                     </tr>
                 </table>
             </div>
@@ -274,16 +363,16 @@
                 <p>Câu 4: Đoàn Thanh niên từ khi thành lập cho đến nay đã đổi tên mấy lần?</p>
                 <table class="question-table">
                     <tr>
-                        <td><label><input type="radio" name="q4" value="3"> 3</label></td>
+                        <td><label><input type="radio" name="q4" value="a"> 3</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q4" value="5"> 5</label></td>
+                        <td><label><input type="radio" name="q4" value="b"> 5</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q4" value="7"> 7</label></td>
+                        <td><label><input type="radio" name="q4" value="c"> 7</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q4" value="9"> 9</label></td>
+                        <td><label><input type="radio" name="q4" value="d"> 9</label></td>
                     </tr>
                 </table>
             </div>
@@ -293,16 +382,16 @@
                 <p>Câu 5: Đồng chí Bí thư thứ nhất đầu tiên của Ban Chấp hành Đoàn TNCS Hồ Chí Minh là ai?</p>
                 <table class="question-table">
                     <tr>
-                        <td><label><input type="radio" name="q5" value="Đ/c Nguyễn Lam"> Đ/c Nguyễn Lam</label></td>
+                        <td><label><input type="radio" name="q5" value="a"> Đ/c Nguyễn Lam</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q5" value="Đ/c Vũ Quang"> Đ/c Vũ Quang</label></td>
+                        <td><label><input type="radio" name="q5" value="b"> Đ/c Vũ Quang</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q5" value="Đ/c Đặng Quốc Bảo"> Đ/c Đặng Quốc Bảo</label></td>
+                        <td><label><input type="radio" name="q5" value="c"> Đ/c Đặng Quốc Bảo</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q5" value="Đ/c Vũ Mão"> Đ/c Vũ Mão</label></td>
+                        <td><label><input type="radio" name="q5" value="d"> Đ/c Vũ Mão</label></td>
                     </tr>
                 </table>
             </div>
@@ -312,16 +401,16 @@
                 <p>Câu 6: Người Đoàn viên TNCS Hồ Chí Minh đầu tiên là ai?</p>
                 <table class="question-table">
                     <tr>
-                        <td><label><input type="radio" name="q6" value="Lê Hữu Trọng(Lý Tự Trọng)"> Lê Hữu Trọng(Lý Tự Trọng)</label></td>
+                        <td><label><input type="radio" name="q6" value="a"> Lê Hữu Trọng(Lý Tự Trọng)</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q6" value="Nông Văn Dền"> Nông Văn Dền</label></td>
+                        <td><label><input type="radio" name="q6" value="b"> Nông Văn Dền</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q6" value="Kim Đồng"> Kim Đồng</label></td>
+                        <td><label><input type="radio" name="q6" value="c"> Kim Đồng</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q6" value="Võ Thị Sáu"> Võ Thị Sáu</label></td>
+                        <td><label><input type="radio" name="q6" value="d"> Võ Thị Sáu</label></td>
                     </tr>
                 </table>
             </div>
@@ -331,16 +420,16 @@
                 <p>Câu 7: Hệ thống tổ chức Đoàn Thanh niên Cộng sản Hồ Chí Minh bao gồm mấy cấp?</p>
                 <table class="question-table">
                     <tr>
-                        <td><label><input type="radio" name="q7" value="Trung ương, tỉnh, huyện"> Trung ương, tỉnh, huyện</label></td>
+                        <td><label><input type="radio" name="q7" value="a"> Trung ương, tỉnh, huyện</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q7" value="Trung ương, tỉnh, huyện, xã, chi đoàn"> Trung ương, tỉnh, huyện, xã, chi đoàn</label></td>
+                        <td><label><input type="radio" name="q7" value="b"> Trung ương, tỉnh, huyện, xã, chi đoàn</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q7" value="Trung ương, tỉnh, huyện, cơ sở Đoàn"> Trung ương, tỉnh, huyện, cơ sở Đoàn</label></td>
+                        <td><label><input type="radio" name="q7" value="c"> Trung ương, tỉnh, huyện, cơ sở Đoàn</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q7" value="Tỉnh, huyện, cơ sở Đoàn"> Tỉnh, huyện, cơ sở Đoàn</label></td>
+                        <td><label><input type="radio" name="q7" value="d"> Tỉnh, huyện, cơ sở Đoàn</label></td>
                     </tr>
                 </table>
             </div>
@@ -350,16 +439,16 @@
                 <p>Câu 8: Đoàn Thanh niên Cộng sản Hồ Chí Minh tổ chức và hoạt động theo nguyên tắc nào?</p>
                 <table class="question-table">
                     <tr>
-                        <td><label><input type="radio" name="q8" value="Hợp tác. bình đẳng, phối hợp và thống nhất hành động"> Hợp tác, bình đẳng, phối hợp và thống nhất hành động</label></td>
+                        <td><label><input type="radio" name="q8" value="a"> Hợp tác, bình đẳng, phối hợp và thống nhất hành động</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q8" value="Tập trung dân chủ"> Tập trung dân chủ</label></td>
+                        <td><label><input type="radio" name="q8" value="b"> Tập trung dân chủ</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q8" value="Hiệp thương dân chủ"> Hiệp thương dân chủ</label></td>
+                        <td><label><input type="radio" name="q8" value="c"> Hiệp thương dân chủ</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q8" value="Tự guyện, tự quản"> Tự nguyện, tự quản</label></td>
+                        <td><label><input type="radio" name="q8" value="d"> Tự nguyện, tự quản</label></td>
                     </tr>
                 </table>
             </div>
@@ -369,16 +458,16 @@
                 <p>Câu 9: Đại hội Đoàn toàn quốc lần thứ I diễn ra tại đau?</p>
                 <table class="question-table">
                     <tr>
-                        <td><label><input type="radio" name="q9" value="Thái Nguyên"> Thái Nguyên</label></td>
+                        <td><label><input type="radio" name="q9" value="a"> Thái Nguyên</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q9" value="Thái Bình"> Thái Bình</label></td>
+                        <td><label><input type="radio" name="q9" value="b"> Thái Bình</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q9" value="Hà Nội"> Hà Nội</label></td>
+                        <td><label><input type="radio" name="q9" value="c"> Hà Nội</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q9" value="Hà Tây"> Hà Tây</label></td>
+                        <td><label><input type="radio" name="q9" value="d"> Hà Tây</label></td>
                     </tr>
                 </table>
             </div>
@@ -388,16 +477,16 @@
                 <p>Câu 10: Khi mới thành lập, Đoàn Thanh niên Cộng sản Hồ Chí Minh có tên là gì?</p>
                 <table class="question-table">
                     <tr>
-                        <td><label><input type="radio" name="q10" value="Đoàn Thanh niên Cộng sản Việt Nam"> Đoàn Thanh niên Cộng sản Việt Nam</label></td>
+                        <td><label><input type="radio" name="q10" value="a"> Đoàn Thanh niên Cộng sản Việt Nam</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q10" value="Đoàn Thanh niên Cộng sản Đông Dương"> Đoàn Thanh niên Cộng sản Đông Dương</label></td>
+                        <td><label><input type="radio" name="q10" value="b"> Đoàn Thanh niên Cộng sản Đông Dương</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q10" value="Đoàn Thanh niên Phản đế Đông Dương"> Đoàn Thanh niên Phản đế Đông Dương</label></td>
+                        <td><label><input type="radio" name="q10" value="c"> Đoàn Thanh niên Phản đế Đông Dương</label></td>
                     </tr>
                     <tr>
-                        <td><label><input type="radio" name="q10" value="Đoàn Thanh niên Dân chủ Đông Dương"> Đoàn Thanh niên Dân chủ Đông Dương</label></td>
+                        <td><label><input type="radio" name="q10" value="d"> Đoàn Thanh niên Dân chủ Đông Dương</label></td>
                     </tr>
                 </table>
             </div>
@@ -411,7 +500,18 @@
         <div id="result" class="result"></div>
     </div>
 
+</div>
     <script>
+        // Lấy thông tin từ localStorage và hiển thị lên trang
+        const fullName = localStorage.getItem("fullName");
+        const unit = localStorage.getItem("unit");
+         
+
+        // Hiển thị thông tin nếu có
+        document.getElementById("displayName").textContent = fullName || "Chưa có thông tin";
+        document.getElementById("displayUnit").textContent = unit || "Chưa có thông tin";
+
+
         let currentQuestion = 1; // Track which question the user is on
 const totalQuestions = 10;
 
@@ -429,7 +529,7 @@ const timerInterval = setInterval(function() {
     timerElement.textContent = minutes + ":" + seconds;
 
     timeLeft--;
-    sessionStorage.setItem("timeLeft", timeLeft); // Store the updated time in sessionStorage
+   
 
     if (timeLeft < 0) {
         clearInterval(timerInterval);
@@ -441,17 +541,13 @@ const timerInterval = setInterval(function() {
 document.getElementById("question1").style.display = "block";
 
 function showQuestion(questionNumber) {
-    // Hide all questions
-    for (let i = 1; i <= totalQuestions; i++) {
-        document.getElementById(`question${i}`).style.display = "none";
-        document.querySelector(`.circle:nth-child(${i})`).classList.remove('active');
-    }
-
-    // Show the selected question
-    document.getElementById(`question${questionNumber}`).style.display = "block";
-    document.querySelector(`.circle:nth-child(${questionNumber})`).classList.add('active');
-
-    currentQuestion = questionNumber;
+            for (let i = 1; i <= totalQuestions; i++) {
+                document.getElementById(`question${i}`).style.display = "none";
+                document.querySelector(`.circle:nth-child(${i})`).classList.remove('active');
+            }
+            document.getElementById(`question${questionNumber}`).style.display = "block";
+            document.querySelector(`.circle:nth-child(${questionNumber})`).classList.add('active');
+            currentQuestion = questionNumber;
 }
 
 function nextQuestion() {
@@ -470,20 +566,29 @@ function nextQuestion() {
 function submitQuiz() {
     var score = 0;
     var form = document.getElementById("quizForm");
+    const answer1 = document.querySelector('input[name="q1"]:checked');
+    if (answer1 && answer1.value === "b") {score++};
+    const answer2 = document.querySelector('input[name="q2"]:checked');
+    if (answer2 && answer2.value === "a") {score++};
+    const answer3 = document.querySelector('input[name="q3"]:checked');
+    if (answer3 && answer3.value === "c") score++;
+    const answer4 = document.querySelector('input[name="q4"]:checked');
+    if (answer4 && answer4.value === "c") {score++};
+    const answer5 = document.querySelector('input[name="q5"]:checked');
+    if (answer5 && answer5.value === "a") {score++};
+    const answer6 = document.querySelector('input[name="q6"]:checked');
+    if (answer6 && answer6.value === "a") {score++};
+    const answer7 = document.querySelector('input[name="q7"]:checked');
+    if (answer7 && answer7.value === "c") {score++};
+    const answer8 = document.querySelector('input[name="q8"]:checked');
+    if (answer8 && answer8.value === "b") {score++};
+    const answer9 = document.querySelector('input[name="q9"]:checked');
+    if (answer9 && answer9.value === "a") {score++};
+    const answer10 = document.querySelector('input[name="q10"]:checked');
+    if (answer10 && answer10.value === "b") {score++};
 
-    if (form.q1.value === "26/3/1931. Do Đảng Cộng sản Việt Nam và Chủ tịch Hồ Chí Minh") score++;
-    if (form.q2.value === "Thanh niên làm theo lời Bác - Hoàng Hòa") score++;
-    if (form.q3.value === "Huỳnh Văn Thuận, 1951") score++;
-    if (form.q4.value === "7") score++;
-    if (form.q5.value === "Đ/c Nguyễn Lam") score++;
-    if (form.q6.value === "Lê Hữu Trọng(Lý Tự Trọng)") score++;
-    if (form.q7.value === "Trung ương, tỉnh, huyện, cơ sở Đoàn") score++;
-    if (form.q8.value === "Tập trung dân chủ") score++;
-    if (form.q9.value === "Thái Nguyên") score++;
-    if (form.q10.value === "Đoàn Thanh niên Cộng sản Đông Dương") score++;
-
-    var result = document.getElementById("result");
-    result.textContent = "Bạn đã trả lời đúng " + score + " / " + totalQuestions + " câu.";
+    const scorePercentage = (score / totalQuestions) * 100;
+    document.getElementById("result").textContent = `Bạn đã trả lời đúng ${score} / ${totalQuestions} câu, tương đương ${scorePercentage} điểm.`;
 
     var buttons = form.querySelectorAll('input[type="radio"]');
     buttons.forEach(button => button.disabled = true);
@@ -491,7 +596,55 @@ function submitQuiz() {
 
     // Clear the sessionStorage once quiz is submitted
     sessionStorage.removeItem("timeLeft");
+
+    // Gửi dữ liệu đến API
+    sendDataToAPI(name, unit, score, totalQuestions, scorePercentage, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10   );
+    
 }
+ 
+  // Hàm gửi dữ liệu đến API
+  function sendDataToAPI(name, unit, score, totalQuestions, scorePercentage, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10) {
+            const apiUrl = "https://sheetdb.io/api/v1/18qsjpyoq2wu9"; // Địa chỉ API của bạn
+
+            const data = {
+                name: fullName,
+                unit: unit,
+                
+                score: score,
+                totalQuestions: totalQuestions,
+                scorePercentage: scorePercentage,
+                answers: {
+                    q1: answer1 ? encodeURIComponent(answer1.value) : "Chưa trả lời", // Mã hóa câu trả lời
+                    q2: answer2 ? encodeURIComponent(answer2.value) : "Chưa trả lời", // Mã hóa câu trả lời
+                    q3: answer3 ? encodeURIComponent(answer3.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q4: answer4 ? encodeURIComponent(answer4.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q5: answer5 ? encodeURIComponent(answer5.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q6: answer6 ? encodeURIComponent(answer6.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q7: answer7 ? encodeURIComponent(answer7.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q8: answer8 ? encodeURIComponent(answer8.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q9: answer9 ? encodeURIComponent(answer9.value) : "Chưa trả lời",  // Mã hóa câu trả lời
+                    q10: answer10 ? encodeURIComponent(answer10.value) : "Chưa trả lời"  // Mã hóa câu trả lời
+                }
+            };
+
+
+            fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Dữ liệu đã được gửi thành công:", data);
+                // Thông báo gửi dữ liệu thành công (tùy chỉnh theo yêu cầu)
+            })
+            .catch(error => {
+                console.error("Lỗi khi gửi dữ liệu:", error);
+            });
+        }
+
 
     </script>
 
