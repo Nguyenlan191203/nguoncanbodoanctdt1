@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Thành viên</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .input-group {
+      margin: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .input-group input {
+      width: 45%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .input-group button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .input-group button:hover {
+      background-color: #45a049;
+    }
+    .search-group {
+      margin: 15px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    .search-group input {
+      width: 87%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .search-group button {
+      padding: 10px 20px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .search-group button:hover {
+      background-color: #1976D2;
+    }
+    .member-list {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .member-list th, .member-list td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    .member-list th {
+      background-color: #f2f2f2;
+    }
+    .actions button {
+      background-color: #f44336;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .actions button:hover {
+      background-color: #d32f2f;
+    }
+    @media (max-width:767px) {
+        h1 {
+      text-align: center;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+        .search-group input {
+      width: 75%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Quản lý Thành viên</h1>
+
+    <!-- Tìm kiếm thành viên -->
+    <div class="search-group">
+      <input type="text" id="searchInput" placeholder="Tìm kiếm thành viên">
+      <button onclick="searchMembers()">Tìm kiếm</button>
+    </div>
+
+    
+
+    <!-- Danh sách thành viên -->
+    <table class="member-list">
+      <thead>
+        <tr>
+          <th>Tên</th>
+          <th>Email</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="membersTable">
+        <!-- Thành viên sẽ được liệt kê ở đây -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Lưu trữ danh sách thành viên trong localStorage (hoặc có thể sử dụng một cơ sở dữ liệu)
+    let members = JSON.parse(localStorage.getItem('members')) || [];
+
+    // Hàm thêm thành viên
+    function addMember() {
+      const name = document.getElementById('memberName').value;
+      const email = document.getElementById('memberEmail').value;
+
+      // Kiểm tra nếu thông tin không trống
+      if (!name || !email) {
+        alert('Vui lòng nhập tên và email');
+        return;
+      }
+
+      // Thêm thành viên mới vào danh sách
+      const newMember = { name, email };
+      members.push(newMember);
+
+      // Lưu lại danh sách thành viên vào localStorage
+      localStorage.setItem('members', JSON.stringify(members));
+
+      // Cập nhật lại danh sách thành viên hiển thị
+      displayMembers();
+
+      // Xóa thông tin trong ô input sau khi thêm
+      document.getElementById('memberName').value = '';
+      document.getElementById('memberEmail').value = '';
+    }
+
+    // Hàm hiển thị danh sách thành viên
+    function displayMembers() {
+      const tableBody = document.getElementById('membersTable');
+      tableBody.innerHTML = ''; // Xóa danh sách cũ
+
+      members.forEach((member, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${member.name}</td>
+          <td>${member.email}</td>
+          <td class="actions">
+            <button onclick="editMember(${index})">Chỉnh sửa</button>
+            <button onclick="deleteMember(${index})">Xóa</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Hàm chỉnh sửa thông tin thành viên
+    function editMember(index) {
+      const newName = prompt('Nhập tên mới:', members[index].name);
+      const newEmail = prompt('Nhập email mới:', members[index].email);
+
+      if (newName && newEmail) {
+        members[index] = { name: newName, email: newEmail };
+        localStorage.setItem('members', JSON.stringify(members));
+        displayMembers();
+      }
+    }
+
+    // Hàm xóa thành viên
+    function deleteMember(index) {
+      const confirmation = confirm('Bạn có chắc muốn xóa thành viên này?');
+      if (confirmation) {
+        members.splice(index, 1);
+        localStorage.setItem('members', JSON.stringify(members));
+        displayMembers();
+      }
+    }
+
+    // Hàm tìm kiếm thành viên
+    function searchMembers() {
+      const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+
+      const filteredMembers = members.filter(member => {
+        return (
+          member.name.toLowerCase().includes(searchQuery) || 
+          member.email.toLowerCase().includes(searchQuery)
+        );
+      });
+
+      displayFilteredMembers(filteredMembers);
+    }
+
+    // Hàm hiển thị thành viên đã lọc
+    function displayFilteredMembers(filteredMembers) {
+      const tableBody = document.getElementById('membersTable');
+      tableBody.innerHTML = ''; // Xóa danh sách cũ
+
+      if (filteredMembers.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="3" style="text-align:center;">Không tìm thấy thành viên nào.</td></tr>`;
+      }
+
+      filteredMembers.forEach((member, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${member.name}</td>
+          <td>${member.email}</td>
+          <td class="actions">
+            <button onclick="editMember(${index})">Chỉnh sửa</button>
+            <button onclick="deleteMember(${index})">Xóa</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Hiển thị danh sách thành viên khi tải trang
+    window.onload = displayMembers;
+  </script>
+
+</body>
+</html>
