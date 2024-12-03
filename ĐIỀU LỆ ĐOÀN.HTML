@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUẬT THANH NIÊN</title>
+    <!-- Thêm liên kết đến Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <head>
+        <link rel="icon" href="BIỂU TƯỢNG.jpg" type="image/png" style=" border-radius: 10px;">
+        
+    </head>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            background-color: #ffc4c4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .accordion-container {
+            width: 60%;
+            margin: 50px auto;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Căn chỉnh hình ảnh */
+        .search-container {
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 80%;
+            padding: 10px 60px 10px 10px; /* Thêm không gian bên phải cho icon */
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #FF0000;
+            outline: none;
+        }
+
+        /* Thêm icon luật thanh niên vào ô input */
+        .search-container .search-icon {
+            position: absolute;
+            left: 10px;  /* Đặt icon vào phía bên trái */
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #FF0000;
+        }
+
+        .search-container .search-image {
+            position: absolute;
+            left: 10px;  /* Đặt hình ảnh vào phía bên trái */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px; /* Đặt kích thước hình ảnh */
+            height: 30px;
+        }
+
+        /* Định dạng hình ảnh ở trên cùng */
+        .header-image {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+        }
+
+        .accordion {
+            background-color: #FF0000;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            text-align: left;
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            margin-bottom: 5px;
+            text-align: justify; /* Căn đều chữ */
+            line-height: 1.3;
+           
+        }
+
+        .accordion:hover {
+              background-color: #ff0000b0
+        }
+
+        .accordion .arrow {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            
+        }
+
+        .panel {
+            padding: 10px 20px;
+            background-color: #e9ecef;
+            display: none;
+            border-left: 3px solid #FF0000;
+            margin-bottom: 10px;
+            border-radius: 0 0 5px 5px;
+            font-size: 20px;
+        }
+
+        .panel.show {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+        .panel p {
+    text-align: justify; /* Căn đều chữ trong thẻ <p> */
+    margin: 0;
+    padding: 0 10px; /* Thêm padding nếu cần */
+}
+.panel .accordion{
+    background-color: #ff3939;
+}
+@media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+        }
+        @media (max-width:767px) {
+            .accordion {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            text-align: left;
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 13px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            margin-bottom: 5px;
+            text-align: justify; /* Căn đều chữ */
+            line-height: 1.3;
+           
+        }
+        .search-container input {
+            width: 80%;
+            padding: 10px 60px 10px 10px; /* Thêm không gian bên phải cho icon */
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #007bff;
+            outline: none;
+        }
+        .accordion-container {
+            width: 80%;
+            margin: 50px auto;
+            text-align: center;
+            position: relative;
+        }
+        .accordion .arrow {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+            
+        }
+        .panel{
+            font-size: 14px;
+        }
+    }
+    </style>
+</head>
+<body>
+
+    <div class="accordion-container">
+        <!-- Thêm hình ảnh biểu tượng luật thanh niên -->
+        <img src="ĐIỀU LỆ ĐOÀN 1.jpg" alt="Luật Thanh Niên" class="header-image">
+        
+        <!-- Thêm ô tìm kiếm -->
+        <div class="search-container">
+           
+            <input type="text" id="searchInput" placeholder="Tìm kiếm trong nội dung..." >
+        </div>
+
+        <!-- Các mục accordion -->
+        <button class="accordion">
+            Chương I: ĐOÀN VIÊN
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 1:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>  1. Đoàn viên Đoàn Thanh niên Cộng sản Hồ Chí Minh là thanh niên Việt Nam tiên tiến, phấn đấu vì mục tiêu, lý tưởng của Đảng Cộng sản Việt Nam và Chủ tịch Hồ Chí Minh, có tinh thần yêu nước, tự cường dân tộc; có lối sống lành mạnh, cần kiệm, trung thực; tích cực, gương mẫu trong học tập, lao động, hoạt động xã hội và bảo vệ Tổ quốc, gắn bó mật thiết với thanh niên; chấp hành nghiêm chỉnh pháp luật của Nhà nước và Điều lệ Đoàn.
+                    <br>2. Thanh niên Việt Nam tuổi từ 16 đến 30, tích cực học tập, lao động và bảo vệ Tổ quốc, được tìm hiểu về Đoàn và tán thành Điều lệ Đoàn, tự nguyện hoạt động trong một tổ chức cơ sở của Đoàn, có lý lịch rõ ràng đều được xét kết nạp vào Đoàn.
+                    <br>3. Việc kết nạp thanh niên vào Đoàn được tiến hành theo các bước và thủ tục sau:
+                    <br>- Thanh niên vào Đoàn tự nguyện viết đơn, báo cáo lý lịch và được một trong các tập thể, cá nhân sau đây giới thiệu và bảo đảm:
+                    <br>+ Một đoàn viên cùng công tác, sinh hoạt ít nhất ba tháng.
+                    <br>+ Tập thể Chi hội Liên hiệp Thanh niên Việt Nam (nếu là hội viên Hội Liên hiệp Thanh niên Việt Nam).
+                    <br>+ Ban Chấp hành Chi hội Sinh viên Việt Nam (nếu là hội viên Hội Sinh viên Việt Nam).
+                    <br>+ Tập thể chi đội (nếu là đội viên Đội Thiếu niên Tiền phong Hồ Chí Minh).
+                    <br>- Được hội nghị chi đoàn xét đồng ý kết nạp với sự biểu quyết tán thành của trên một phần hai (1/2) tổng số đoàn viên có mặt tại hội nghị và được Đoàn cấp trên trực tiếp ra quyết định kết nạp. Trường hợp xét kết nạp nhiều người thì phải xét và quyết định kết nạp từng người một.
+                    <br>- Ở nơi chưa có tổ chức Đoàn và đoàn viên, hoặc chưa có tổ chức Hội Liên hiệp Thanh niên Việt Nam, Hội Sinh viên Việt Nam thì Đoàn cấp trên cử cán bộ, đoàn viên về làm công tác phát triển đoàn viên, hoặc do một đảng viên cùng công tác, sinh hoạt ít nhất ba tháng ở nơi đó giới thiệu và bảo đảm; Ban Chấp hành Đoàn cấp trên trực tiếp xét quyết định kết nạp.
+                   </p>
+            </div>
+
+            <button class="accordion">
+                Điều 2:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>Đoàn viên có nhiệm vụ:
+                    <br>1. Luôn luôn phấn đấu vì lý tưởng của Đảng và Bác Hồ. Tích cực học tập, lao động rèn luyện, tham gia các hoạt động xã hội, xây dựng và bảo vệ Tổ quốc.
+                    <br>2. Gương mẫu chấp hành và vận động thanh thiếu nhi thực hiện đường lối, chủ trương của Đảng, chính sách và pháp luật của Nhà nước. Tham gia xây dựng, bảo vệ Đảng, chính quyền và các đoàn thể nhân dân. Chấp hành Điều lệ Đoàn và các nghị quyết của Đoàn; tích cực tuyên truyền về tổ chức Đoàn trong thanh niên; sinh hoạt Đoàn và đóng đoàn phí đúng quy định.
+                    <br>3. Liên hệ mật thiết với thanh niên, tích cực xây dựng Hội Liên hiệp Thanh niên Việt Nam, Hội Sinh viên Việt Nam và các thành viên khác của Hội Liên hiệp Thanh niên Việt Nam, Đội Thiếu niên Tiền phong Hồ Chí Minh; giúp đỡ thanh niên và đội viên trở thành đoàn viên.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 3:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>Đoàn viên có quyền:
+                    <br>1. Yêu cầu tổ chức Đoàn đại diện, bảo vệ quyền và lợi ích hợp pháp, chính đáng của mình, được giúp đỡ và tạo điều kiện để phấn đấu trưởng thành.
+                    <br>2. Ứng cử, đề cử và bầu cử cơ quan lãnh đạo các cấp của Đoàn.
+                    <br>3. Được thông tin, thảo luận, chất vấn, phê bình, biểu quyết, đề nghị và bảo lưu ý kiến của mình về công việc của tổ chức Đoàn; tham gia hoạt động Đoàn tại nơi cư trú.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 4:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Đoàn viên quá 30 tuổi, chi đoàn làm lễ trưởng thành Đoàn; nếu có nguyện vọng tiếp tục sinh hoạt Đoàn, chi đoàn xem xét, quyết định, nhưng không quá 35 tuổi.
+                    <br>2. Đoàn viên quá 30 tuổi nếu được bầu cử vào cơ quan lãnh đạo các cấp của Đoàn hoặc làm công tác chuyên trách thì tiếp tục hoạt động trong tổ chức Đoàn.
+                    <br>3. Đoàn viên không tham gia sinh hoạt Đoàn hoặc không đóng đoàn phí ba tháng trong một năm mà không có lý do chính đáng thì hội nghị chi đoàn xem xét, quyết định xóa tên trong danh sách đoàn viên và báo cáo lên Đoàn cấp trên trực tiếp.
+                    <br>4. Đoàn viên danh dự là những người thực sự tiêu biểu, là tấm gương sáng cho đoàn viên, thanh thiếu nhi noi theo, có tâm huyết và có nhiều đóng góp với Đoàn, có uy tín trong thanh thiếu nhi và xã hội. Ban Thường vụ Trung ương Đoàn quy định việc kết nạp đoàn viên danh dự.
+                    <br>5. Đoàn viên được trao Thẻ đoàn viên và có trách nhiệm sử dụng, quản lý thẻ đúng quy định. Đoàn viên có hồ sơ cá nhân theo mẫu thống nhất áp dụng trong toàn Đoàn, do Đoàn cơ sở, chi đoàn cơ sở quản lý.
+                   </p>
+                </div>
+            <!-- Các Điều khác -->
+        </div>
+
+        
+
+        <button class="accordion">
+            Chương II: NGUYÊN TẮC,CƠ CẤU TỔ CHỨC VÀ HOẠT ĐỘNG
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 5:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>  Đoàn Thanh niên Cộng sản Hồ Chí Minh tổ chức và hoạt động theo nguyên tắc tập trung dân chủ:
+                    <br>1. Cơ quan lãnh đạo các cấp của Đoàn do bầu cử lập ra, thực hiện tập thể lãnh đạo, cá nhân phụ trách.
+                    <br>2. Cơ quan lãnh đạo cao nhất của Đoàn là đại hội đại biểu toàn quốc. Cơ quan lãnh đạo của Đoàn ở mỗi cấp là đại hội đại biểu hoặc đại hội đoàn viên ở cấp ấy. Giữa hai kỳ đại hội, cơ quan lãnh đạo là Ban Chấp hành do đại hội Đoàn cùng cấp bầu ra; giữa hai kỳ họp Ban Chấp hành, cơ quan lãnh đạo là Ban Thường vụ do Ban Chấp hành cùng cấp bầu ra. Số lượng Ủy viên Ban Chấp hành cấp nào do Đại hội cấp đó quyết định theo Hướng dẫn của Ban Thường vụ Trung ương Đoàn. Số lượng Ủy viên Ban Thường vụ không quá một phần ba số lượng Ủy viên Ban Chấp hành. Ở cấp Trung ương, số lượng Bí thư Trung ương Đoàn không quá một phần ba số lượng Ủy viên Ban Thường vụ.
+                    <br>3. Nghị quyết của Đoàn phải được chấp hành nghiêm chỉnh, cấp dưới phục tùng cấp trên, thiểu số phục tùng đa số, cá nhân phục tùng tổ chức.
+                    <br>4. Trước khi quyết định các công việc và biểu quyết nghị quyết của Đoàn, các thành viên đều được cung cấp thông tin và phát biểu ý kiến của mình, ý kiến thuộc về thiểu số được quyền bảo lưu và báo cáo lên Đoàn cấp trên cho đến Đại hội đại biểu toàn quốc, song phải nghiêm chỉnh chấp hành nghị quyết hiện hành.
+                    <br>5. Đại hội, hội nghị của các cơ quan lãnh đạo của Đoàn chỉ có giá trị khi có ít nhất hai phần ba (2/3) số thành viên được triệu tập tham dự. Trường hợp thành viên được triệu tập theo cơ chế đại biểu thì phải có ít nhất hai phần ba (2/3) số đại biểu và thay mặt cho ít nhất hai phần ba (2/3) số tổ chức Đoàn trực thuộc tham dự. Quyết định của đại hội, hội nghị chỉ có giá trị khi được sự đồng ý của trên một phần hai (1/2) số thành viên có mặt.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 6:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Hệ thống tổ chức của Đoàn gồm 4 cấp:
+                    <br>- Cấp Trung ương.
+                    <br>- Cấp tỉnh và tương đương.
+                    <br>- Cấp huyện và tương đương.
+                    <br>- Cấp cơ sở (gồm Đoàn cơ sở và chi đoàn cơ sở).
+                    <br>2. Việc thành lập, chia tách, sáp nhập, hợp nhất hoặc giải thể một tổ chức Đoàn do Đoàn cấp trên trực tiếp quyết định.
+                    <br>3. Ban Thường vụ Trung ương Đoàn quy định cụ thể về phân cấp trong hệ thống tổ chức của Đoàn.
+                   </p>
+            </div>
+
+            <button class="accordion">
+                Điều 7:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Nhiệm kỳ đại hội là thời gian giữa hai kỳ đại hội.
+                    <br>2. Đại hội đại biểu cấp nào do Ban Chấp hành cấp đó triệu tập. Số lượng đại biểu đại hội cấp nào do Ban Chấp hành cấp đó quyết định theo hướng dẫn của Ban Thường vụ Trung ương Đoàn. Thành phần đại biểu gồm các Ủy viên Ban Chấp hành cấp triệu tập đại hội, đại biểu do đại hội Đoàn hoặc hội nghị đại biểu cấp dưới bầu lên và đại biểu chỉ định. Đại biểu chỉ định không quá năm phần trăm (5%) tổng số đại biểu được triệu tập.
+                    <br>3. Những cán bộ, đoàn viên sau khi được bầu làm đại biểu nếu thôi công tác Đoàn, hoặc chuyển sang công tác, sinh hoạt Đoàn ở địa phương, đơn vị khác không thuộc Ban Chấp hành cấp triệu tập đại hội thì cho rút tên khỏi danh sách đoàn đại biểu. Việc cho rút tên và bổ sung đại biểu của đoàn đại biểu cấp nào do Ban Chấp hành hoặc Ban Thường vụ cấp triệu tập đại hội quyết định.
+                    <br>4. Đại biểu dự đại hội phải được đại hội biểu quyết công nhận về tư cách đại biểu. Ban Chấp hành cấp triệu tập đại hội không được bác bỏ tư cách đại biểu do cấp dưới bầu, trừ trường hợp đại biểu bị kỷ luật từ cảnh cáo trở lên mà chưa hết thời hạn áp dụng kỷ luật.
+                    <br>5. Ban Chấp hành Đoàn các cấp có thể triệu tập hội nghị đại biểu để kiện toàn Ban Chấp hành, thảo luận văn kiện đại hội cấp trên, bầu đại biểu đi dự đại hội Đoàn cấp trên. Thành phần hội nghị đại biểu gồm các Ủy viên Ban Chấp hành cấp triệu tập hội nghị và các đại biểu do Ban Chấp hành cấp dưới cử lên. Số lượng đại biểu do Ban Chấp hành cấp triệu tập hội nghị quyết định nhưng không nhiều hơn số lượng đại biểu của đại hội nhiệm kỳ.
+                    <br>6. Đại hội, hội nghị của Đoàn bầu Đoàn Chủ tịch hoặc chủ tọa để điều hành công việc của đại hội, hội nghị. Đoàn Chủ tịch hoặc chủ tọa có quyền xem xét, kết luận cuối cùng về việc cho rút tên hay không cho rút tên trong danh sách bầu cử hoặc công việc của đại hội, hội nghị.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 8:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Việc bầu cử của Đoàn được thực hiện bằng hình thức bỏ phiếu kín hoặc biểu quyết. Riêng bầu Ban Chấp hành và các chức danh trong Ban Chấp hành; Ủy ban Kiểm tra và các chức danh trong Ủy ban Kiểm tra; đại biểu dự Đại hội Đoàn cấp trên thực hiện bằng hình thức bỏ phiếu kín.
+                    <br>2. Danh sách bầu cử phải được đại hội, hội nghị đại biểu thảo luận và thông qua bằng biểu quyết.
+                    <br>3. Khi bầu cử, phải có trên một phần hai (1/2) số người có mặt tán thành thì người được bầu mới trúng cử. Trường hợp số người có số phiếu trên một phần hai (1/2) nhiều hơn số lượng cần bầu thì lấy những người có số phiếu cao hơn. Nếu kết quả bầu cử có nhiều người có số phiếu trên một phần hai (1/2) và bằng phiếu nhau nhưng nhiều hơn số lượng cần bầu thì bầu lại trong số người bằng phiếu đó; người trúng cử là người có số phiếu cao hơn, không cần phải trên một phần hai (1/2). Trường hợp bầu lại mà số phiếu vẫn bằng nhau, có bầu nữa hay không do đại hội hoặc hội nghị quyết định.
+                    <br>4. Đại hội chi đoàn và Đại hội Đoàn các cấp được trực tiếp bầu Bí thư khi được sự đồng ý của Đoàn cấp trên trực tiếp và cấp ủy Đảng cùng cấp.
+                    <br>5. Ban Thường vụ Trung ương Đoàn quy định nguyên tắc, thủ tục, quy trình bầu cử.
+                    <br>6. Nếu bầu cử không đúng nguyên tắc, thủ tục quy định thì phải tổ chức bầu lại.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 9:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Nhiệm kỳ Ban Chấp hành Đoàn các cấp là thời gian giữa hai kỳ đại hội của từng cấp.
+                    <br>2. Ban Chấp hành do đại hội bầu ra phải được Đoàn cấp trên trực tiếp xét quyết định công nhận. Ban Chấp hành Đoàn khóa mới và người được bầu vào các chức danh điều hành công việc ngay sau khi được đại hội, hội nghị bầu và được công nhận chính thức khi có quyết định công nhận của Ban Chấp hành Đoàn cấp trên trực tiếp.
+                    <br>3. Ủy viên Ban Chấp hành xin rút khỏi Ban Chấp hành, do Ban Chấp hành cấp đó quyết định. Ủy viên Ban Chấp hành chuyển khỏi công tác Đoàn thì đương nhiên thôi tham gia Ban Chấp hành các cấp. Việc rút khỏi Ban Chấp hành khi Ủy viên Ban Chấp hành các cấp chuyển công tác trong hệ thống Đoàn do Ban Thường vụ Trung ương Đoàn hướng dẫn.
+                    <br>4. Ban Chấp hành, Ban Thường vụ cấp tỉnh trở xuống khi khuyết thì do Ban Chấp hành cấp đó thảo luận, thống nhất bầu bổ sung và đề nghị Ban Chấp hành Đoàn cấp trên ra quyết định công nhận. Số lượng bổ sung trong cả nhiệm kỳ không quá số lượng Ủy viên Ban Chấp hành do đại hội quyết định. Khi cần thiết, Đoàn cấp trên trực tiếp có quyền chỉ định tăng thêm một số Ủy viên Ban Chấp hành cấp dưới nhưng số lượng không vượt quá 15% số lượng Ủy viên Ban Chấp hành đã được Đại hội Đoàn cấp dưới thông qua. Ban Chấp hành Trung ương Đoàn khi khuyết thì hội nghị Ban Chấp hành Trung ương Đoàn bầu bổ sung nhưng không quá số lượng Ủy viên Ban Chấp hành do Đại hội đại biểu toàn quốc quyết định. Nếu khuyết Bí thư, Phó Bí thư thì sau khi có ý kiến thống nhất của cấp ủy cùng cấp và Đoàn cấp trên trực tiếp, hội nghị Ban Chấp hành bầu trong số Ủy viên Ban Thường vụ hoặc Ủy viên Ban Chấp hành (nếu không có Ban Thường vụ) và Đoàn cấp trên trực tiếp công nhận. Trường hợp cần thiết, Đoàn cấp trên có quyền chỉ định bổ sung sau khi có ý kiến thống nhất của cấp ủy cùng cấp.
+                    <br>5. Trong cùng một kỳ họp, các Ủy viên Ban Chấp hành vừa được Ban Chấp hành đồng ý cho rút khỏi Ban Chấp hành vẫn có quyền bầu cử, biểu quyết hoặc chủ trì phiên họp bầu bổ sung Ban Chấp hành, các chức danh.
+                    <br>6. Ủy viên Ban Chấp hành không tham gia họp Ban Chấp hành 3 kỳ liên tục trong nhiệm kỳ mà không có lý do chính đáng thì xóa tên trong Ban Chấp hành. Việc xóa tên do Ban Chấp hành cùng cấp xem xét quyết định và báo cáo lên Đoàn cấp trên trực tiếp.
+                    <br>7. Ủy viên Ban Chấp hành đoàn các cấp nếu trong độ tuổi đoàn viên phải tham gia sinh hoạt với một chi đoàn, nếu ngoài độ tuổi đoàn viên thì có chế độ định kỳ tham gia sinh hoạt, hoạt động với cơ sở Đoàn.
+                    <br>8. Đối với tổ chức Đoàn mới thành lập, Đoàn cấp trên trực tiếp chỉ định Ban Chấp hành lâm thời. Không quá sáu tháng kể từ khi có quyết định thành lập phải tổ chức đại hội để bầu Ban Chấp hành chính thức. Nếu kéo dài thời gian lâm thời phải được cấp ủy cùng cấp và Đoàn cấp trên trực tiếp đồng ý nhưng không quá nửa nhiệm kỳ Đại hội của cấp đó kể từ khi có quyết định thành lập.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 10:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>  1. Đoàn từ cấp huyện trở lên được lập cơ quan chuyên trách để giúp việc.
+                    <br>2. Tổ chức bộ máy, nhiệm vụ, quyền hạn của cơ quan chuyên trách cấp huyện và cấp tỉnh do Ban Thường vụ Trung ương Đoàn hướng dẫn và thực hiện theo quy định của Đảng.
+                    <br>3. Quy chế làm việc của cơ quan chuyên trách cấp nào do thủ trưởng cơ quan cấp đó quyết định.</p>
+            </div>
+
+
+            
+        </div>
+
+        <button class="accordion">
+            Chương III:  CƠ QUAN LÃNH ĐẠO Ở CẤP TRUNG ƯƠNG
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 11:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Đại hội đại biểu toàn quốc của Đoàn Thanh niên Cộng sản Hồ Chí Minh có nhiệm kỳ là 5 năm, do Ban Chấp hành Trung ương Đoàn triệu tập.
+                    <br>2. Đại hội thảo luận và biểu quyết thông qua các báo cáo của Ban Chấp hành Trung ương Đoàn; quyết định phương hướng nhiệm vụ công tác của Đoàn và phong trào thanh thiếu nhi toàn quốc của nhiệm kỳ; bầu Ban Chấp hành Trung ương Đoàn; thông qua Điều lệ Đoàn.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 12:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Ban Chấp hành Trung ương Đoàn có nhiệm vụ chấp hành Nghị quyết của Đại hội đại biểu Đoàn toàn quốc, lãnh đạo công tác xây dựng Đoàn, Hội, Đội; tổ chức chỉ đạo thực hiện nghị quyết Đại hội đại biểu Đoàn toàn quốc và các nghị quyết, chỉ thị của Đảng; báo cáo về hoạt động của mình với đại hội hoặc hội nghị đại biểu toàn quốc; kiến nghị, đề xuất và phối hợp với các cơ quan Nhà nước, Mặt trận Tổ quốc Việt Nam, các đoàn thể và các tổ chức kinh tế, xã hội để giải quyết những vấn đề có liên quan đến công tác của Đoàn và phong trào thanh thiếu nhi.
+                    <br>2. Ban Chấp hành Trung ương Đoàn được thực hiện thí điểm một số chủ trương mới xuất phát từ thực tiễn công tác Đoàn và phong trào thanh thiếu nhi; điều chỉnh nhiệm kỳ Đại hội đại biểu toàn quốc khi được sự đồng ý của Ban Bí thư Trung ương Đảng; kéo dài hoặc rút ngắn nhiệm kỳ Đại hội đại biểu cấp tỉnh khi cần.
+                    <br>3. Ban Chấp hành Trung ương Đoàn một năm họp ít nhất hai kỳ.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 13:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Ban Chấp hành Trung ương Đoàn bầu Ban Thường vụ, Bí thư thứ nhất và các Bí thư trong số Ủy viên Ban Thường vụ; bầu Ủy ban Kiểm tra Trung ương Đoàn và Chủ nhiệm Ủy ban Kiểm tra trong số Ủy viên Ủy ban Kiểm tra.
+                    <br>2. Ban Thường vụ Trung ương Đoàn gồm Bí thư thứ nhất, các Bí thư, các Ủy viên Thường vụ. Ban Thường vụ Trung ương Đoàn thay mặt Ban Chấp hành lãnh đạo các cấp bộ Đoàn trong việc thực hiện nghị quyết đại hội và các nghị quyết của Ban Chấp hành Trung ương Đoàn.
+                    <br>3. Ban Bí thư Trung ương Đoàn gồm Bí thư thứ nhất và các Bí thư, thay mặt Ban Thường vụ tổ chức, chỉ đạo, hướng dẫn và kiểm tra việc thực hiện các nghị quyết của Đoàn; chuẩn bị các vấn đề trình Ban Thường vụ xem xét, quyết định các chủ trương công tác Đoàn, phong trào thanh thiếu nhi và giải quyết các công việc hằng ngày của Đoàn. Ban Bí thư Trung ương Đoàn làm việc theo chế độ tập thể lãnh đạo, cá nhân phụ trách.</p>
+            </div>
+
+           
+        </div>
+
+        <button class="accordion">
+            Chương IV:  CƠ QUAN LÃNH ĐẠO Ở CẤP TỈNH, CẤP HUYỆN
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 14:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Đại hội đại biểu của Đoàn cấp tỉnh, cấp huyện và tương đương có nhiệm kỳ là 5 năm 1 lần. Đại hội đại biểu Đoàn các trường đại học, cao đẳng là 5 năm 2 lần.
+                    <br>2. Đại hội thảo luận và biểu quyết thông qua các báo cáo của Ban Chấp hành; quyết định phương hướng, nhiệm vụ công tác Đoàn và phong trào thanh thiếu nhi của cấp mình; bầu Ban Chấp hành; góp ý kiến vào các văn kiện của Đại hội Đoàn cấp trên và bầu đoàn đại biểu đi dự Đại hội Đoàn cấp trên.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 15:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Ban Chấp hành Đoàn cấp tỉnh, cấp huyện và tương đương lãnh đạo thực hiện nghị quyết Đại hội cấp mình; nghị quyết, chỉ thị của Đoàn cấp trên và cấp ủy cùng cấp; báo cáo về hoạt động của mình với đại hội hoặc hội nghị đại biểu cùng cấp; kiến nghị, đề xuất và phối hợp với các cơ quan Nhà nước, Mặt trận Tổ quốc Việt Nam, các đoàn thể và các tổ chức kinh tế, xã hội để giải quyết những vấn đề có liên quan đến công tác Đoàn và phong trào thanh thiếu nhi.
+                    <br>2. Ban Chấp hành Đoàn cấp tỉnh và tương đương một năm họp ít nhất hai kỳ; Ban Chấp hành Đoàn cấp huyện và tương đương một năm họp ít nhất bốn kỳ.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 16:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>1. Ban Chấp hành Đoàn cấp tỉnh, cấp huyện và tương đương bầu Ban Thường vụ; bầu Bí thư, các Phó Bí thư trong số Ủy viên Ban Thường vụ; bầu Ủy ban Kiểm tra, Chủ nhiệm Ủy ban Kiểm tra trong số Ủy viên Ủy ban Kiểm tra của cấp mình.
+                    <br>2. Ban Thường vụ Đoàn từ cấp tỉnh, cấp huyện và tương đương gồm Bí thư, các Phó Bí thư và các Ủy viên Ban Thường vụ. Ban Thường vụ thay mặt Ban Chấp hành lãnh đạo mọi mặt công tác của Đoàn giữa hai kỳ hội nghị Ban Chấp hành.
+                    <br>3. Ban Thường vụ Đoàn cấp tỉnh được quyết định kéo dài, rút ngắn nhiệm kỳ Đại hội Đoàn cấp huyện và cấp cơ sở để phù hợp với nhiệm kỳ chung nhưng không quá nửa nhiệm kỳ của cấp đó.</p>
+            </div>
+
+            
+        </div>
+
+        <button class="accordion">
+            Chương V:  TỔ CHỨC CƠ SỞ ĐOÀN
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 17:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Tổ chức cơ sở Đoàn gồm: Đoàn cơ sở và chi đoàn cơ sở, là nền tảng của Đoàn, được thành lập theo địa bàn dân cư, theo ngành nghề, theo đơn vị học tập, công tác, lao động, nơi cư trú và đơn vị cơ sở trong lực lượng vũ trang nhân dân.
+                    <br>2. Tổ chức cơ sở Đoàn có thể trực thuộc Đoàn cấp huyện, Đoàn cấp tỉnh tùy thuộc vào tính đặc thù của từng đơn vị.
+                    <br>3. Chi đoàn là tổ chức tế bào của Đoàn, là hạt nhân nòng cốt đoàn kết, tập hợp thanh thiếu nhi. Chi đoàn sinh hoạt định kỳ một tháng một lần; đối với các đơn vị đặc thù thực hiện theo hướng dẫn của Ban Thường vụ Trung ương Đoàn.
+                    <br>4. Đơn vị có ba đoàn viên trở lên được thành lập chi đoàn. Nếu chưa đủ ba đoàn viên thì Đoàn cấp trên giới thiệu đến sinh hoạt ở một tổ chức cơ sở Đoàn thích hợp. Chi đoàn có thể thành lập các phân đoàn.
+                    <br>5. Đoàn cơ sở là cấp trên trực tiếp của chi đoàn. Đơn vị có từ hai chi đoàn trở lên và có ít nhất 30 đoàn viên thì thành lập Đoàn cơ sở.
+                    <br>6. Trong một địa bàn, lĩnh vực hoạt động có nhiều chi đoàn, có nhu cầu liên kết, phối hợp thì có thể thành lập liên chi đoàn.
+                    <br>7. Các đội thanh niên xung phong, thanh niên tình nguyện, thanh niên xung kích, các đội hình lao động trẻ tham gia phát triển kinh tế- xã hội, giữ gìn quốc phòng, an ninh có thời hạn xác định được thành lập tổ chức Đoàn theo hướng dẫn của Ban Thường vụ Trung ương Đoàn.
+                   </p>
+            </div>
+
+            <button class="accordion">
+                Điều 18:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> Tổ chức cơ sở Đoàn có nhiệm vụ:
+                    <br>1. Đại diện, chăm lo và bảo vệ quyền và lợi ích hợp pháp, chính đáng của cán bộ, đoàn viên, thanh thiếu nhi.
+                    <br>2. Tổ chức các hoạt động, tạo môi trường giáo dục, rèn luyện đoàn viên, thanh thiếu nhi nhằm góp phần thực hiện các nhiệm vụ chính trị, kinh tế, văn hóa, xã hội, quốc phòng, an ninh của địa phương, đơn vị.
+                    <br>3. Phối hợp với chính quyền, các đoàn thể và các tổ chức kinh tế, xã hội làm tốt công tác thanh niên, chăm lo xây dựng Đoàn, tích cực xây dựng cơ sở Đoàn, Hội, Đội ở địa bàn dân cư, tham gia xây dựng, bảo vệ Đảng và chính quyền.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 19:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> Tổ chức cơ sở Đoàn có quyền:
+                    <br>1. Kết nạp đoàn viên mới, quản lý đoàn viên, tiếp nhận, chuyển sinh hoạt Đoàn; giới thiệu đoàn viên ưu tú cho Đảng bồi dưỡng, kết nạp; giới thiệu cán bộ, đoàn viên vào quy hoạch đào tạo, sử dụng cán bộ của Đảng, Nhà nước, các đoàn thể và tổ chức kinh tế, xã hội.
+                    <br>2. Tổ chức các hoạt động, các phong trào nhằm đoàn kết, tập hợp thanh niên, đáp ứng nhu cầu, lợi ích chính đáng, hợp pháp của tuổi trẻ; phối hợp với các ngành, các đoàn thể, các tổ chức kinh tế, xã hội tạo môi trường, điều kiện thuận lợi trong công tác thanh niên.
+                    <br>3. Tổ chức các hoạt động tạo thêm việc làm và thu nhập cho cán bộ, đoàn viên, thanh niên, tạo nguồn kinh phí cho hoạt động của Đoàn; được sử dụng con dấu hợp pháp.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 20:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>1. Đại hội đoàn viên của chi đoàn, chi đoàn cơ sở; Đại hội đoàn viên hoặc Đại hội đại biểu của Đoàn cơ sở do Ban Chấp hành chi đoàn, chi đoàn cơ sở, Đoàn cơ sở triệu tập.
+                    <br>2. Nhiệm kỳ Đại hội của chi đoàn và tổ chức cơ sở Đoàn: Đại hội chi đoàn khu vực địa bàn dân cư, chi đoàn trong trường học, Đoàn trường trung học phổ thông, Đoàn Trung tâm Giáo dục nghề nghiệp- Giáo dục thường xuyên là 1 năm 1 lần. Đại hội chi đoàn cơ sở; chi đoàn trong các cơ quan hành chính sự nghiệp, doanh nghiệp; Đoàn trường trung cấp là 5 năm 2 lần. Đại hội Đoàn cơ sở xã, phường, thị trấn; Đoàn cơ sở trong các cơ quan hành chính sự nghiệp, doanh nghiệp là 5 năm 1 lần.
+                    <br>3. Đại hội thảo luận và biểu quyết thông qua các báo cáo của Ban Chấp hành; quyết định phương hướng, nhiệm vụ công tác nhiệm kỳ; bầu Ban Chấp hành; góp ý kiến vào các văn kiện của Đại hội Đoàn cấp trên và bầu đoàn đại biểu đi dự Đại hội Đoàn cấp trên (nếu có).</p>
+            </div>
+
+            <button class="accordion">
+                Điều 21:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Chi đoàn có dưới 9 đoàn viên chỉ bầu Bí thư, Phó Bí thư; từ 9 đoàn viên trở lên bầu Ban Chấp hành, Bí thư, Phó Bí thư. Ban Chấp hành Đoàn cơ sở bầu Ban Thường vụ (nếu có), Bí thư, Phó Bí thư.
+                    <br>2. Ban Chấp hành chi đoàn, chi đoàn cơ sở và Đoàn cơ sở mỗi tháng họp ít nhất một kỳ, ở những nơi đặc thù do Ban Thường vụ Trung ương Đoàn quy định.</p>
+            </div>
+           
+            
+        </div>
+
+        <button class="accordion">
+            Chương VI:  ĐOÀN KHỐI, ĐOÀN NGÀNH, ĐOÀN Ở NGOÀI NƯỚC
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 22:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Đoàn khối được thành lập từ cấp huyện trở lên tương ứng với cơ cấu tổ chức của Đảng. Đoàn ngành được thành lập ở cấp tỉnh và Trung ương khi tổ chức Đảng, chính quyền của các ngành đó lãnh đạo, chỉ đạo thống nhất từ trên xuống đến cơ sở.
+                   <br> 2. Nhiệm vụ, quyền hạn, tổ chức bộ máy và biên chế của Đoàn khối, Đoàn ngành do Đoàn cấp trên và cấp ủy cùng cấp quyết định.
+                   <br> 3. Ban cán sự Đoàn được thành lập theo hướng dẫn của Ban Thường vụ Trung ương Đoàn.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 23:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> Tổ chức Đoàn khối, Đoàn ngành liên hệ chặt chẽ và phối hợp hoạt động với tổ chức Đoàn ở các địa phương.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 24:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> Hệ thống tổ chức, nhiệm vụ, quyền hạn của tổ chức Đoàn ở ngoài nước do Ban Thường vụ Trung ương Đoàn quy định.</p>
+            </div>    
+            
+        </div>
+
+        <button class="accordion">
+            Chương VII:  TỔ CHỨC ĐOÀN TRONG QUÂN ĐỘI NHÂN DÂN VIỆT NAM VÀ CÔNG AN NHÂN DÂN VIỆT NAM
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 25:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> 1. Tổ chức Đoàn Thanh niên Cộng sản Hồ Chí Minh trong Quân đội nhân dân Việt Nam là bộ phận của Đoàn Thanh niên Cộng sản Hồ Chí Minh.
+                    <br>2. Hệ thống tổ chức, nhiệm vụ, quyền hạn cụ thể của tổ chức Đoàn trong Quân đội nhân dân Việt Nam do Ban Thường vụ Trung ương Đoàn và Tổng cục Chính trị Quân đội nhân dân Việt Nam quy định.
+                    <br>3. Tổ chức Đoàn trong Quân đội liên hệ chặt chẽ và phối hợp hoạt động với tổ chức Đoàn địa phương nơi đóng quân; được giới thiệu người tham gia vào Ban Chấp hành Đoàn ở địa phương.</p>
+            </div>
+            
+            <button class="accordion">
+                Điều 26:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>  1. Đoàn Thanh niên Cộng sản Hồ Chí Minh trong Công an nhân dân là bộ phận của Đoàn Thanh niên Cộng sản Hồ Chí Minh, đặt dưới sự lãnh đạo của Đảng ủy Công an Trung ương và Ban Chấp hành Trung ương Đoàn Thanh niên Cộng sản Hồ Chí Minh, sự chỉ đạo thường xuyên của cơ quan đảm nhiệm công tác Đảng, công tác chính trị và công tác quần chúng trong Công an nhân dân.
+                    <br>2. Ban Thường vụ Trung ương Đoàn và cơ quan đảm nhiệm công tác Đảng, công tác chính trị và công tác quần chúng trong Công an nhân dân hướng dẫn tổ chức và hoạt động Đoàn Thanh niên Cộng sản Hồ Chí Minh trong Công an nhân dân.</p>
+            </div>
+        </div>
+
+        <button class="accordion">
+            Chương VIII: CÔNG TÁC KIỂM TRA, GIÁM SÁT VÀ ỦY BAN KIỂM TRA CÁC CẤP
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 27:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>  1. Kiểm tra, giám sát là chức năng lãnh đạo của Đoàn. Tổ chức Đoàn phải tiến hành công tác kiểm tra, giám sát. Tổ chức Đoàn, đoàn viên và cán bộ Đoàn chịu sự kiểm tra, giám sát của Đoàn.
+                    <br>2. Các cấp bộ Đoàn lãnh đạo công tác kiểm tra, giám sát và tổ chức thực hiện nhiệm vụ kiểm tra, giám sát các tổ chức Đoàn và đoàn viên chấp hành Điều lệ Đoàn, nghị quyết của Đoàn.</p>
+            </div>
+            
+            <button class="accordion">
+                Điều 28:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>  1. Ủy ban Kiểm tra của Đoàn được thành lập từ Trung ương đến cấp huyện do Ban Chấp hành cùng cấp bầu ra. Nhiệm kỳ của Ủy ban Kiểm tra mỗi cấp theo nhiệm kỳ của Ban Chấp hành cùng cấp. Ủy ban Kiểm tra có một số Ủy viên Ban Chấp hành, song không quá một phần hai (1/2) số lượng Ủy viên Ủy ban Kiểm tra. Số lượng Ủy viên Ủy ban Kiểm tra mỗi cấp do Ban Thường vụ Trung ương Đoàn quy định.
+                    <br>2. Việc công nhận Ủy ban Kiểm tra do Ban Chấp hành cùng cấp đề nghị, Ban Thường vụ Đoàn cấp trên trực tiếp quyết định. Ủy viên Ủy ban Kiểm tra chuyển khỏi công tác Đoàn thì đương nhiên thôi tham gia Ủy ban Kiểm tra Đoàn các cấp. Việc cho rút tên trong danh sách Ủy ban Kiểm tra do Ban Chấp hành cùng cấp quyết định và báo cáo lên Đoàn cấp trên trực tiếp. Việc bổ sung và cho rút tên Ủy viên Ủy ban Kiểm tra Trung ương Đoàn do Ban Chấp hành Trung ương Đoàn xem xét, quyết định.
+                    <br>3. Tổ chức Đoàn cơ sở và chi đoàn cử một Ủy viên Ban Chấp hành phụ trách công tác kiểm tra, giám sát. Trường hợp chi đoàn không có Ban Chấp hành thì cử đồng chí Bí thư hoặc Phó Bí thư phụ trách công tác kiểm tra, giám sát.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 29:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>   Ủyban Kiểm tra các cấp có nhiệm vụ:
+                    <br>1. Tham mưu cho Ban Chấp hành kiểm tra việc thi hành Điều lệ, nghị quyết, chủ trương của Đoàn, bảo vệ quyền và lợi ích hợp pháp của đoàn viên, thanh niên.
+                    <br>2. Kiểm tra cán bộ, đoàn viên (kể cả Ủy viên Ban Chấp hành cùng cấp) và tổ chức Đoàn cấp dưới khi có dấu hiệu vi phạm Điều lệ Đoàn.
+                    <br>3. Kiểm tra việc thực hiện nhiệm vụ kiểm tra, giám sát, thi hành kỷ luật của tổ chức Đoàn cấp dưới.
+                    <br>4. Kiểm tra công tác đoàn phí, việc sử dụng các nguồn quỹ khác của các đơn vị trực thuộc Ban Chấp hành cùng cấp và cấp dưới.
+                    <br>5. Giám sát Ủy viên Ban Chấp hành, cán bộ Đoàn cùng cấp và tổ chức Đoàn cấp dưới trong việc thực hiện chủ trương, nghị quyết và quy định của Đoàn.
+                    <br>6. Giải quyết khiếu nại, tố cáo của cán bộ, đoàn viên và nhân dân liên quan đến cán bộ, đoàn viên; tham mưu cho Ban Chấp hành về việc thi hành kỷ luật Đoàn hoặc thi hành kỷ luật Đoàn theo thẩm quyền.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 30:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>    Ủy ban Kiểm tra các cấp làm việc theo nguyên tắc tập trung dân chủ, chịu sự lãnh đạo của Ban Chấp hành Đoàn cùng cấp và sự chỉ đạo của Ủy ban Kiểm tra cấp trên.
+                    <br>Ủy ban Kiểm tra cấp trên có quyền yêu cầu tổ chức Đoàn cấp dưới và cán bộ, đoàn viên báo cáo, cung cấp tài liệu về những vấn đề liên quan đến nội dung kiểm tra, giám sát; tham mưu cho Ban Chấp hành cùng cấp thay đổi hoặc xóa bỏ quyết định kỷ luật của cấp bộ Đoàn cấp dưới.</p>
+            </div>
+        </div>
+
+        
+        <button class="accordion">
+            Chương IX:  KHEN THƯỞNG VÀ KỶ LUẬT
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 31:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>   1. Cán bộ, đoàn viên, thanh niên, thiếu nhi, tổ chức Đoàn, Hội, Đội và những tập thể, cá nhân có công trong sự nghiệp đào tạo, bồi dưỡng thế hệ trẻ, trong công tác xây dựng Đoàn, Hội, Đội và phong trào thanh thiếu nhi đều được Đoàn xem xét khen thưởng hoặc đề nghị các cấp chính quyền khen thưởng.
+                    <br>2. Các hình thức khen thưởng của Đoàn do Ban Thường vụ Trung ương Đoàn quy định.</p>
+            </div>
+            
+            <button class="accordion">
+                Điều 32:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>   1. Việc thi hành kỷ luật của Đoàn nhằm thống nhất ý chí và hành động, bảo đảm kỷ cương của Đoàn và giáo dục cán bộ, đoàn viên.
+                   <br> Cơ quan lãnh đạo của Đoàn và cán bộ, đoàn viên khi vi phạm kỷ luật phải được xử lý công minh, chính xác, kịp thời và được thông báo công khai.
+                    <br>Việc biểu quyết hình thức kỷ luật đối với cơ quan lãnh đạo của Đoàn, cán bộ đoàn, đoàn viên phải bằng phiếu kín.
+                    <br>2. Hình thức kỷ luật:
+                    <br>Tùy theo mức độ, tính chất vi phạm, khuyết điểm của cán bộ, đoàn viên và cơ quan lãnh đạo của Đoàn mà áp dụng một trong những hình thức kỷ luật sau:
+                    <br>- Đối với cơ quan lãnh đạo của Đoàn: Khiển trách, cảnh cáo, giải tán.
+                    <br>- Đối với cán bộ Đoàn: Khiển trách, cảnh cáo, cách chức, khai trừ (nếu
+                    còn là đoàn viên).
+                    <br>- Đối với đoàn viên: Khiển trách, cảnh cáo, khai trừ.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 33:  Thẩm quyền thi hành kỷ luật
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>   Những tổ chức có thẩm quyền quyết định gồm:
+                    <br>- Chi đoàn và chi đoàn cơ sở.
+                    <br>- Ban Chấp hành từ Đoàn cơ sở trở lên.
+                    <br>- Ủy ban Kiểm tra (theo hướng dẫn phân cấp).
+                    <br>1. Đối với đoàn viên: Khi vi phạm kỷ luật phải được hội nghị chi đoàn thảo luận và biểu quyết hình thức kỷ luật với sự đồng ý của trên một phần hai (1/2) số đoàn viên có mặt tại hội nghị. Từ hình thức cảnh cáo trở lên do Đoàn cấp trên trực tiếp xét quyết định.
+                    <br>2. Đối với cán bộ: Ủy viên Ban Chấp hành Đoàn các cấp khi vi phạm kỷ luật phải được hội nghị Ban Chấp hành cùng cấp thảo luận, biểu quyết hình thức kỷ luật với sự đồng ý của trên một phần hai (1/2) số Ủy viên Ban Chấp hành có mặt tại hội nghị, Đoàn cấp trên trực tiếp xét quyết định. Đối với Ủy viên Ban Chấp hành Trung ương Đoàn khi vi phạm kỷ luật phải được hội nghị Ban Chấp hành Trung ương Đoàn thảo luận, biểu quyết hình thức kỷ luật với sự đồng ý của trên một phần hai (1/2) số Ủy viên Ban Chấp hành có mặt tại hội nghị.
+                    <br>3. Đối với cán bộ không phải là Ủy viên Ban Chấp hành, khi vi phạm kỷ luật thì cấp quản lý và quyết định bổ nhiệm ra quyết định kỷ luật.
+                    <br>4. Đối với cơ quan lãnh đạo của Đoàn: khi vi phạm kỷ luật phải được hội nghị Ban Chấp hành Đoàn cấp trên trực tiếp thảo luận, biểu quyết hình thức kỷ luật với sự đồng ý của trên một phần hai (1/2) số Ủy viên Ban Chấp hành được triệu tập. </p>
+            </div>
+
+            <button class="accordion">
+                Điều 34:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>     1. Trước khi quyết định kỷ luật, tổ chức Đoàn có trách nhiệm nghe cán bộ, đoàn viên hoặc đại diện tổ chức Đoàn bị xem xét kỷ luật trình bày ý kiến.
+                    <br>2. Mọi hình thức kỷ luật chỉ được công bố và thi hành khi có quyết định chính thức.
+                    <br>3. Sau khi công bố quyết định kỷ luật, nếu người bị kỷ luật không tán thành thì trong vòng 30 ngày có quyền khiếu nại lên Ban Chấp hành Đoàn cấp trên cho đến Ban Chấp hành Trung ương Đoàn. Trong thời gian chờ đợi trả lời phải chấp hành quyết định kỷ luật.</p>
+            </div>
+
+            <button class="accordion">
+                Điều 35:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>     Ban Thường vụ Trung ương Đoàn hướng dẫn thực hiện quy trình kỷ luật; hết thời hạn áp dụng hình thức kỷ luật và giới thiệu ứng cử, đề cử, bổ nhiệm vào các chức vụ lãnh đạo Đoàn các cấp đối với cán bộ, đoàn viên bị kỷ luật đã hết thời hạn áp dụng hình thức kỷ luật.</p>
+            </div>
+        </div>
+
+        <button class="accordion">
+            Chương X:   ĐOÀN VỚI CÁC TỔ CHỨC HỘI CỦA THANH NIÊN
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 36:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> Đoàn Thanh niên Cộng sản Hồ Chí Minh giữ vai trò nòng cốt chính trị trong việc xây dựng tổ chức và hoạt động của Hội Liên hiệp Thanh niên Việt Nam, Hội Sinh viên Việt Nam và các thành viên khác của Hội Liên hiệp Thanh niên Việt Nam.</p>
+            </div>
+            
+            <button class="accordion">
+                Điều 37:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> Ban Chấp hành Đoàn các cấp có trách nhiệm tạo điều kiện để Hội Liên hiệp Thanh niên Việt Nam, Hội Sinh viên Việt Nam và các thành viên khác của Hội Liên hiệp Thanh niên Việt Nam thực hiện đúng mục đích, tôn chỉ theo Điều lệ của các tổ chức đó.</p>
+            </div>
+        </div>
+
+        <button class="accordion">
+            Chương XI:    ĐOÀN PHỤ TRÁCH ĐỘI THIẾU NIÊN TIỀN PHONG HỒ CHÍ MINH
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 38:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p> Đoàn Thanh niên Cộng sản Hồ Chí Minh phụ trách Đội Thiếu niên Tiền phong Hồ Chí Minh, hướng dẫn thiếu nhi làm theo 5 điều Bác Hồ dạy và phấn đấu trở thành đoàn viên Đoàn Thanh niên Cộng sản Hồ Chí Minh, người công dân tốt của đất nước.
+                   </p>
+            </div>
+            
+            <button class="accordion">
+                Điều 39:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>  1. Tổ chức và hoạt động của Đội Thiếu niên Tiền phong Hồ Chí Minh theo Điều lệ của Đội do Ban Chấp hành Trung ương Đoàn quy định.
+                    <br>2. Hội đồng Đội Thiếu niên Tiền phong Hồ Chí Minh ở cấp nào do Ban Chấp hành Đoàn cấp đó lập ra và lãnh đạo.
+                    <br>3. Ban Chấp hành Đoàn các cấp có trách nhiệm xây dựng tổ chức Đội; lựa chọn, đào tạo, bồi dưỡng cán bộ làm công tác thiếu nhi, phối hợp với các cơ quan Nhà nước, Mặt trận Tổ quốc Việt Nam, các đoàn thể và tổ chức kinh tế, xã hội chăm lo, tạo điều kiện về cơ sở vật chất và tài chính cho hoạt động của Đội.</p>
+            </div>
+        </div>
+
+        <button class="accordion">
+            Chương XII: TÀI CHÍNH
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 40:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>  Tài chính của Đoàn bao gồm ngân sách Nhà nước cấp, đoàn phí và các khoản thu hợp pháp khác. Việc quản lý, sử dụng tài chính của Đoàn phải tuân thủ theo nguyên tắc quản lý tài chính của Nhà nước.</p>
+            </div>
+            
+            <button class="accordion">
+                Điều 41:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>   Việc thu nộp Đoàn phí do Ban Thường vụ Trung ương Đoàn quy định. Các cấp bộ Đoàn có trách nhiệm trích nộp Đoàn phí lên Đoàn cấp trên.</p>
+            </div>
+        </div>
+
+        <button class="accordion">
+            Chương XIII:  CHẤP HÀNH ĐIỀU LỆ ĐOÀN
+            <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="panel">
+            <button class="accordion">
+                Điều 42:
+                <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="panel">
+                <p>   1. Tổ chức Đoàn, cán bộ, đoàn viên phải chấp hành nghiêm chỉnh Điều lệ Đoàn.
+                    <br>2. Chỉ đại hội hoặc hội nghị đại biểu toàn quốc của Đoàn mới có quyền sửa đổi, bổ sung và thông qua Điều lệ Đoàn.
+                    <br>3. Ban Thường vụ Trung ương Đoàn có trách nhiệm hướng dẫn thực hiện Điều lệ Đoàn.</p>
+            </div>
+            
+        </div>
+    
+    </div>
+
+
+
+    <script>
+        // Lấy tất cả các nút accordion và các panel
+        var accordions = document.getElementsByClassName("accordion");
+        var panels = document.getElementsByClassName("panel");
+        var searchInput = document.getElementById("searchInput");
+
+        // Hàm lọc tìm kiếm
+        searchInput.addEventListener("input", function() {
+            var searchTerm = searchInput.value.toLowerCase();
+
+            // Nếu không có từ khóa tìm kiếm
+            if (searchTerm === "") {
+                // Hiển thị lại tất cả các accordion và panel
+                for (var i = 0; i < accordions.length; i++) {
+                    accordions[i].classList.remove("hidden");
+                    var panel = accordions[i].nextElementSibling;
+                    panel.classList.remove("hidden");
+                    panel.style.display = "none"; // Đảm bảo tất cả các panel ban đầu đều ẩn
+                }
+            } else {
+                // Nếu có từ khóa tìm kiếm
+                for (var i = 0; i < accordions.length; i++) {
+                    var accordionText = accordions[i].textContent.toLowerCase();
+                    var panel = accordions[i].nextElementSibling;
+
+                    // Kiểm tra nội dung của panel nếu có
+                    var panelContent = panel ? panel.textContent.toLowerCase() : "";
+                    
+                    // Nếu từ khóa tìm kiếm nằm trong tiêu đề hoặc nội dung của panel, hiển thị nó
+                    if (accordionText.includes(searchTerm) || panelContent.includes(searchTerm)) {
+                        accordions[i].classList.remove("hidden");
+                        panel.classList.remove("hidden");
+                        // Mở panel nếu tìm thấy từ khóa trong tiêu đề
+                        panel.style.display = "block";
+                    } else {
+                        accordions[i].classList.add("hidden");
+                        panel.classList.add("hidden");
+                        // Đảm bảo panel bị ẩn nếu không tìm thấy
+                        panel.style.display = "none";
+                    }
+                }
+            }
+        });
+
+        // Lặp qua từng nút accordion để thêm sự kiện khi nhấn vào
+        for (var i = 0; i < accordions.length; i++) {
+            accordions[i].addEventListener("click", function() {
+                var panel = this.nextElementSibling;
+                var arrow = this.querySelector(".arrow i");
+
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                    arrow.classList.remove("fa-chevron-up");
+                    arrow.classList.add("fa-chevron-down");
+                } else {
+                    panel.style.display = "block";
+                    arrow.classList.remove("fa-chevron-down");
+                    arrow.classList.add("fa-chevron-up");
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
