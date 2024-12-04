@@ -107,6 +107,10 @@ margin-right: 8px; /* Khoảng cách giữa icon và chữ */
   align-items: center;
   justify-content: center;
 }
+.videoIframe{
+    width:560px;
+     height:315px;
+}
         @media (min-width: 768px) {
             .container {
                 flex-direction: row;
@@ -160,6 +164,36 @@ margin-right: 8px; /* Khoảng cách giữa icon và chữ */
 .topic-btn:hover {
     background-color: #45a049;
 }
+
+.video-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 00%;
+    height: 00%;
+    background-color: rgba(0, 0, 0, 0);
+    justify-content: center;
+    align-items: center;
+}
+.video-container {
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 500px;
+    
+}
+.videoIframe{
+    width: 560px ;
+     height: 315px;
+}
+
     }
 </style>
 <body>
@@ -180,7 +214,7 @@ margin-right: 8px; /* Khoảng cách giữa icon và chữ */
         <div class="video-container">
             <button class="close-btn" id="closeBtn">X</button>
             <div class="video-content">
-                <iframe id="videoIframe" width="560" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe id="videoIframe" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
         </div>
     </div>
