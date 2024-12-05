@@ -24,7 +24,7 @@
     font-size: 30px;
     padding: 50px;
     margin: 40px;
-    
+    font-weight: bold;
     cursor: pointer;
     border: none;
     background-color: #4CAF50;
@@ -147,7 +147,7 @@ margin-right: 8px; /* Khoảng cách giữa icon và chữ */
         background-repeat: no-repeat;
     }
     .topic-btn {
-    font-size: 18px;
+    font-size: 15px;
     padding: 15px 30px;
     margin: 10px;
     cursor: pointer;
@@ -206,8 +206,8 @@ margin-right: 8px; /* Khoảng cách giữa icon và chữ */
     </div>
     </header>
     <div class="container">
-        <button class="topic-btn" id="topic1"><img src="iconnoidung.png" class="button-icon"><span class="button-text">Chủ đề 1</span></button>
-        <button class="topic-btn" id="topic2"><img src="iconnoidung.png" class="button-icon"><span class="button-text">Chủ đề 2</span></button>
+        <button class="topic-btn" id="topic1"><img src="iconnoidung.png" class="button-icon"><span class="button-text">Lịch sử ra đời của Đoàn TNCS Hồ Chí Minh</span></button>
+        <button class="topic-btn" id="topic2"><img src="iconnoidung.png" class="button-icon"><span class="button-text">Bí thư thứ nhất qua các thời kỳ</span></button>
     </div>
 
     <!-- Video Modal -->
@@ -223,11 +223,11 @@ margin-right: 8px; /* Khoảng cách giữa icon và chữ */
 
     <script>
         document.getElementById('topic1').addEventListener('click', function() {
-    openVideoModal('HỘI CA.mp4'); // Video của chủ đề 1
+    openVideoModal('video sự ra đời của đoàn.mp4'); // Video của chủ đề 1
 });
 
 document.getElementById('topic2').addEventListener('click', function() {
-    openVideoModal('Khát vọng tuổi trẻ.mp4'); // Video của chủ đề 2
+    openVideoModal('video bí thư qua các thời kỳ.mp4'); // Video của chủ đề 2
 });
 
 document.getElementById('closeBtn').addEventListener('click', closeVideoModal);
