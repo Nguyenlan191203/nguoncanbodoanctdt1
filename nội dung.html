@@ -54,9 +54,9 @@
 .video-container {
     position: relative;
     background-color: white;
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
-    text-align: center;
+    
 }
 
 .close-btn {
@@ -107,10 +107,7 @@ margin-right: 8px; /* Khoảng cách giữa icon và chữ */
   align-items: center;
   justify-content: center;
 }
-.videoIframe{
-    width:560px;
-     height:315px;
-}
+
         @media (min-width: 768px) {
             .container {
                 flex-direction: row;
@@ -186,15 +183,19 @@ margin-right: 8px; /* Khoảng cách giữa icon và chữ */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 500px;
+    margin-left: 650px;
     
 }
-.videoIframe{
-    width: 560px ;
-     height: 315px;
+
+/* Kích thước iframe trên điện thoại */
+    .video-container iframe {
+        width: 416px; /* 100% chiều rộng màn hình điện thoại */
+        height: 200px; /* Giảm chiều cao để video nhỏ hơn trên điện thoại */
+    
+}
 }
 
-    }
+    
 </style>
 <body>
     <header>
@@ -214,7 +215,8 @@ margin-right: 8px; /* Khoảng cách giữa icon và chữ */
         <div class="video-container">
             <button class="close-btn" id="closeBtn">X</button>
             <div class="video-content">
-                <iframe id="videoIframe" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe id="videoIframe"  width="560" 
+                height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </div>
         </div>
     </div>
