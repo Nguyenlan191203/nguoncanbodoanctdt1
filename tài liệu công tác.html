@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài liệu công tác</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Tổng quan */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    
+    padding: 20px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar .logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar .menu {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar .menu a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 36px;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+}
+
+.documents-list {
+    margin-top: 40px;
+}
+
+.document-item {
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.document-item h3 {
+    color: #333;
+    font-size: 24px;
+}
+
+.document-item p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.download-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.download-link:hover {
+    background-color: #45a049;
+}
+
+
+
+image {
+    border-radius: 5px;
+    margin-left: 0; /* Bạn có thể bỏ margin nếu cần */
+    margin-top: 80px;
+    margin-bottom: 10px;
+    width: 100%; /* Đảm bảo chiều rộng là 100% của phần tử cha */
+    height: auto; /* Chiều cao tự động để giữ tỷ lệ */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-repeat: no-repeat;
+        }
+@media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .content {
+                flex: 3;
+            }
+           
+            }
+            section image{
+            
+            padding: 10px;
+            padding-bottom: 10px;
+            border-radius: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            width: 500%;
+            height: 100%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            
+
+            
+         
+            
+        }
+        
+
+        @media (max-width: 767px) {
+           
+            
+            .image {
+        width: 100%; /* Đảm bảo chiều rộng là 100% trong màn hình nhỏ */
+        height: auto; /* Giữ tỷ lệ */
+        margin-top: 35px;
+        margin-bottom: -10px;
+        background-repeat: no-repeat;
+    }
+    }
+</style>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="trang chủ.html">DỰ ÁN PHÁT TRIỂN NGUỒN CÁN BỘ ĐOÀN</a>
+        </div>
+        <div class="menu">
+            <a href="trang chủ.html" class="trangchuhtml">TRANG CHỦ</a>
+            
+            <a href="index.html" class="dangxuat">ĐĂNG XUẤT</a>
+            
+        </div>
+    </div>
+    <header>
+        <div class="header-container">
+        <section>
+            <img class="image" src="đoàn thanh niên.jpg" alt="Example Image" style="padding-top: -100px;">
+        </section>
+    </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Tài liệu Công tác</h1>
+            
+            
+            <div class="documents-list">
+                <div class="document-item">
+                    <h3>Lịch công tác tháng 12</h3>
+                    <p> </p>
+                    <a href="#" class="download-link" download>Tải về</a>
+                </div>
+
+                
+            </div>
+        </div>
+    </main>
+
+    
+</body>
+</html>
