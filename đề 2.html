@@ -299,7 +299,7 @@
         
 
         <!-- Hiển thị thời gian đếm ngược -->
-        <div id="timer">2:00</div>
+        <div id="timer">5:00</div>
 
         <form id="quizForm">
             <!-- Vòng tròn điều hướng câu hỏi -->
@@ -530,7 +530,7 @@
 const totalQuestions = 10;
 
 // Check if there's a saved timer value in sessionStorage
-let timeLeft = sessionStorage.getItem("timeLeft") ? parseInt(sessionStorage.getItem("timeLeft")) : 120;
+let timeLeft = sessionStorage.getItem("timeLeft") ? parseInt(sessionStorage.getItem("timeLeft")) : 300;
 
 // Update the timer every second
 const timerElement = document.getElementById("timer");
